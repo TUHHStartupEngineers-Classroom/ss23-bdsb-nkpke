@@ -4,9 +4,9 @@ author: "Nis Köpke"
 ---
 
 # Tidyverse Preparation
-## Code (Mainly from startupengineer templates)
+(Code mainly from startupengineer templates)
 
-```
+```{r}
 # Data Science at TUHH ------------------------------------------------------
 # SALES ANALYSIS ----
 
@@ -17,11 +17,11 @@ library(readxl)
 
 # 2.0 Importing Files ----
 # A good convention is to use the file name and suffix it with tbl for the data structure tibble
-bikes_tbl      <- read_excel(path = "00_data/01_bike_sales/01_raw_data/bikes.xlsx")
-orderlines_tbl <- read_excel("00_data/01_bike_sales/01_raw_data/orderlines.xlsx")
+bikes_tbl      <- read_excel(path = "./../../00_data/01_bike_sales/01_raw_data/bikes.xlsx")
+orderlines_tbl <- read_excel("./../../00_data/01_bike_sales/01_raw_data/orderlines.xlsx")
 
 # Not necessary for this analysis, but for the sake of completeness
-bikeshops_tbl  <- read_excel("00_data/01_bike_sales/01_raw_data/bikeshops.xlsx")
+bikeshops_tbl  <- read_excel("./../../00_data/01_bike_sales/01_raw_data/bikeshops.xlsx")
 
 # 3.0 Examining Data ----
 # Method 1: Print it to the console
@@ -191,115 +191,167 @@ sales_by_year_cat_1_tbl %>%
 # 7.0 Writing Files ----
 
 # 7.1 Excel ----
-install.packages("writexl")
+# install.packages("writexl")
 library("writexl")
 bike_orderlines_wrangled_tbl %>%
-  write_xlsx("00_data/01_bike_sales/02_wrangled_data/bike_orderlines.xlsx")
+  write_xlsx("./../../00_data/01_bike_sales/02_wrangled_data/bike_orderlines.xlsx")
 
 # 7.2 CSV ----
 bike_orderlines_wrangled_tbl %>% 
-  write_csv("00_data/01_bike_sales/02_wrangled_data/bike_orderlines.csv")
+  write_csv("./../../00_data/01_bike_sales/02_wrangled_data/bike_orderlines.csv")
 
 # 7.3 RDS ----
 bike_orderlines_wrangled_tbl %>% 
-  write_rds("00_data/01_bike_sales/02_wrangled_data/bike_orderlines.rds")
+  write_rds("./../../00_data/01_bike_sales/02_wrangled_data/bike_orderlines.rds")
 
 ```
 
-## Results
-![Revenue by year](../../assets/img/revenue_by_year.png)
-![Revenue by year and main category](../../assets/img/revenue_by_year_and_main_category.png)
-
-::: callout-note
-You can delete everything in here and start fresh.
-:::
-
-This is a `.qmd` file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a \# in front of your text, it will create a top level-header.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-# Text Formatting
-
-*italics* and **bold**
-
-superscript^2^ / subscript~2~
-
-~~strikethrough~~
-
-`verbatim code`
-
-> Blockquote
-
-# Headings
-
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-###### Header 6
-
-# Links & Images
-
-<https://quarto.org>
-
-[Quarto](https://quarto.org)
-
-![Caption](../../assets/img/elephant.png)
-
-[![Caption](../../assets/img/elephant.png)](https://quarto.org)
-
-[![Caption](../../assets/img/elephant.png)](https://quarto.org "An elephant")
-
-
-# Lists
-
-* unordered list
-    + sub-item 1
-    + sub-item 2
-        - sub-sub-item 1
-        
-*   item 2
-
-    Continued (indent 4 spaces)
-    
-    
-1. ordered list
-2. item 2
-    i) sub-item 1
-         A.  sub-sub-item 1
-         
-(@)  A list whose numbering
-
-continues after
-
-(@)  an interruption
-
-# Tables
-
-| Right | Left | Default | Center |
-|------:|:-----|---------|:------:|
-|   12  |  12  |    12   |    12  |
-|  123  |  123 |   123   |   123  |
-|    1  |    1 |     1   |     1  |
-
-# Source Code
-
-Use ``` to delimit blocks of source code:
-
-```
-code
-```
-
-Add a language to syntax highlight code blocks:
-
+# Tidyverse challenge
 ```{r}
-1 + 1
+# 8.0 Challenge ----
+# 8.1 Manipulate Data
+# Separate city and state
+bike_orderlines_wrangled_tbl <- bike_orderlines_wrangled_tbl %>%
+  separate(col    = location,
+           into   = c("city", "state"),
+           sep    = ", ")
+  
+# Extract state data
+sales_by_city_tbl <- bike_orderlines_wrangled_tbl %>%
+  
+  # Select columns and add a year
+  select(state, total_price) %>%
+  
+  # Group by and summarize year and main catgegory
+  group_by(state) %>%
+  summarise(sales = sum(total_price)) %>%
+  
+  # Format $ Text
+  mutate(sales_text = scales::dollar(sales, big.mark = ".", 
+                                     decimal.mark = ",", 
+                                     prefix = "", 
+                                     suffix = " €"))
+
+  # extract state with highes sales 
+  highest_value_state <- sales_by_city_tbl[which.max( sales_by_city_tbl$sales ),1]
+
+# 8.2 Visualize Data 
+sales_by_city_tbl %>%
+  
+  # Set up x, y, fill
+  ggplot(aes(x = state, y = sales)) +
+  
+  # Geometries
+  geom_col() + # Run up to here to get a stacked bar plot
+  
+  # Formatting
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::dollar_format(big.mark = ".", 
+                                                    decimal.mark = ",", 
+                                                    prefix = "", 
+                                                    suffix = " €")) +
+  labs(
+    title = "Revenue by state",
+    subtitle = paste0("The state with the highest revenue is ", highest_value_state),
+    x = "State",
+    y = "Revenue"
+  )
 ```
 
-```{r}
-cars
-```
-
-```{r}
-plot(cars)
-```
+<!-- ::: callout-note -->
+<!-- You can delete everything in here and start fresh. -->
+<!-- ::: -->
+<!---->
+<!-- This is a `.qmd` file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a \# in front of your text, it will create a top level-header. -->
+<!---->
+<!-- To learn more about Quarto websites visit <https://quarto.org/docs/websites>. -->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!-- # Text Formatting -->
+<!---->
+<!-- *italics* and **bold** -->
+<!---->
+<!-- superscript^2^ / subscript~2~ -->
+<!---->
+<!-- ~~strikethrough~~ -->
+<!---->
+<!-- `verbatim code` -->
+<!---->
+<!-- > Blockquote -->
+<!---->
+<!-- # Headings -->
+<!---->
+<!-- ## Header 2 -->
+<!-- ### Header 3 -->
+<!-- #### Header 4 -->
+<!-- ##### Header 5 -->
+<!-- ###### Header 6 -->
+<!---->
+<!-- # Links & Images -->
+<!---->
+<!-- <https://quarto.org> -->
+<!---->
+<!-- [Quarto](https://quarto.org) -->
+<!---->
+<!-- ![Caption](../../assets/img/elephant.png) -->
+<!---->
+<!-- [![Caption](../../assets/img/elephant.png)](https://quarto.org) -->
+<!---->
+<!-- [![Caption](../../assets/img/elephant.png)](https://quarto.org "An elephant") -->
+<!---->
+<!---->
+<!-- # Lists -->
+<!---->
+<!-- * unordered list -->
+<!--     + sub-item 1 -->
+<!--     + sub-item 2 -->
+<!--         - sub-sub-item 1 -->
+<!--          -->
+<!-- *   item 2 -->
+<!---->
+<!--     Continued (indent 4 spaces) -->
+<!--      -->
+<!--      -->
+<!-- 1. ordered list -->
+<!-- 2. item 2 -->
+<!--     i) sub-item 1 -->
+<!--          A.  sub-sub-item 1 -->
+<!--           -->
+<!-- (@)  A list whose numbering -->
+<!---->
+<!-- continues after -->
+<!---->
+<!-- (@)  an interruption -->
+<!---->
+<!-- # Tables -->
+<!---->
+<!-- | Right | Left | Default | Center | -->
+<!-- |------:|:-----|---------|:------:| -->
+<!-- |   12  |  12  |    12   |    12  | -->
+<!-- |  123  |  123 |   123   |   123  | -->
+<!-- |    1  |    1 |     1   |     1  | -->
+<!---->
+<!-- # Source Code -->
+<!---->
+<!-- Use ``` to delimit blocks of source code: -->
+<!---->
+<!-- ``` -->
+<!-- code -->
+<!-- ``` -->
+<!---->
+<!-- Add a language to syntax highlight code blocks: -->
+<!---->
+<!-- ```{r} -->
+<!-- 1 + 1 -->
+<!-- ``` -->
+<!---->
+<!-- ```{r} -->
+<!-- cars -->
+<!-- ``` -->
+<!---->
+<!-- ```{r} -->
+<!-- plot(cars) -->
+<!-- ``` -->

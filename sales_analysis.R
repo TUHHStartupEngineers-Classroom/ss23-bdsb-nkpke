@@ -135,7 +135,7 @@ sales_by_year_tbl %>%
 
 # 6.2 Sales by Year and Category 2 ----
 
-# Step 1 - Manipulate
+# # Step 1 - Manipulate
 sales_by_year_cat_1_tbl <- bike_orderlines_wrangled_tbl %>%
   
   # Select columns and add a year
@@ -178,7 +178,6 @@ sales_by_year_cat_1_tbl %>%
     fill = "Main category" # Changes the legend name
   )
 
-
 # 7.0 Writing Files ----
 
 # 7.1 Excel ----
@@ -194,4 +193,54 @@ bike_orderlines_wrangled_tbl %>%
 # 7.3 RDS ----
 bike_orderlines_wrangled_tbl %>% 
   write_rds("00_data/01_bike_sales/02_wrangled_data/bike_orderlines.rds")
+
+
+# 8.0 Challenge ----
+# 8.1 Manipulate Data
+# Separate city and state
+bike_orderlines_wrangled_tbl <- bike_orderlines_wrangled_tbl %>%
+  separate(col    = location,
+           into   = c("city", "state"),
+           sep    = ", ")
+  
+# Extract state data
+sales_by_city_tbl <- bike_orderlines_wrangled_tbl %>%
+  
+  # Select columns and add a year
+  select(state, total_price) %>%
+  
+  # Group by and summarize year and main catgegory
+  group_by(state) %>%
+  summarise(sales = sum(total_price)) %>%
+  
+  # Format $ Text
+  mutate(sales_text = scales::dollar(sales, big.mark = ".", 
+                                     decimal.mark = ",", 
+                                     prefix = "", 
+                                     suffix = " €"))
+
+  # extract state with highes sales 
+  highest_value_state <- sales_by_city_tbl[which.max( sales_by_city_tbl$sales ),1]
+
+# 8.2 Visualize Data 
+sales_by_city_tbl %>%
+  
+  # Set up x, y, fill
+  ggplot(aes(x = state, y = sales)) +
+  
+  # Geometries
+  geom_col() + # Run up to here to get a stacked bar plot
+  
+  # Formatting
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::dollar_format(big.mark = ".", 
+                                                    decimal.mark = ",", 
+                                                    prefix = "", 
+                                                    suffix = " €")) +
+  labs(
+    title = "Revenue by state",
+    subtitle = paste0("The state with the highest revenue is ", highest_value_state),
+    x = "State",
+    y = "Revenue"
+  )
 
