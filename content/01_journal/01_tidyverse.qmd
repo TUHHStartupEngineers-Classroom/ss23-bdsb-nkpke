@@ -217,7 +217,7 @@ bike_orderlines_wrangled_tbl <- bike_orderlines_wrangled_tbl %>%
            sep    = ", ")
   
 # Extract state data
-sales_by_city_tbl <- bike_orderlines_wrangled_tbl %>%
+sales_by_state_tbl <- bike_orderlines_wrangled_tbl %>%
   
   # Select columns and add a year
   select(state, total_price) %>%
@@ -233,10 +233,11 @@ sales_by_city_tbl <- bike_orderlines_wrangled_tbl %>%
                                      suffix = " €"))
 
   # extract state with highes sales 
-  highest_value_state <- sales_by_city_tbl[which.max( sales_by_city_tbl$sales ),1]
-
+  highest_value_state <- sales_by_state_tbl[which.max( sales_by_state_tbl$sales ),1]
+```
+```{r plot, fig.width=10, fig.height=7}
 # 8.2 Visualize Data 
-sales_by_city_tbl %>%
+sales_by_state_tbl %>%
   
   # Set up x, y, fill
   ggplot(aes(x = state, y = sales)) +

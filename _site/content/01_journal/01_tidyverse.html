@@ -188,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-<li><a href="#tidyverse-preparation-code-mainly-from-startupengineer-templates" id="toc-tidyverse-preparation-code-mainly-from-startupengineer-templates" class="nav-link active" data-scroll-target="#tidyverse-preparation-code-mainly-from-startupengineer-templates"><span class="toc-section-number">1</span>  Tidyverse Preparation (Code mainly from startupengineer templates)</a></li>
+<li><a href="#tidyverse-preparation" id="toc-tidyverse-preparation" class="nav-link active" data-scroll-target="#tidyverse-preparation"><span class="toc-section-number">1</span>  Tidyverse Preparation</a></li>
   <li><a href="#tidyverse-challenge" id="toc-tidyverse-challenge" class="nav-link" data-scroll-target="#tidyverse-challenge"><span class="toc-section-number">2</span>  Tidyverse challenge</a></li>
   </ul></nav>
     </div>
@@ -213,8 +213,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header><section id="tidyverse-preparation-code-mainly-from-startupengineer-templates" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Tidyverse Preparation (Code mainly from startupengineer templates)</h1>
+</header><section id="tidyverse-preparation" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Tidyverse Preparation</h1>
+<p>(Code mainly from startupengineer templates)</p>
 <div class="cell" data-hash="01_tidyverse_cache/html/unnamed-chunk-1_d593d3588cc62a643be4df09918cfeb4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Data Science at TUHH ------------------------------------------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co"># SALES ANALYSIS ----</span></span>
@@ -504,7 +505,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section><section id="tidyverse-challenge" class="level1" data-number="2"><h1 data-number="2">
 <span class="header-section-number">2</span> Tidyverse challenge</h1>
-<div class="cell" data-hash="01_tidyverse_cache/html/unnamed-chunk-2_48c0d8e453d5bb02158a3fbf39d083f8">
+<div class="cell" data-hash="01_tidyverse_cache/html/unnamed-chunk-2_da9adbc9c75aee0b5d7709e4f9020c0b">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># 8.0 Challenge ----</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="co"># 8.1 Manipulate Data</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="co"># Separate city and state</span></span>
@@ -514,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-7"><a href="#cb19-7"></a>           <span class="at">sep    =</span> <span class="st">", "</span>)</span>
 <span id="cb19-8"><a href="#cb19-8"></a>  </span>
 <span id="cb19-9"><a href="#cb19-9"></a><span class="co"># Extract state data</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a>sales_by_city_tbl <span class="ot">&lt;-</span> bike_orderlines_wrangled_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>sales_by_state_tbl <span class="ot">&lt;-</span> bike_orderlines_wrangled_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb19-11"><a href="#cb19-11"></a>  </span>
 <span id="cb19-12"><a href="#cb19-12"></a>  <span class="co"># Select columns and add a year</span></span>
 <span id="cb19-13"><a href="#cb19-13"></a>  <span class="fu">select</span>(state, total_price) <span class="sc">%&gt;%</span></span>
@@ -530,32 +531,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-23"><a href="#cb19-23"></a>                                     <span class="at">suffix =</span> <span class="st">" €"</span>))</span>
 <span id="cb19-24"><a href="#cb19-24"></a></span>
 <span id="cb19-25"><a href="#cb19-25"></a>  <span class="co"># extract state with highes sales </span></span>
-<span id="cb19-26"><a href="#cb19-26"></a>  highest_value_state <span class="ot">&lt;-</span> sales_by_city_tbl[<span class="fu">which.max</span>( sales_by_city_tbl<span class="sc">$</span>sales ),<span class="dv">1</span>]</span>
-<span id="cb19-27"><a href="#cb19-27"></a></span>
-<span id="cb19-28"><a href="#cb19-28"></a><span class="co"># 8.2 Visualize Data </span></span>
-<span id="cb19-29"><a href="#cb19-29"></a>sales_by_city_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb19-30"><a href="#cb19-30"></a>  </span>
-<span id="cb19-31"><a href="#cb19-31"></a>  <span class="co"># Set up x, y, fill</span></span>
-<span id="cb19-32"><a href="#cb19-32"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> state, <span class="at">y =</span> sales)) <span class="sc">+</span></span>
-<span id="cb19-33"><a href="#cb19-33"></a>  </span>
-<span id="cb19-34"><a href="#cb19-34"></a>  <span class="co"># Geometries</span></span>
-<span id="cb19-35"><a href="#cb19-35"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="co"># Run up to here to get a stacked bar plot</span></span>
-<span id="cb19-36"><a href="#cb19-36"></a>  </span>
-<span id="cb19-37"><a href="#cb19-37"></a>  <span class="co"># Formatting</span></span>
-<span id="cb19-38"><a href="#cb19-38"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb19-39"><a href="#cb19-39"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, </span>
-<span id="cb19-40"><a href="#cb19-40"></a>                                                    <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
-<span id="cb19-41"><a href="#cb19-41"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
-<span id="cb19-42"><a href="#cb19-42"></a>                                                    <span class="at">suffix =</span> <span class="st">" €"</span>)) <span class="sc">+</span></span>
-<span id="cb19-43"><a href="#cb19-43"></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-44"><a href="#cb19-44"></a>    <span class="at">title =</span> <span class="st">"Revenue by state"</span>,</span>
-<span id="cb19-45"><a href="#cb19-45"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"The state with the highest revenue is "</span>, highest_value_state),</span>
-<span id="cb19-46"><a href="#cb19-46"></a>    <span class="at">x =</span> <span class="st">"State"</span>,</span>
-<span id="cb19-47"><a href="#cb19-47"></a>    <span class="at">y =</span> <span class="st">"Revenue"</span></span>
-<span id="cb19-48"><a href="#cb19-48"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-26"><a href="#cb19-26"></a>  highest_value_state <span class="ot">&lt;-</span> sales_by_state_tbl[<span class="fu">which.max</span>( sales_by_state_tbl<span class="sc">$</span>sales ),<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="01_tidyverse_cache/html/plot_c6b7e68e39ec55253a92864f6abb3825">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 8.2 Visualize Data </span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>sales_by_state_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  </span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="co"># Set up x, y, fill</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> state, <span class="at">y =</span> sales)) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  </span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="co"># Geometries</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="co"># Run up to here to get a stacked bar plot</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>  </span>
+<span id="cb20-10"><a href="#cb20-10"></a>  <span class="co"># Formatting</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, </span>
+<span id="cb20-13"><a href="#cb20-13"></a>                                                    <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
+<span id="cb20-14"><a href="#cb20-14"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb20-15"><a href="#cb20-15"></a>                                                    <span class="at">suffix =</span> <span class="st">" €"</span>)) <span class="sc">+</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-17"><a href="#cb20-17"></a>    <span class="at">title =</span> <span class="st">"Revenue by state"</span>,</span>
+<span id="cb20-18"><a href="#cb20-18"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"The state with the highest revenue is "</span>, highest_value_state),</span>
+<span id="cb20-19"><a href="#cb20-19"></a>    <span class="at">x =</span> <span class="st">"State"</span>,</span>
+<span id="cb20-20"><a href="#cb20-20"></a>    <span class="at">y =</span> <span class="st">"Revenue"</span></span>
+<span id="cb20-21"><a href="#cb20-21"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="01_tidyverse_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="01_tidyverse_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="01_tidyverse_files/figure-html/plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="01_tidyverse_files/figure-html/plot-1.png" class="img-fluid figure-img" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -909,7 +911,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});</script>
 
 
 </body></html>
