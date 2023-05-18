@@ -181,7 +181,7 @@ sales_by_year_cat_1_tbl %>%
 # 7.0 Writing Files ----
 
 # 7.1 Excel ----
-install.packages("writexl")
+# install.packages("writexl")
 library("writexl")
 bike_orderlines_wrangled_tbl %>%
   write_xlsx("00_data/01_bike_sales/02_wrangled_data/bike_orderlines.xlsx")
@@ -204,7 +204,7 @@ bike_orderlines_wrangled_tbl <- bike_orderlines_wrangled_tbl %>%
            sep    = ", ")
   
 # Extract state data
-sales_by_city_tbl <- bike_orderlines_wrangled_tbl %>%
+sales_by_state_tbl <- bike_orderlines_wrangled_tbl %>%
   
   # Select columns and add a year
   select(state, total_price) %>%
@@ -220,10 +220,10 @@ sales_by_city_tbl <- bike_orderlines_wrangled_tbl %>%
                                      suffix = " €"))
 
   # extract state with highes sales 
-  highest_value_state <- sales_by_city_tbl[which.max( sales_by_city_tbl$sales ),1]
+  highest_value_state <- sales_by_state_tbl[which.max( sales_by_state_tbl$sales ),1]
 
 # 8.2 Visualize Data 
-sales_by_city_tbl %>%
+sales_by_state_tbl %>%
   
   # Set up x, y, fill
   ggplot(aes(x = state, y = sales)) +
@@ -241,6 +241,51 @@ sales_by_city_tbl %>%
     title = "Revenue by state",
     subtitle = paste0("The state with the highest revenue is ", highest_value_state),
     x = "State",
-    y = "Revenue"
+    y = "Revenue")
+
+# 8.2 Sales by Year and Location ----
+
+# # Step 1 - Manipulate
+sales_by_year_state_tbl <- bike_orderlines_wrangled_tbl %>%
+  
+  # Select columns and add a year
+  select(order_date, total_price, state) %>%
+  mutate(year = year(order_date)) %>%
+  
+  # Group by and summarize year and main catgegory
+  group_by(year, state) %>%
+  summarise(sales = sum(total_price)) %>%
+  ungroup() %>%
+  
+  # Format $ Text
+  mutate(sales_text = scales::dollar(sales, big.mark = ".", 
+                                     decimal.mark = ",", 
+                                     prefix = "", 
+                                     suffix = " €"))
+
+sales_by_year_state_tbl  
+
+# Step 2 - Visualize
+sales_by_year_state_tbl %>%
+  
+  # Set up x, y, fill
+  ggplot(aes(x = year, y = sales, fill = state)) +
+  
+  # Geometries
+  geom_col() + # Run up to here to get a stacked bar plot
+  
+  # Facet
+  facet_wrap(~ state) +
+  
+  # Formatting
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::dollar_format(big.mark = ".", 
+                                                    decimal.mark = ",", 
+                                                    prefix = "", 
+                                                    suffix = " €")) +
+  labs(
+    title = "Revenue by year and state",
+    # subtitle = "Each product category has an upward trend",
+    fill = "Main category" # Changes the legend name
   )
 
