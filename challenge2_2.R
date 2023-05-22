@@ -84,7 +84,7 @@ price_tbl <- price_tbl %>%
 price_tbl$price <- price_tbl$price %>% 
   str_remove_all("€") %>% 
   str_remove_all("\\.") %>% 
-  as.numeric()
+  as.numeric()/100
 
 name_tbl <- bike_tbl$bikeurl %>% 
   map(read_html) %>%
