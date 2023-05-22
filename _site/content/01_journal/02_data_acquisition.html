@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.2.475">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Nis Köpke">
 <title>MyLabJournal - Tidyverse</title>
@@ -15,10 +15,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -45,13 +44,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -105,51 +134,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">MyLabJournal</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+    <a class="nav-link" href="../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Journal</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
 <li>
-    <a class="dropdown-item" href="../../content/01_journal/01_tidyverse.html" rel="" target="">
+    <a class="dropdown-item" href="../../content/01_journal/01_tidyverse.html">
  <span class="dropdown-text">01 Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../content/01_journal/02_data_acquisition.html" rel="" target="">
+    <a class="dropdown-item" href="../../content/01_journal/02_data_acquisition.html">
  <span class="dropdown-text">02 Data Acquisition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../content/01_journal/03_data_wrangling.html" rel="" target="">
+    <a class="dropdown-item" href="../../content/01_journal/03_data_wrangling.html">
  <span class="dropdown-text">03 Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../content/01_journal/04_data_visualization.html" rel="" target="">
+    <a class="dropdown-item" href="../../content/01_journal/04_data_visualization.html">
  <span class="dropdown-text">04 Data Visualization</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../content/02_notes/05_class_notes.html" rel="" target="">
+    <a class="nav-link" href="../../content/02_notes/05_class_notes.html">
  <span class="menu-text">Class notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../content/03_other/06_links.html" rel="" target="">
+    <a class="nav-link" href="../../content/03_other/06_links.html">
  <span class="menu-text">Links</span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools ms-auto">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
+<div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -159,14 +188,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-<li><a href="#data-acquisition-preparation" id="toc-data-acquisition-preparation" class="nav-link active" data-scroll-target="#data-acquisition-preparation"><span class="header-section-number">1</span> Data Acquisition Preparation</a></li>
+<li><a href="#data-acquisition-preparation" id="toc-data-acquisition-preparation" class="nav-link active" data-scroll-target="#data-acquisition-preparation"><span class="toc-section-number">1</span>  Data Acquisition Preparation</a></li>
   <li>
-<a href="#data-acquisition-challenge-1" id="toc-data-acquisition-challenge-1" class="nav-link" data-scroll-target="#data-acquisition-challenge-1"><span class="header-section-number">2</span> Data Acquisition Challenge 1</a>
+<a href="#data-acquisition-challenge-1" id="toc-data-acquisition-challenge-1" class="nav-link" data-scroll-target="#data-acquisition-challenge-1"><span class="toc-section-number">2</span>  Data Acquisition Challenge 1</a>
   <ul class="collapse">
-<li><a href="#api-call-and-data-extraction" id="toc-api-call-and-data-extraction" class="nav-link" data-scroll-target="#api-call-and-data-extraction"><span class="header-section-number">2.1</span> API call and data extraction</a></li>
-  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="header-section-number">2.2</span> Visualization</a></li>
+<li><a href="#api-call-and-data-extraction" id="toc-api-call-and-data-extraction" class="nav-link" data-scroll-target="#api-call-and-data-extraction"><span class="toc-section-number">2.1</span>  API call and data extraction</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="toc-section-number">2.2</span>  Visualization</a></li>
   </ul>
 </li>
+  <li><a href="#data-acquisition-challenge-2" id="toc-data-acquisition-challenge-2" class="nav-link" data-scroll-target="#data-acquisition-challenge-2"><span class="toc-section-number">3</span>  Data Acquisition Challenge 2</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -285,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-13"><a href="#cb14-13"></a>resp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Response [https://swapi.dev/api/people/1]
-#&gt;   Date: 2023-05-22 14:58
+#&gt;   Date: 2023-05-22 21:13
 #&gt;   Status: 200
 #&gt;   Content-Type: application/json
 #&gt;   Size: 647 B</code></pre>
@@ -488,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-3"><a href="#cb22-3"></a>resp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Response [https://www.alphavantage.co/query?function=GLOBAL_QUOTE&amp;symbol=WDI.DE]
-#&gt;   Date: 2023-05-22 14:58
+#&gt;   Date: 2023-05-22 21:13
 #&gt;   Status: 200
 #&gt;   Content-Type: application/json
 #&gt;   Size: 189 B
@@ -964,8 +994,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Data is requested from openweathermap, some data is extracted and the result is visualized.</p>
 <section id="api-call-and-data-extraction" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="api-call-and-data-extraction">
 <span class="header-section-number">2.1</span> API call and data extraction</h2>
-<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_34f8034731b40c97d84a491b691f9f79">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Challenge 2 ----</span></span>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_0900e0d98110dcae52996381cf7b67f3">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Challenge 2.1 ----</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="co"># 1.0 LIBRARIES ----</span></span>
 <span id="cb25-4"><a href="#cb25-4"></a></span>
@@ -989,95 +1019,218 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-22"><a href="#cb25-22"></a></span>
 <span id="cb25-23"><a href="#cb25-23"></a><span class="co"># convert API response body</span></span>
 <span id="cb25-24"><a href="#cb25-24"></a>weather_extracted <span class="ot">&lt;-</span> <span class="fu">rawToChar</span>(weather<span class="sc">$</span>content)  <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
-<span id="cb25-25"><a href="#cb25-25"></a>weather_extracted  <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-25"><a href="#cb25-25"></a>weather_extracted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; List of 5
-#&gt;  $ cod    : chr "200"
-#&gt;  $ message: int 0
-#&gt;  $ cnt    : int 40
-#&gt;  $ list   :'data.frame': 40 obs. of  10 variables:
-#&gt;   ..$ dt        : int [1:40] 1684767600 1684778400 1684789200 1684800000 1684810800 1684821600 1684832400 1684843200 1684854000 1684864800 ...
-#&gt;   ..$ main      :'data.frame':   40 obs. of  9 variables:
-#&gt;   .. ..$ temp      : num [1:40] 299 296 292 286 287 ...
-#&gt;   .. ..$ feels_like: num [1:40] 299 296 292 286 287 ...
-#&gt;   .. ..$ temp_min  : num [1:40] 297 290 288 286 287 ...
-#&gt;   .. ..$ temp_max  : num [1:40] 299 296 292 286 287 ...
-#&gt;   .. ..$ pressure  : int [1:40] 1012 1012 1012 1011 1011 1012 1014 1016 1017 1019 ...
-#&gt;   .. ..$ sea_level : int [1:40] 1012 1012 1012 1011 1011 1012 1014 1016 1017 1019 ...
-#&gt;   .. ..$ grnd_level: int [1:40] 1008 1009 1010 1009 1008 1010 1012 1013 1015 1016 ...
-#&gt;   .. ..$ humidity  : int [1:40] 42 61 79 99 99 97 90 63 57 70 ...
-#&gt;   .. ..$ temp_kf   : num [1:40] 2.47 6.41 3.8 0 0 0 0 0 0 0 ...
-#&gt;   ..$ weather   :List of 40
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   .. ..$ :'data.frame':  1 obs. of  4 variables:
-#&gt;   ..$ clouds    :'data.frame':   40 obs. of  1 variable:
-#&gt;   .. ..$ all: int [1:40] 20 40 73 78 90 95 99 98 100 78 ...
-#&gt;   ..$ wind      :'data.frame':   40 obs. of  3 variables:
-#&gt;   .. ..$ speed: num [1:40] 5.49 2.32 2.82 0.56 2.02 4.66 6.14 6.37 6.76 5.47 ...
-#&gt;   .. ..$ deg  : int [1:40] 111 298 127 226 296 326 315 311 310 300 ...
-#&gt;   .. ..$ gust : num [1:40] 9.84 5.41 7.08 0.64 5.74 ...
-#&gt;   ..$ visibility: int [1:40] 10000 1381 10000 10000 10000 10000 10000 10000 10000 10000 ...
-#&gt;   ..$ pop       : num [1:40] 0.16 0.99 1 1 0.58 0.53 0.34 0.3 0 0 ...
-#&gt;   ..$ sys       :'data.frame':   40 obs. of  1 variable:
-#&gt;   .. ..$ pod: chr [1:40] "d" "d" "n" "n" ...
-#&gt;   ..$ dt_txt    : chr [1:40] "2023-05-22 15:00:00" "2023-05-22 18:00:00" "2023-05-22 21:00:00" "2023-05-23 00:00:00" ...
-#&gt;   ..$ rain      :'data.frame':   40 obs. of  1 variable:
-#&gt;   .. ..$ 3h: num [1:40] NA 25.19 20.01 1.76 0.85 ...
-#&gt;  $ city   :List of 8
-#&gt;   ..$ id        : int 2911298
-#&gt;   ..$ name      : chr "Hamburg"
-#&gt;   ..$ coord     :List of 2
-#&gt;   .. ..$ lat: num 53.5
-#&gt;   .. ..$ lon: int 10
-#&gt;   ..$ country   : chr "DE"
-#&gt;   ..$ population: int 0
-#&gt;   ..$ timezone  : int 7200
-#&gt;   ..$ sunrise   : int 1684724969
-#&gt;   ..$ sunset    : int 1684783445</code></pre>
+<pre><code>#&gt; $cod
+#&gt; [1] "200"
+#&gt; 
+#&gt; $message
+#&gt; [1] 0
+#&gt; 
+#&gt; $cnt
+#&gt; [1] 40
+#&gt; 
+#&gt; $list
+#&gt;            dt main.temp main.feels_like main.temp_min main.temp_max
+#&gt; 1  1684800000    288.18          288.30        285.82        288.18
+#&gt; 2  1684810800    287.53          287.61        286.62        287.53
+#&gt; 3  1684821600    287.54          287.57        287.54        287.54
+#&gt; 4  1684832400    285.91          285.70        285.91        285.91
+#&gt; 5  1684843200    287.90          287.13        287.90        287.90
+#&gt; 6  1684854000    287.22          286.12        287.22        287.22
+#&gt; 7  1684864800    283.66          282.57        283.66        283.66
+#&gt; 8  1684875600    280.76          278.25        280.76        280.76
+#&gt; 9  1684886400    280.60          278.29        280.60        280.60
+#&gt; 10 1684897200    281.38          278.62        281.38        281.38
+#&gt; 11 1684908000    283.49          282.93        283.49        283.49
+#&gt; 12 1684918800    285.25          284.60        285.25        285.25
+#&gt; 13 1684929600    286.49          285.84        286.49        286.49
+#&gt; 14 1684940400    289.92          289.11        289.92        289.92
+#&gt; 15 1684951200    286.59          286.21        286.59        286.59
+#&gt; 16 1684962000    282.83          281.71        282.83        282.83
+#&gt; 17 1684972800    281.13          279.86        281.13        281.13
+#&gt; 18 1684983600    280.24          278.84        280.24        280.24
+#&gt; 19 1684994400    283.32          282.43        283.32        283.32
+#&gt; 20 1685005200    288.61          287.41        288.61        288.61
+#&gt; 21 1685016000    291.25          290.16        291.25        291.25
+#&gt; 22 1685026800    290.74          289.76        290.74        290.74
+#&gt; 23 1685037600    286.36          285.43        286.36        286.36
+#&gt; 24 1685048400    280.44          278.14        280.44        280.44
+#&gt; 25 1685059200    278.44          276.20        278.44        278.44
+#&gt; 26 1685070000    278.01          275.73        278.01        278.01
+#&gt; 27 1685080800    283.15          280.80        283.15        283.15
+#&gt; 28 1685091600    287.04          285.79        287.04        287.04
+#&gt; 29 1685102400    289.72          288.61        289.72        289.72
+#&gt; 30 1685113200    289.73          288.72        289.73        289.73
+#&gt; 31 1685124000    285.84          284.97        285.84        285.84
+#&gt; 32 1685134800    280.22          278.52        280.22        280.22
+#&gt; 33 1685145600    278.66          277.13        278.66        278.66
+#&gt; 34 1685156400    277.72          276.67        277.72        277.72
+#&gt; 35 1685167200    282.84          282.84        282.84        282.84
+#&gt; 36 1685178000    288.46          287.35        288.46        288.46
+#&gt; 37 1685188800    291.31          290.25        291.31        291.31
+#&gt; 38 1685199600    291.56          290.58        291.56        291.56
+#&gt; 39 1685210400    288.30          287.70        288.30        288.30
+#&gt; 40 1685221200    282.78          282.22        282.78        282.78
+#&gt;    main.pressure main.sea_level main.grnd_level main.humidity main.temp_kf
+#&gt; 1           1013           1013            1009            98         2.36
+#&gt; 2           1012           1012            1008            99         0.91
+#&gt; 3           1012           1012            1009            97         0.00
+#&gt; 4           1014           1014            1012            94         0.00
+#&gt; 5           1016           1016            1014            65         0.00
+#&gt; 6           1017           1017            1015            55         0.00
+#&gt; 7           1019           1019            1016            69         0.00
+#&gt; 8           1019           1019            1017            80         0.00
+#&gt; 9           1019           1019            1016            89         0.00
+#&gt; 10          1017           1017            1015            90         0.00
+#&gt; 11          1018           1018            1016            90         0.00
+#&gt; 12          1019           1019            1017            80         0.00
+#&gt; 13          1020           1020            1018            75         0.00
+#&gt; 14          1020           1020            1018            56         0.00
+#&gt; 15          1021           1021            1018            85         0.00
+#&gt; 16          1023           1023            1020            98         0.00
+#&gt; 17          1023           1023            1020            98         0.00
+#&gt; 18          1024           1024            1021            98         0.00
+#&gt; 19          1025           1025            1022            78         0.00
+#&gt; 20          1026           1026            1023            46         0.00
+#&gt; 21          1025           1025            1023            40         0.00
+#&gt; 22          1026           1026            1023            46         0.00
+#&gt; 23          1027           1027            1024            65         0.00
+#&gt; 24          1028           1028            1026            87         0.00
+#&gt; 25          1029           1029            1026            95         0.00
+#&gt; 26          1029           1029            1026            92         0.00
+#&gt; 27          1030           1030            1028            67         0.00
+#&gt; 28          1030           1030            1028            50         0.00
+#&gt; 29          1030           1030            1027            45         0.00
+#&gt; 30          1029           1029            1027            49         0.00
+#&gt; 31          1030           1030            1027            69         0.00
+#&gt; 32          1031           1031            1028            93         0.00
+#&gt; 33          1031           1031            1028            97         0.00
+#&gt; 34          1030           1030            1028            96         0.00
+#&gt; 35          1030           1030            1027            73         0.00
+#&gt; 36          1029           1029            1026            50         0.00
+#&gt; 37          1027           1027            1025            41         0.00
+#&gt; 38          1025           1025            1023            43         0.00
+#&gt; 39          1025           1025            1022            70         0.00
+#&gt; 40          1024           1024            1022            93         0.00
+#&gt;                               weather all wind.speed wind.deg wind.gust
+#&gt; 1          500, Rain, light rain, 10n  36       0.98      138      1.49
+#&gt; 2          500, Rain, light rain, 10n  63       2.23      317      5.85
+#&gt; 3   804, Clouds, overcast clouds, 04d  91       3.92      318      7.55
+#&gt; 4   804, Clouds, overcast clouds, 04d 100       5.64      320     10.39
+#&gt; 5   804, Clouds, overcast clouds, 04d 100       6.37      316      8.90
+#&gt; 6   804, Clouds, overcast clouds, 04d 100       6.78      314      9.52
+#&gt; 7   804, Clouds, overcast clouds, 04d  95       5.33      302      9.79
+#&gt; 8     803, Clouds, broken clouds, 04n  63       3.94      287     10.72
+#&gt; 9          500, Rain, light rain, 10n  68       3.51      262      9.92
+#&gt; 10         500, Rain, light rain, 10n  99       4.77      269     10.80
+#&gt; 11         500, Rain, light rain, 10d 100       4.05      300      7.60
+#&gt; 12         500, Rain, light rain, 10d  99       2.53      323      3.65
+#&gt; 13         500, Rain, light rain, 10d  99       2.62      301      3.11
+#&gt; 14    803, Clouds, broken clouds, 04d  63       1.43      330      1.98
+#&gt; 15         500, Rain, light rain, 10d  69       2.33      274      4.30
+#&gt; 16         500, Rain, light rain, 10n  45       2.33      293      5.53
+#&gt; 17 802, Clouds, scattered clouds, 03n  29       2.15      287      4.45
+#&gt; 18       801, Clouds, few clouds, 02n  21       2.12      309      5.21
+#&gt; 19 802, Clouds, scattered clouds, 03d  35       2.94      316      5.71
+#&gt; 20         800, Clear, clear sky, 01d   4       3.71      324      4.98
+#&gt; 21         800, Clear, clear sky, 01d   6       4.30      328      5.14
+#&gt; 22         800, Clear, clear sky, 01d   5       5.09      331      6.11
+#&gt; 23         800, Clear, clear sky, 01d   7       4.36      323      7.63
+#&gt; 24 802, Clouds, scattered clouds, 03n  50       3.43      312     10.11
+#&gt; 25 802, Clouds, scattered clouds, 03n  27       2.74      300     11.16
+#&gt; 26         800, Clear, clear sky, 01n   0       2.68      297     10.59
+#&gt; 27         800, Clear, clear sky, 01d   2       4.85      332      9.21
+#&gt; 28    803, Clouds, broken clouds, 04d  59       4.20      333      5.99
+#&gt; 29 802, Clouds, scattered clouds, 03d  36       4.28      328      5.92
+#&gt; 30         800, Clear, clear sky, 01d   8       5.04      324      6.00
+#&gt; 31         800, Clear, clear sky, 01d  10       4.26      315      6.76
+#&gt; 32         800, Clear, clear sky, 01n   0       2.48      313      7.47
+#&gt; 33         800, Clear, clear sky, 01n  10       1.98      332      3.86
+#&gt; 34       801, Clouds, few clouds, 02n  12       1.45      339      1.46
+#&gt; 35         800, Clear, clear sky, 01d   6       0.99      335      1.34
+#&gt; 36         800, Clear, clear sky, 01d   1       1.23      344      1.44
+#&gt; 37         800, Clear, clear sky, 01d   3       1.36       33      1.71
+#&gt; 38         800, Clear, clear sky, 01d   4       2.16       22      2.04
+#&gt; 39         800, Clear, clear sky, 01d   4       2.42       15      4.89
+#&gt; 40         800, Clear, clear sky, 01n   5       1.65       58      1.66
+#&gt;    visibility  pop   3h pod              dt_txt
+#&gt; 1       10000 1.00 0.65   n 2023-05-23 00:00:00
+#&gt; 2        8607 0.36 0.20   n 2023-05-23 03:00:00
+#&gt; 3       10000 0.04   NA   d 2023-05-23 06:00:00
+#&gt; 4       10000 0.00   NA   d 2023-05-23 09:00:00
+#&gt; 5       10000 0.00   NA   d 2023-05-23 12:00:00
+#&gt; 6       10000 0.00   NA   d 2023-05-23 15:00:00
+#&gt; 7       10000 0.00   NA   d 2023-05-23 18:00:00
+#&gt; 8       10000 0.00   NA   n 2023-05-23 21:00:00
+#&gt; 9       10000 0.20 0.18   n 2023-05-24 00:00:00
+#&gt; 10      10000 0.40 0.27   n 2023-05-24 03:00:00
+#&gt; 11      10000 0.42 0.23   d 2023-05-24 06:00:00
+#&gt; 12      10000 0.46 0.41   d 2023-05-24 09:00:00
+#&gt; 13      10000 0.52 0.21   d 2023-05-24 12:00:00
+#&gt; 14      10000 0.24   NA   d 2023-05-24 15:00:00
+#&gt; 15      10000 0.20 0.13   d 2023-05-24 18:00:00
+#&gt; 16      10000 0.20 0.10   n 2023-05-24 21:00:00
+#&gt; 17      10000 0.00   NA   n 2023-05-25 00:00:00
+#&gt; 18      10000 0.00   NA   n 2023-05-25 03:00:00
+#&gt; 19      10000 0.00   NA   d 2023-05-25 06:00:00
+#&gt; 20      10000 0.00   NA   d 2023-05-25 09:00:00
+#&gt; 21      10000 0.00   NA   d 2023-05-25 12:00:00
+#&gt; 22      10000 0.00   NA   d 2023-05-25 15:00:00
+#&gt; 23      10000 0.00   NA   d 2023-05-25 18:00:00
+#&gt; 24      10000 0.00   NA   n 2023-05-25 21:00:00
+#&gt; 25      10000 0.00   NA   n 2023-05-26 00:00:00
+#&gt; 26      10000 0.00   NA   n 2023-05-26 03:00:00
+#&gt; 27      10000 0.00   NA   d 2023-05-26 06:00:00
+#&gt; 28      10000 0.00   NA   d 2023-05-26 09:00:00
+#&gt; 29      10000 0.00   NA   d 2023-05-26 12:00:00
+#&gt; 30      10000 0.00   NA   d 2023-05-26 15:00:00
+#&gt; 31      10000 0.00   NA   d 2023-05-26 18:00:00
+#&gt; 32      10000 0.00   NA   n 2023-05-26 21:00:00
+#&gt; 33      10000 0.00   NA   n 2023-05-27 00:00:00
+#&gt; 34      10000 0.00   NA   n 2023-05-27 03:00:00
+#&gt; 35      10000 0.00   NA   d 2023-05-27 06:00:00
+#&gt; 36      10000 0.00   NA   d 2023-05-27 09:00:00
+#&gt; 37      10000 0.00   NA   d 2023-05-27 12:00:00
+#&gt; 38      10000 0.00   NA   d 2023-05-27 15:00:00
+#&gt; 39      10000 0.00   NA   d 2023-05-27 18:00:00
+#&gt; 40      10000 0.00   NA   n 2023-05-27 21:00:00
+#&gt; 
+#&gt; $city
+#&gt; $city$id
+#&gt; [1] 2911298
+#&gt; 
+#&gt; $city$name
+#&gt; [1] "Hamburg"
+#&gt; 
+#&gt; $city$coord
+#&gt; $city$coord$lat
+#&gt; [1] 53.55
+#&gt; 
+#&gt; $city$coord$lon
+#&gt; [1] 10
+#&gt; 
+#&gt; 
+#&gt; $city$country
+#&gt; [1] "DE"
+#&gt; 
+#&gt; $city$population
+#&gt; [1] 0
+#&gt; 
+#&gt; $city$timezone
+#&gt; [1] 7200
+#&gt; 
+#&gt; $city$sunrise
+#&gt; [1] 1684724969
+#&gt; 
+#&gt; $city$sunset
+#&gt; [1] 1684783445</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># extract wind speed data from response</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>windspeed <span class="ot">&lt;-</span> weather_extracted<span class="sc">$</span>list<span class="sc">$</span>wind<span class="sc">$</span>speed</span>
 <span id="cb27-3"><a href="#cb27-3"></a>windspeed  <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  num [1:40] 5.49 2.32 2.82 0.56 2.02 4.66 6.14 6.37 6.76 5.47 ...</code></pre>
+<pre><code>#&gt;  num [1:40] 0.98 2.23 3.92 5.64 6.37 6.78 5.33 3.94 3.51 4.77 ...</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># extract city name from response</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a>city_name <span class="ot">&lt;-</span> weather_extracted<span class="sc">$</span>city<span class="sc">$</span>name</span>
@@ -1092,7 +1245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>#&gt; Rows: 40
 #&gt; Columns: 2
 #&gt; $ hours     &lt;dbl&gt; 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, …
-#&gt; $ windspeed &lt;dbl&gt; 5.49, 2.32, 2.82, 0.56, 2.02, 4.66, 6.14, 6.37, 6.76, 5.47, …</code></pre>
+#&gt; $ windspeed &lt;dbl&gt; 0.98, 2.23, 3.92, 5.64, 6.37, 6.78, 5.33, 3.94, 3.51, 4.77, …</code></pre>
 </div>
 </div>
 </section><section id="visualization" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="visualization">
@@ -1124,9 +1277,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section></section><section id="data-acquisition-challenge-2" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> Data Acquisition Challenge 2</h1>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_a383171e95715e05fdb8d58c0e54926d">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Challenge 2.2 ----</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="co"># 1.0 LIBRARIES ----</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="fu">library</span>(tidyverse) <span class="co"># Main Package - Loads dplyr, purrr, etc.</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="fu">library</span>(rvest)     <span class="co"># HTML Hacking &amp; Web Scraping</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="fu">library</span>(xopen)     <span class="co"># Quickly opening URLs</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="fu">library</span>(jsonlite)  <span class="co"># converts JSON files to R objects</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="fu">library</span>(glue)      <span class="co"># concatenate strings</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="fu">library</span>(stringi)   <span class="co"># character string/text processing</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="fu">library</span>(httr)</span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb32-14"><a href="#cb32-14"></a></span>
+<span id="cb32-15"><a href="#cb32-15"></a><span class="co"># URL of shop</span></span>
+<span id="cb32-16"><a href="#cb32-16"></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://www.rosebikes.com"</span></span>
+<span id="cb32-17"><a href="#cb32-17"></a></span>
+<span id="cb32-18"><a href="#cb32-18"></a><span class="co"># Collecting info about bikes of MTB category</span></span>
+<span id="cb32-19"><a href="#cb32-19"></a>mtb_url <span class="ot">=</span> <span class="fu">glue</span>(<span class="st">"{base_url}/bikes/mtb"</span>)</span>
+<span id="cb32-20"><a href="#cb32-20"></a></span>
+<span id="cb32-21"><a href="#cb32-21"></a><span class="co"># Open mtb url</span></span>
+<span id="cb32-22"><a href="#cb32-22"></a><span class="co"># xopen(mtb_url)</span></span>
+<span id="cb32-23"><a href="#cb32-23"></a></span>
+<span id="cb32-24"><a href="#cb32-24"></a><span class="co"># create table and extract href for model from html</span></span>
+<span id="cb32-25"><a href="#cb32-25"></a>mtb_tbl <span class="ot">&lt;-</span>  <span class="fu">read_html</span>(mtb_url) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-26"><a href="#cb32-26"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".catalog-category-bikes__picture-wrapper"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-27"><a href="#cb32-27"></a>  <span class="fu">map</span>(xml_attrs) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-28"><a href="#cb32-28"></a>  <span class="fu">map</span>(<span class="st">"href"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-29"><a href="#cb32-29"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-30"><a href="#cb32-30"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-31"><a href="#cb32-31"></a>  <span class="fu">rename</span>(<span class="st">"modelurl"</span> <span class="ot">=</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb32-32"><a href="#cb32-32"></a>  <span class="co"># Add the domain, because we will get only the subdirectories</span></span>
+<span id="cb32-33"><a href="#cb32-33"></a>  <span class="fu">mutate</span>(<span class="at">modelurl =</span> <span class="fu">glue</span>(<span class="st">"{base_url}{modelurl}"</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb32-34"><a href="#cb32-34"></a>  </span>
+<span id="cb32-35"><a href="#cb32-35"></a>  <span class="co"># Some categories are listed multiple times.</span></span>
+<span id="cb32-36"><a href="#cb32-36"></a>  <span class="co"># We only need unique values</span></span>
+<span id="cb32-37"><a href="#cb32-37"></a>  <span class="fu">distinct</span>(modelurl)</span>
+<span id="cb32-38"><a href="#cb32-38"></a></span>
+<span id="cb32-39"><a href="#cb32-39"></a><span class="co"># extract href for bikes of html for every url in mtb_tbl</span></span>
+<span id="cb32-40"><a href="#cb32-40"></a>bike_tbl <span class="ot">&lt;-</span> mtb_tbl<span class="sc">$</span>modelurl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-41"><a href="#cb32-41"></a>  <span class="fu">map</span>(read_html) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-42"><a href="#cb32-42"></a>  <span class="fu">map</span>(html_nodes, <span class="at">css =</span> <span class="st">".catalog-category-model__picture-link"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-43"><a href="#cb32-43"></a>  <span class="fu">map</span>(xml_attrs) </span>
+<span id="cb32-44"><a href="#cb32-44"></a></span>
+<span id="cb32-45"><a href="#cb32-45"></a><span class="co"># flatten nested lists</span></span>
+<span id="cb32-46"><a href="#cb32-46"></a>bike_tbl <span class="ot">&lt;-</span> <span class="fu">unlist</span>(bike_tbl, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb32-47"><a href="#cb32-47"></a></span>
+<span id="cb32-48"><a href="#cb32-48"></a><span class="co"># extract href from all bikes</span></span>
+<span id="cb32-49"><a href="#cb32-49"></a>bike_tbl <span class="ot">&lt;-</span> bike_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-50"><a href="#cb32-50"></a>  <span class="fu">map</span>(<span class="st">"href"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-51"><a href="#cb32-51"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-52"><a href="#cb32-52"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-53"><a href="#cb32-53"></a>  <span class="fu">rename</span>(<span class="st">"bikeurl"</span> <span class="ot">=</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb32-54"><a href="#cb32-54"></a>  <span class="fu">mutate</span>(<span class="at">bikeurl =</span> <span class="fu">glue</span>(<span class="st">"{base_url}{bikeurl}"</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb32-55"><a href="#cb32-55"></a> </span>
+<span id="cb32-56"><a href="#cb32-56"></a>  <span class="co"># Some categories are listed multiple times.</span></span>
+<span id="cb32-57"><a href="#cb32-57"></a>  <span class="co"># We only need unique values</span></span>
+<span id="cb32-58"><a href="#cb32-58"></a>  <span class="fu">distinct</span>(bikeurl)</span>
+<span id="cb32-59"><a href="#cb32-59"></a></span>
+<span id="cb32-60"><a href="#cb32-60"></a></span>
+<span id="cb32-61"><a href="#cb32-61"></a><span class="co"># removing entries that give errors</span></span>
+<span id="cb32-62"><a href="#cb32-62"></a>bike_tbl <span class="ot">&lt;-</span> bike_tbl[<span class="sc">-</span><span class="dv">8</span>,]</span>
+<span id="cb32-63"><a href="#cb32-63"></a>bike_tbl <span class="ot">&lt;-</span> bike_tbl[<span class="sc">-</span><span class="dv">52</span>,]</span>
+<span id="cb32-64"><a href="#cb32-64"></a></span>
+<span id="cb32-65"><a href="#cb32-65"></a><span class="co"># save first entries of bike_tbl to variable for testing</span></span>
+<span id="cb32-66"><a href="#cb32-66"></a><span class="co"># bike_tbl &lt;- bike_tbl[1:4,]  %&gt;%   as_tibble()</span></span>
+<span id="cb32-67"><a href="#cb32-67"></a></span>
+<span id="cb32-68"><a href="#cb32-68"></a>price_tbl <span class="ot">&lt;-</span> bike_tbl<span class="sc">$</span>bikeurl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-69"><a href="#cb32-69"></a>  <span class="fu">map</span>(read_html) <span class="sc">%&gt;%</span></span>
+<span id="cb32-70"><a href="#cb32-70"></a>  <span class="fu">map</span>(html_nodes, <span class="at">css =</span> <span class="st">".detail-price__wrapper &gt; span"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-71"><a href="#cb32-71"></a>  <span class="fu">map</span>(xml_attrs)</span>
+<span id="cb32-72"><a href="#cb32-72"></a></span>
+<span id="cb32-73"><a href="#cb32-73"></a><span class="co"># flatten nested lists</span></span>
+<span id="cb32-74"><a href="#cb32-74"></a>price_tbl <span class="ot">&lt;-</span> <span class="fu">unlist</span>(price_tbl, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb32-75"><a href="#cb32-75"></a></span>
+<span id="cb32-76"><a href="#cb32-76"></a><span class="co"># extract price from all entries</span></span>
+<span id="cb32-77"><a href="#cb32-77"></a>price_tbl <span class="ot">&lt;-</span> price_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-78"><a href="#cb32-78"></a>  <span class="fu">map</span>(<span class="st">"data-test"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-79"><a href="#cb32-79"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-80"><a href="#cb32-80"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-81"><a href="#cb32-81"></a>  <span class="fu">rename</span>(<span class="st">"price"</span> <span class="ot">=</span> value)</span>
+<span id="cb32-82"><a href="#cb32-82"></a></span>
+<span id="cb32-83"><a href="#cb32-83"></a><span class="co"># remove dollar signs from price </span></span>
+<span id="cb32-84"><a href="#cb32-84"></a>price_tbl<span class="sc">$</span>price <span class="ot">&lt;-</span> price_tbl<span class="sc">$</span>price <span class="sc">%&gt;%</span> </span>
+<span id="cb32-85"><a href="#cb32-85"></a>  <span class="fu">str_remove_all</span>(<span class="st">"€"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-86"><a href="#cb32-86"></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">."</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-87"><a href="#cb32-87"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb32-88"><a href="#cb32-88"></a></span>
+<span id="cb32-89"><a href="#cb32-89"></a>name_tbl <span class="ot">&lt;-</span> bike_tbl<span class="sc">$</span>bikeurl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-90"><a href="#cb32-90"></a>  <span class="fu">map</span>(read_html) <span class="sc">%&gt;%</span></span>
+<span id="cb32-91"><a href="#cb32-91"></a>  <span class="fu">map</span>(html_nodes, <span class="st">".basic-headline__title"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-92"><a href="#cb32-92"></a>  <span class="fu">map</span>(xml_find_all, <span class="st">".//text()"</span>)</span>
+<span id="cb32-93"><a href="#cb32-93"></a></span>
+<span id="cb32-94"><a href="#cb32-94"></a><span class="co"># for loop through name_tbl to get only the text </span></span>
+<span id="cb32-95"><a href="#cb32-95"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(name_tbl)) {</span>
+<span id="cb32-96"><a href="#cb32-96"></a>  name_tbl[[i]] <span class="ot">&lt;-</span> <span class="fu">as_list</span>(name_tbl[[i]])[[<span class="dv">1</span>]]</span>
+<span id="cb32-97"><a href="#cb32-97"></a>}</span>
+<span id="cb32-98"><a href="#cb32-98"></a></span>
+<span id="cb32-99"><a href="#cb32-99"></a>name_tbl <span class="ot">&lt;-</span> name_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-100"><a href="#cb32-100"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-101"><a href="#cb32-101"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-102"><a href="#cb32-102"></a>  <span class="fu">rename</span>(<span class="st">"name"</span> <span class="ot">=</span> value)</span>
+<span id="cb32-103"><a href="#cb32-103"></a></span>
+<span id="cb32-104"><a href="#cb32-104"></a><span class="co"># combine rows from name_tbl and price_tbl</span></span>
+<span id="cb32-105"><a href="#cb32-105"></a>combi_tbl <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(name_tbl, price_tbl)</span>
+<span id="cb32-106"><a href="#cb32-106"></a></span>
+<span id="cb32-107"><a href="#cb32-107"></a><span class="co"># preview first 10 rows</span></span>
+<span id="cb32-108"><a href="#cb32-108"></a>combi_tbl <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["price"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"COUNT SOLO 1","2":"74900"},{"1":"COUNT SOLO 1","2":"74900"},{"1":"COUNT SOLO 2","2":"84900"},{"1":"COUNT SOLO 2","2":"84900"},{"1":"COUNT SOLO 3","2":"94900"},{"1":"COUNT SOLO 3","2":"94900"},{"1":"PSYCHO PATH 1","2":"149900"},{"1":"PSYCHO PATH 2","2":"179900"},{"1":"PSYCHO PATH 2","2":"179900"},{"1":"THRILL HILL 4","2":"549900"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Note the duplicates in the names are due to different color options which are not yet included.</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1268,23 +1542,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -1349,92 +1609,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1475,7 +1649,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":true,"descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":true});</script>
 
 
 </body></html>

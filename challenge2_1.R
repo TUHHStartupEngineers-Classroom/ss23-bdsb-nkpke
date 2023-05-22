@@ -1,4 +1,4 @@
-# Challenge 2 ----
+# Challenge 2.1 ----
 
 # 1.0 LIBRARIES ----
 
@@ -22,24 +22,27 @@ weather <- GET(glue("http://api.openweathermap.org/data/2.5/forecast?id={city_id
 
 # convert API response body
 weather_extracted <- rawToChar(weather$content)  %>% fromJSON()
-weather_extracted
 
 # extract wind speed data from response
 windspeed <- weather_extracted$list$wind$speed
-windspeed %>% glimpse()
 
 # extract city name from response
 city_name <- weather_extracted$city$name
 
 # hour list
-hours <- seq(0,120-1,3)
+hours_tbl <- seq(0,120-1,3) %>% as_tibble() %>% rename("hours" = value)
 
 # combine hour list and windspeed data
-windspeed_tbl <- tibble(hours, windspeed)
-windspeed_tbl %>% glimpse()
+windspeed_tbl <- windspeed %>% as_tibble() %>% rename("windspeed" = value)
+
+# combine hours and windspeed data 
+forecast_tbl <- bind_cols(hours_tbl, windspeed_tbl)
+
+# preview first 10 rows
+forecast_tbl %>% head(10)
 
 # plot results
-windspeed_tbl %>%
+forecast_tbl %>%
   
   # Set up x, y, fill
   ggplot(aes(x = hours, y = windspeed)) +
