@@ -1279,7 +1279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section></section><section id="data-acquisition-challenge-2" class="level1" data-number="3"><h1 data-number="3">
 <span class="header-section-number">3</span> Data Acquisition Challenge 2</h1>
-<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_a383171e95715e05fdb8d58c0e54926d">
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_9c48c233b994f9a9778508434986254a">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Challenge 2.2 ----</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a></span>
 <span id="cb32-3"><a href="#cb32-3"></a><span class="co"># 1.0 LIBRARIES ----</span></span>
@@ -1366,7 +1366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-84"><a href="#cb32-84"></a>price_tbl<span class="sc">$</span>price <span class="ot">&lt;-</span> price_tbl<span class="sc">$</span>price <span class="sc">%&gt;%</span> </span>
 <span id="cb32-85"><a href="#cb32-85"></a>  <span class="fu">str_remove_all</span>(<span class="st">"€"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb32-86"><a href="#cb32-86"></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">."</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-87"><a href="#cb32-87"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb32-87"><a href="#cb32-87"></a>  <span class="fu">as.numeric</span>()<span class="sc">/</span><span class="dv">100</span></span>
 <span id="cb32-88"><a href="#cb32-88"></a></span>
 <span id="cb32-89"><a href="#cb32-89"></a>name_tbl <span class="ot">&lt;-</span> bike_tbl<span class="sc">$</span>bikeurl <span class="sc">%&gt;%</span> </span>
 <span id="cb32-90"><a href="#cb32-90"></a>  <span class="fu">map</span>(read_html) <span class="sc">%&gt;%</span></span>
@@ -1392,7 +1392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["price"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"COUNT SOLO 1","2":"74900"},{"1":"COUNT SOLO 1","2":"74900"},{"1":"COUNT SOLO 2","2":"84900"},{"1":"COUNT SOLO 2","2":"84900"},{"1":"COUNT SOLO 3","2":"94900"},{"1":"COUNT SOLO 3","2":"94900"},{"1":"PSYCHO PATH 1","2":"149900"},{"1":"PSYCHO PATH 2","2":"179900"},{"1":"PSYCHO PATH 2","2":"179900"},{"1":"THRILL HILL 4","2":"549900"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["price"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"COUNT SOLO 1","2":"749"},{"1":"COUNT SOLO 1","2":"749"},{"1":"COUNT SOLO 2","2":"849"},{"1":"COUNT SOLO 2","2":"849"},{"1":"COUNT SOLO 3","2":"949"},{"1":"COUNT SOLO 3","2":"949"},{"1":"PSYCHO PATH 1","2":"1499"},{"1":"PSYCHO PATH 2","2":"1799"},{"1":"PSYCHO PATH 2","2":"1799"},{"1":"THRILL HILL 4","2":"5499"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1649,7 +1649,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":true});</script>
 
 
 </body></html>
