@@ -188,8 +188,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-<li><a href="#tidyverse-preparation-code-mainly-from-startupengineer-templates" id="toc-tidyverse-preparation-code-mainly-from-startupengineer-templates" class="nav-link active" data-scroll-target="#tidyverse-preparation-code-mainly-from-startupengineer-templates"><span class="toc-section-number">1</span>  Tidyverse Preparation (Code mainly from startupengineer templates)</a></li>
-  <li><a href="#tidyverse-challenge" id="toc-tidyverse-challenge" class="nav-link" data-scroll-target="#tidyverse-challenge"><span class="toc-section-number">2</span>  Tidyverse challenge</a></li>
+<li><a href="#tidyverse-preparation" id="toc-tidyverse-preparation" class="nav-link active" data-scroll-target="#tidyverse-preparation"><span class="toc-section-number">1</span>  Tidyverse Preparation</a></li>
+  <li>
+<a href="#tidyverse-challenge" id="toc-tidyverse-challenge" class="nav-link" data-scroll-target="#tidyverse-challenge"><span class="toc-section-number">2</span>  Tidyverse challenge</a>
+  <ul class="collapse">
+<li><a href="#part-1---revenue-by-state" id="toc-part-1---revenue-by-state" class="nav-link" data-scroll-target="#part-1---revenue-by-state"><span class="toc-section-number">2.1</span>  Part 1 - Revenue by state</a></li>
+  <li><a href="#part-2---revenue-by-year-and-state" id="toc-part-2---revenue-by-year-and-state" class="nav-link" data-scroll-target="#part-2---revenue-by-year-and-state"><span class="toc-section-number">2.2</span>  Part 2 - Revenue by year and state</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -213,8 +219,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header><section id="tidyverse-preparation-code-mainly-from-startupengineer-templates" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Tidyverse Preparation (Code mainly from startupengineer templates)</h1>
+</header><section id="tidyverse-preparation" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Tidyverse Preparation</h1>
+<p>(Code mainly from startupengineer templates)</p>
 <div class="cell" data-hash="01_tidyverse_cache/html/unnamed-chunk-1_d593d3588cc62a643be4df09918cfeb4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Data Science at TUHH ------------------------------------------------------</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co"># SALES ANALYSIS ----</span></span>
@@ -504,7 +511,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section><section id="tidyverse-challenge" class="level1" data-number="2"><h1 data-number="2">
 <span class="header-section-number">2</span> Tidyverse challenge</h1>
-<div class="cell" data-hash="01_tidyverse_cache/html/unnamed-chunk-2_48c0d8e453d5bb02158a3fbf39d083f8">
+<section id="part-1---revenue-by-state" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="part-1---revenue-by-state">
+<span class="header-section-number">2.1</span> Part 1 - Revenue by state</h2>
+<div class="cell" data-hash="01_tidyverse_cache/html/unnamed-chunk-2_da9adbc9c75aee0b5d7709e4f9020c0b">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># 8.0 Challenge ----</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="co"># 8.1 Manipulate Data</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="co"># Separate city and state</span></span>
@@ -514,7 +523,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-7"><a href="#cb19-7"></a>           <span class="at">sep    =</span> <span class="st">", "</span>)</span>
 <span id="cb19-8"><a href="#cb19-8"></a>  </span>
 <span id="cb19-9"><a href="#cb19-9"></a><span class="co"># Extract state data</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a>sales_by_city_tbl <span class="ot">&lt;-</span> bike_orderlines_wrangled_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>sales_by_state_tbl <span class="ot">&lt;-</span> bike_orderlines_wrangled_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb19-11"><a href="#cb19-11"></a>  </span>
 <span id="cb19-12"><a href="#cb19-12"></a>  <span class="co"># Select columns and add a year</span></span>
 <span id="cb19-13"><a href="#cb19-13"></a>  <span class="fu">select</span>(state, total_price) <span class="sc">%&gt;%</span></span>
@@ -530,32 +539,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-23"><a href="#cb19-23"></a>                                     <span class="at">suffix =</span> <span class="st">" €"</span>))</span>
 <span id="cb19-24"><a href="#cb19-24"></a></span>
 <span id="cb19-25"><a href="#cb19-25"></a>  <span class="co"># extract state with highes sales </span></span>
-<span id="cb19-26"><a href="#cb19-26"></a>  highest_value_state <span class="ot">&lt;-</span> sales_by_city_tbl[<span class="fu">which.max</span>( sales_by_city_tbl<span class="sc">$</span>sales ),<span class="dv">1</span>]</span>
-<span id="cb19-27"><a href="#cb19-27"></a></span>
-<span id="cb19-28"><a href="#cb19-28"></a><span class="co"># 8.2 Visualize Data </span></span>
-<span id="cb19-29"><a href="#cb19-29"></a>sales_by_city_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb19-30"><a href="#cb19-30"></a>  </span>
-<span id="cb19-31"><a href="#cb19-31"></a>  <span class="co"># Set up x, y, fill</span></span>
-<span id="cb19-32"><a href="#cb19-32"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> state, <span class="at">y =</span> sales)) <span class="sc">+</span></span>
-<span id="cb19-33"><a href="#cb19-33"></a>  </span>
-<span id="cb19-34"><a href="#cb19-34"></a>  <span class="co"># Geometries</span></span>
-<span id="cb19-35"><a href="#cb19-35"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="co"># Run up to here to get a stacked bar plot</span></span>
-<span id="cb19-36"><a href="#cb19-36"></a>  </span>
-<span id="cb19-37"><a href="#cb19-37"></a>  <span class="co"># Formatting</span></span>
-<span id="cb19-38"><a href="#cb19-38"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb19-39"><a href="#cb19-39"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, </span>
-<span id="cb19-40"><a href="#cb19-40"></a>                                                    <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
-<span id="cb19-41"><a href="#cb19-41"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
-<span id="cb19-42"><a href="#cb19-42"></a>                                                    <span class="at">suffix =</span> <span class="st">" €"</span>)) <span class="sc">+</span></span>
-<span id="cb19-43"><a href="#cb19-43"></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-44"><a href="#cb19-44"></a>    <span class="at">title =</span> <span class="st">"Revenue by state"</span>,</span>
-<span id="cb19-45"><a href="#cb19-45"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"The state with the highest revenue is "</span>, highest_value_state),</span>
-<span id="cb19-46"><a href="#cb19-46"></a>    <span class="at">x =</span> <span class="st">"State"</span>,</span>
-<span id="cb19-47"><a href="#cb19-47"></a>    <span class="at">y =</span> <span class="st">"Revenue"</span></span>
-<span id="cb19-48"><a href="#cb19-48"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-26"><a href="#cb19-26"></a>  highest_value_state <span class="ot">&lt;-</span> sales_by_state_tbl[<span class="fu">which.max</span>( sales_by_state_tbl<span class="sc">$</span>sales ),<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="01_tidyverse_cache/html/plot1_940ebe7478a1763af09859c317a80277">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 8.2 Visualize Data </span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>sales_by_state_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  </span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="co"># Set up x, y, fill</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> state, <span class="at">y =</span> sales)) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  </span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="co"># Geometries</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="co"># Run up to here to get a stacked bar plot</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>  </span>
+<span id="cb20-10"><a href="#cb20-10"></a>  <span class="co"># Formatting</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, </span>
+<span id="cb20-13"><a href="#cb20-13"></a>                                                    <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
+<span id="cb20-14"><a href="#cb20-14"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb20-15"><a href="#cb20-15"></a>                                                    <span class="at">suffix =</span> <span class="st">" €"</span>)) <span class="sc">+</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-17"><a href="#cb20-17"></a>    <span class="at">title =</span> <span class="st">"Revenue by state"</span>,</span>
+<span id="cb20-18"><a href="#cb20-18"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"The state with the highest revenue is "</span>, highest_value_state),</span>
+<span id="cb20-19"><a href="#cb20-19"></a>    <span class="at">x =</span> <span class="st">"State"</span>,</span>
+<span id="cb20-20"><a href="#cb20-20"></a>    <span class="at">y =</span> <span class="st">"Revenue"</span></span>
+<span id="cb20-21"><a href="#cb20-21"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="01_tidyverse_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="01_tidyverse_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="01_tidyverse_files/figure-html/plot1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="01_tidyverse_files/figure-html/plot1-1.png" class="img-fluid figure-img" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="part-2---revenue-by-year-and-state" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="part-2---revenue-by-year-and-state">
+<span class="header-section-number">2.2</span> Part 2 - Revenue by year and state</h2>
+<div class="cell" data-hash="01_tidyverse_cache/html/unnamed-chunk-3_a03dbf44354747b32f5beb497874e6d1">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># 8.2 Sales by Year and Location ----</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># # Step 1 - Manipulate</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>sales_by_year_state_tbl <span class="ot">&lt;-</span> bike_orderlines_wrangled_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  </span>
+<span id="cb21-6"><a href="#cb21-6"></a>  <span class="co"># Select columns and add a year</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>  <span class="fu">select</span>(order_date, total_price, state) <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(order_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  </span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="co"># Group by and summarize year and main catgegory</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">group_by</span>(year, state) <span class="sc">%&gt;%</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">summarise</span>(<span class="at">sales =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a>  </span>
+<span id="cb21-15"><a href="#cb21-15"></a>  <span class="co"># Format $ Text</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a>  <span class="fu">mutate</span>(<span class="at">sales_text =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(sales, <span class="at">big.mark =</span> <span class="st">"."</span>, </span>
+<span id="cb21-17"><a href="#cb21-17"></a>                                     <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
+<span id="cb21-18"><a href="#cb21-18"></a>                                     <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb21-19"><a href="#cb21-19"></a>                                     <span class="at">suffix =</span> <span class="st">" €"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `summarise()` has grouped output by 'year'. You can override using the
+#&gt; `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>sales_by_year_state_tbl  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["state"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sales"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sales_text"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"2015","2":"Baden-Württemberg","3":"1031924","4":"1.031.924 €"},{"1":"2015","2":"Bavaria","3":"1301461","4":"1.301.461 €"},{"1":"2015","2":"Berlin","3":"95853","4":"95.853 €"},{"1":"2015","2":"Bremen","3":"1395912","4":"1.395.912 €"},{"1":"2015","2":"Hamburg","3":"423090","4":"423.090 €"},{"1":"2015","2":"Hesse","3":"308609","4":"308.609 €"},{"1":"2015","2":"Lower Saxony","3":"584386","4":"584.386 €"},{"1":"2015","2":"Mecklenburg-Western Pomerania","3":"222003","4":"222.003 €"},{"1":"2015","2":"North Rhine-Westphalia","3":"3735092","4":"3.735.092 €"},{"1":"2015","2":"Saxony","3":"238371","4":"238.371 €"},{"1":"2015","2":"Saxony-Anhalt","3":"144737","4":"144.737 €"},{"1":"2015","2":"Schleswig-Holstein","3":"448844","4":"448.844 €"},{"1":"2016","2":"Baden-Württemberg","3":"1561658","4":"1.561.658 €"},{"1":"2016","2":"Bavaria","3":"1129852","4":"1.129.852 €"},{"1":"2016","2":"Berlin","3":"72361","4":"72.361 €"},{"1":"2016","2":"Bremen","3":"2057760","4":"2.057.760 €"},{"1":"2016","2":"Hamburg","3":"636550","4":"636.550 €"},{"1":"2016","2":"Hesse","3":"225647","4":"225.647 €"},{"1":"2016","2":"Lower Saxony","3":"639839","4":"639.839 €"},{"1":"2016","2":"Mecklenburg-Western Pomerania","3":"75443","4":"75.443 €"},{"1":"2016","2":"North Rhine-Westphalia","3":"3002792","4":"3.002.792 €"},{"1":"2016","2":"Saxony","3":"589994","4":"589.994 €"},{"1":"2016","2":"Saxony-Anhalt","3":"65901","4":"65.901 €"},{"1":"2016","2":"Schleswig-Holstein","3":"672710","4":"672.710 €"},{"1":"2017","2":"Baden-Württemberg","3":"1224152","4":"1.224.152 €"},{"1":"2017","2":"Bavaria","3":"1411851","4":"1.411.851 €"},{"1":"2017","2":"Berlin","3":"451293","4":"451.293 €"},{"1":"2017","2":"Bremen","3":"2557145","4":"2.557.145 €"},{"1":"2017","2":"Hamburg","3":"731678","4":"731.678 €"},{"1":"2017","2":"Hesse","3":"338783","4":"338.783 €"},{"1":"2017","2":"Lower Saxony","3":"1055747","4":"1.055.747 €"},{"1":"2017","2":"Mecklenburg-Western Pomerania","3":"201218","4":"201.218 €"},{"1":"2017","2":"North Rhine-Westphalia","3":"4671541","4":"4.671.541 €"},{"1":"2017","2":"Saxony","3":"595378","4":"595.378 €"},{"1":"2017","2":"Saxony-Anhalt","3":"194509","4":"194.509 €"},{"1":"2017","2":"Schleswig-Holstein","3":"1076996","4":"1.076.996 €"},{"1":"2018","2":"Baden-Württemberg","3":"1114327","4":"1.114.327 €"},{"1":"2018","2":"Bavaria","3":"1168783","4":"1.168.783 €"},{"1":"2018","2":"Berlin","3":"318974","4":"318.974 €"},{"1":"2018","2":"Bremen","3":"1833844","4":"1.833.844 €"},{"1":"2018","2":"Hamburg","3":"930803","4":"930.803 €"},{"1":"2018","2":"Hesse","3":"330647","4":"330.647 €"},{"1":"2018","2":"Lower Saxony","3":"929624","4":"929.624 €"},{"1":"2018","2":"Mecklenburg-Western Pomerania","3":"21041","4":"21.041 €"},{"1":"2018","2":"North Rhine-Westphalia","3":"4601681","4":"4.601.681 €"},{"1":"2018","2":"Saxony","3":"338344","4":"338.344 €"},{"1":"2018","2":"Saxony-Anhalt","3":"81163","4":"81.163 €"},{"1":"2018","2":"Schleswig-Holstein","3":"572622","4":"572.622 €"},{"1":"2019","2":"Baden-Württemberg","3":"1589029","4":"1.589.029 €"},{"1":"2019","2":"Bavaria","3":"1730872","4":"1.730.872 €"},{"1":"2019","2":"Berlin","3":"189952","4":"189.952 €"},{"1":"2019","2":"Bremen","3":"2808838","4":"2.808.838 €"},{"1":"2019","2":"Hamburg","3":"1152635","4":"1.152.635 €"},{"1":"2019","2":"Hesse","3":"355215","4":"355.215 €"},{"1":"2019","2":"Lower Saxony","3":"897519","4":"897.519 €"},{"1":"2019","2":"Mecklenburg-Western Pomerania","3":"99269","4":"99.269 €"},{"1":"2019","2":"North Rhine-Westphalia","3":"5189507","4":"5.189.507 €"},{"1":"2019","2":"Saxony","3":"468158","4":"468.158 €"},{"1":"2019","2":"Saxony-Anhalt","3":"83304","4":"83.304 €"},{"1":"2019","2":"Schleswig-Holstein","3":"453577","4":"453.577 €"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="01_tidyverse_cache/html/plot2_41ba2b7c21d1836f1cf6588e21fed03d">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Step 2 - Visualize</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>sales_by_year_state_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  </span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="co"># Set up x, y, fill</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> sales, <span class="at">fill =</span> state)) <span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  </span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="co"># Geometries</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="co"># Run up to here to get a stacked bar plot</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>  </span>
+<span id="cb24-10"><a href="#cb24-10"></a>  <span class="co"># Facet</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> state) <span class="sc">+</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  </span>
+<span id="cb24-13"><a href="#cb24-13"></a>  <span class="co"># Formatting</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb24-15"><a href="#cb24-15"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, </span>
+<span id="cb24-16"><a href="#cb24-16"></a>                                                    <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
+<span id="cb24-17"><a href="#cb24-17"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb24-18"><a href="#cb24-18"></a>                                                    <span class="at">suffix =</span> <span class="st">" €"</span>)) <span class="sc">+</span></span>
+<span id="cb24-19"><a href="#cb24-19"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-20"><a href="#cb24-20"></a>    <span class="at">title =</span> <span class="st">"Revenue by year and state"</span>,</span>
+<span id="cb24-21"><a href="#cb24-21"></a>    <span class="at">fill =</span> <span class="st">"Main category"</span> <span class="co"># Changes the legend name</span></span>
+<span id="cb24-22"><a href="#cb24-22"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="01_tidyverse_files/figure-html/plot2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="01_tidyverse_files/figure-html/plot2-1.png" class="img-fluid figure-img" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -660,7 +736,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- ``` -->
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -909,7 +985,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});</script>
 
 
 </body></html>
