@@ -9,9 +9,6 @@ library(vroom)
 # Data Table
 library(data.table)
 
-# Counter
-library(tictoc)
-
 # 2.0 DATA IMPORT ----
 
 # 2.1 Loan Acquisitions Data ----
@@ -112,20 +109,16 @@ performance_data %>% glimpse()
 
 # 4.1 Joining / Merging Data ----
 
-tic()
 combined_data <- merge(x = acquisition_data, y = performance_data, 
                        by    = "loan_id", 
                        all.x = TRUE, 
                        all.y = FALSE)
-toc()
 
 combined_data %>% glimpse()
 
 # Same operation with dplyr
-# tic()
 # performance_data %>%
 #   left_join(acquisition_data, by = "loan_id")
-# toc()
 
 # Preparing the Data Table
 
@@ -201,21 +194,17 @@ combined_data$current_loan_delinquency_status %>% unique()
 # - Add response variable (Predict wether loan will become delinquent in next 3 months)
 
 # dplyr
-tic()
 temp <- combined_data %>%
   group_by(loan_id) %>%
   mutate(gt_1mo_behind_in_3mo_dplyr = lead(current_loan_delinquency_status, n = 3) >= 1) %>%
   ungroup()
-toc()
 
 combined_data %>% dim()
 temp %>% dim()
 
 # data.table
-tic()
 combined_data[, gt_1mo_behind_in_3mo := lead(current_loan_delinquency_status, n = 3) >= 1,
               by = loan_id]
-toc()
 
 combined_data %>% dim()
 
@@ -224,46 +213,35 @@ rm(temp)
 
 
 # 5.1 How many loans in a month ----
-tic()
 combined_data[!is.na(monthly_reporting_period), .N, by = monthly_reporting_period]
-toc()
 
-tic()
 combined_data %>%
     filter(!is.na(monthly_reporting_period)) %>%
     count(monthly_reporting_period) 
-toc()
 
 
 # 5.2 Which loans have the most outstanding delinquencies ----
 # data.table
-tic()
 combined_data[current_loan_delinquency_status >= 1, 
               list(loan_id, monthly_reporting_period, current_loan_delinquency_status, seller_name, current_upb)][
                 , max(current_loan_delinquency_status), by = loan_id][
                   order(V1, decreasing = TRUE)]
-toc()
 
 # dplyr
-# tic()
 # combined_data %>%
 #   group_by(loan_id) %>%
 #   summarise(total_delinq = max(current_loan_delinquency_status)) %>%
 #   ungroup() %>%
 #   arrange(desc(total_delinq))
-# toc()
 
 # 5.3 Get last unpaid balance value for delinquent loans ----
 # data.table
-tic()
 combined_data[current_loan_delinquency_status >= 1, .SD[.N], by = loan_id][
   !is.na(current_upb)][
   order(-current_upb), .(loan_id, monthly_reporting_period, current_loan_delinquency_status, seller_name, current_upb)  
   ]
-toc()
 
 # dplyr
-# tic()
 # combined_data %>%
 #   filter(current_loan_delinquency_status >= 1) %>%
 #   filter(!is.na(current_upb)) %>%
@@ -274,21 +252,17 @@ toc()
 #
 #   arrange(desc(current_upb)) %>%
 #   select(loan_id, monthly_reporting_period, current_loan_delinquency_status, seller_name, current_upb)
-# toc()
 
 
 # 5.4 Loan Companies with highest unpaid balance
 # data.table
-tic()
 upb_by_company_dt <- combined_data[!is.na(current_upb), .SD[.N], by = loan_id][
   , .(sum_current_upb = sum(current_upb, na.rm = TRUE), cnt_current_upb = .N), by = seller_name][
     order(sum_current_upb, decreasing = TRUE)]
-toc()
 
 upb_by_company_dt
 
 # dplyr
-# tic()
 # upb_by_company_tbl <- combined_data %>%
 #
 #   filter(!is.na(current_upb)) %>%
@@ -304,4 +278,3 @@ upb_by_company_dt
 #   ungroup() %>%
 #
 #   arrange(desc(sum_current_upb))
-# toc()
