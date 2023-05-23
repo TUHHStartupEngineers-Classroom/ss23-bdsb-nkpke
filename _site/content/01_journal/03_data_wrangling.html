@@ -187,6 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
 <li><a href="#data-wrangling-preparation" id="toc-data-wrangling-preparation" class="nav-link active" data-scroll-target="#data-wrangling-preparation"><span class="toc-section-number">1</span>  Data Wrangling Preparation</a></li>
   <li><a href="#challenge-3.1" id="toc-challenge-3.1" class="nav-link" data-scroll-target="#challenge-3.1"><span class="toc-section-number">2</span>  Challenge 3.1</a></li>
+  <li><a href="#challenge-3.2" id="toc-challenge-3.2" class="nav-link" data-scroll-target="#challenge-3.2"><span class="toc-section-number">3</span>  Challenge 3.2</a></li>
+  <li><a href="#challenge-3.3" id="toc-challenge-3.3" class="nav-link" data-scroll-target="#challenge-3.3"><span class="toc-section-number">4</span>  Challenge 3.3</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -826,7 +828,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section><section id="challenge-3.1" class="level1" data-number="2"><h1 data-number="2">
 <span class="header-section-number">2</span> Challenge 3.1</h1>
-<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-2_7764bdefe913658a35eb80ee1bc5743e">
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-2_6bd50a06d2660b7ae88c6be8d719b95a">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Challenge 3 ----</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a></span>
 <span id="cb45-3"><a href="#cb45-3"></a><span class="co"># 1.0 LIBRARIES ----</span></span>
@@ -881,8 +883,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb45-52"><a href="#cb45-52"></a>            <span class="at">na         =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>)</span>
 <span id="cb45-53"><a href="#cb45-53"></a>        )</span>
 <span id="cb45-54"><a href="#cb45-54"></a></span>
-<span id="cb45-55"><a href="#cb45-55"></a><span class="co"># Convert to data.table</span></span>
-<span id="cb45-56"><a href="#cb45-56"></a><span class="fu">class</span>(assignee_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-55"><a href="#cb45-55"></a><span class="co"># Import uspc table </span></span>
+<span id="cb45-56"><a href="#cb45-56"></a>col_types <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb45-57"><a href="#cb45-57"></a>  <span class="at">patent_id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb45-58"><a href="#cb45-58"></a>  <span class="at">mainclass_id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb45-59"><a href="#cb45-59"></a>  <span class="at">sequence =</span> <span class="fu">col_character</span>()</span>
+<span id="cb45-60"><a href="#cb45-60"></a>)</span>
+<span id="cb45-61"><a href="#cb45-61"></a></span>
+<span id="cb45-62"><a href="#cb45-62"></a>uspc_tbl <span class="ot">&lt;-</span> <span class="fu">vroom</span>(</span>
+<span id="cb45-63"><a href="#cb45-63"></a>            <span class="at">file       =</span> <span class="st">"./../../patents/uspc.tsv"</span>, </span>
+<span id="cb45-64"><a href="#cb45-64"></a>            <span class="at">delim      =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, </span>
+<span id="cb45-65"><a href="#cb45-65"></a>            <span class="at">col_types  =</span> col_types,</span>
+<span id="cb45-66"><a href="#cb45-66"></a>            <span class="at">na         =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>)</span>
+<span id="cb45-67"><a href="#cb45-67"></a>        )</span>
+<span id="cb45-68"><a href="#cb45-68"></a></span>
+<span id="cb45-69"><a href="#cb45-69"></a><span class="co"># Convert to data.table</span></span>
+<span id="cb45-70"><a href="#cb45-70"></a><span class="fu">class</span>(assignee_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"</code></pre>
 </div>
@@ -909,39 +925,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] "data.table" "data.frame"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># 3.0 ANALYSIS ----</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="co"># rename id in assignee table to assignee_id</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a>assignee_tbl <span class="ot">&lt;-</span> assignee_tbl <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">assignee_id =</span> id)</span>
-<span id="cb57-4"><a href="#cb57-4"></a></span>
-<span id="cb57-5"><a href="#cb57-5"></a><span class="co"># Write organization names to the respective id</span></span>
-<span id="cb57-6"><a href="#cb57-6"></a>combi_data <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> patent_asignee_tbl, <span class="at">y =</span> assignee_tbl, </span>
-<span id="cb57-7"><a href="#cb57-7"></a>                       <span class="at">by    =</span> <span class="st">"assignee_id"</span>, </span>
-<span id="cb57-8"><a href="#cb57-8"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb57-9"><a href="#cb57-9"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb57-10"><a href="#cb57-10"></a></span>
-<span id="cb57-11"><a href="#cb57-11"></a><span class="co"># Companies with the most patents:</span></span>
-<span id="cb57-12"><a href="#cb57-12"></a>patent_by_company_tbl <span class="ot">&lt;-</span>combi_data[<span class="sc">!</span><span class="fu">is.na</span>(assignee_id), .(<span class="at">sum_patents =</span> .N), by <span class="ot">=</span> assignee_id][</span>
-<span id="cb57-13"><a href="#cb57-13"></a>  <span class="fu">order</span>(sum_patents, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)]</span>
-<span id="cb57-14"><a href="#cb57-14"></a></span>
-<span id="cb57-15"><a href="#cb57-15"></a><span class="co"># re add the company names </span></span>
-<span id="cb57-16"><a href="#cb57-16"></a>patent_by_company_tbl <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> patent_by_company_tbl, <span class="at">y =</span> assignee_tbl, </span>
-<span id="cb57-17"><a href="#cb57-17"></a>                       <span class="at">by    =</span> <span class="st">"assignee_id"</span>, </span>
-<span id="cb57-18"><a href="#cb57-18"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb57-19"><a href="#cb57-19"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb57-20"><a href="#cb57-20"></a></span>
-<span id="cb57-21"><a href="#cb57-21"></a><span class="co"># rearrange</span></span>
-<span id="cb57-22"><a href="#cb57-22"></a>patent_by_company_tbl <span class="ot">&lt;-</span> patent_by_company_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(organization, sum_patents, assignee_id)</span>
-<span id="cb57-23"><a href="#cb57-23"></a></span>
-<span id="cb57-24"><a href="#cb57-24"></a><span class="co"># order</span></span>
-<span id="cb57-25"><a href="#cb57-25"></a>patent_by_company_tbl <span class="ot">&lt;-</span> patent_by_company_tbl[<span class="fu">order</span>(sum_patents, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)]</span>
-<span id="cb57-26"><a href="#cb57-26"></a></span>
-<span id="cb57-27"><a href="#cb57-27"></a><span class="co"># top 10 </span></span>
-<span id="cb57-28"><a href="#cb57-28"></a><span class="fu">head</span>(patent_by_company_tbl, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">class</span>(uspc_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">setDT</span>(uspc_tbl)</span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="fu">class</span>(uspc_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "data.table" "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># 3.0 ANALYSIS ----</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a><span class="co"># rename id in assignee table to assignee_id</span></span>
+<span id="cb61-3"><a href="#cb61-3"></a>assignee_tbl <span class="ot">&lt;-</span> assignee_tbl <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">assignee_id =</span> id)</span>
+<span id="cb61-4"><a href="#cb61-4"></a> </span>
+<span id="cb61-5"><a href="#cb61-5"></a><span class="co"># rename id in patent table to patent_id</span></span>
+<span id="cb61-6"><a href="#cb61-6"></a>patent_tbl <span class="ot">&lt;-</span> patent_tbl <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">patent_id =</span> id)</span>
+<span id="cb61-7"><a href="#cb61-7"></a></span>
+<span id="cb61-8"><a href="#cb61-8"></a><span class="co"># Write organization names to the respective id</span></span>
+<span id="cb61-9"><a href="#cb61-9"></a>combi_data <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> patent_asignee_tbl, <span class="at">y =</span> assignee_tbl, </span>
+<span id="cb61-10"><a href="#cb61-10"></a>                       <span class="at">by    =</span> <span class="st">"assignee_id"</span>, </span>
+<span id="cb61-11"><a href="#cb61-11"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb61-12"><a href="#cb61-12"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb61-13"><a href="#cb61-13"></a></span>
+<span id="cb61-14"><a href="#cb61-14"></a><span class="co"># Companies with the most patents:</span></span>
+<span id="cb61-15"><a href="#cb61-15"></a>patent_by_company_tbl <span class="ot">&lt;-</span>combi_data[<span class="sc">!</span><span class="fu">is.na</span>(assignee_id), .(<span class="at">sum_patents =</span> .N), by <span class="ot">=</span> assignee_id][</span>
+<span id="cb61-16"><a href="#cb61-16"></a>  <span class="fu">order</span>(sum_patents, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)]</span>
+<span id="cb61-17"><a href="#cb61-17"></a></span>
+<span id="cb61-18"><a href="#cb61-18"></a><span class="co"># re add the company names </span></span>
+<span id="cb61-19"><a href="#cb61-19"></a>patent_by_company_tbl <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> patent_by_company_tbl, <span class="at">y =</span> assignee_tbl, </span>
+<span id="cb61-20"><a href="#cb61-20"></a>                       <span class="at">by    =</span> <span class="st">"assignee_id"</span>, </span>
+<span id="cb61-21"><a href="#cb61-21"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb61-22"><a href="#cb61-22"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb61-23"><a href="#cb61-23"></a></span>
+<span id="cb61-24"><a href="#cb61-24"></a><span class="co"># rearrange</span></span>
+<span id="cb61-25"><a href="#cb61-25"></a>patent_by_company_tbl <span class="ot">&lt;-</span> patent_by_company_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(organization, sum_patents, assignee_id)</span>
+<span id="cb61-26"><a href="#cb61-26"></a></span>
+<span id="cb61-27"><a href="#cb61-27"></a><span class="co"># order</span></span>
+<span id="cb61-28"><a href="#cb61-28"></a>patent_by_company_tbl <span class="ot">&lt;-</span> patent_by_company_tbl[<span class="fu">order</span>(sum_patents, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)]</span>
+<span id="cb61-29"><a href="#cb61-29"></a></span>
+<span id="cb61-30"><a href="#cb61-30"></a><span class="co"># top 10 </span></span>
+<span id="cb61-31"><a href="#cb61-31"></a><span class="fu">head</span>(patent_by_company_tbl, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["organization"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sum_patents"],"name":[2],"type":["int"],"align":["right"]},{"label":["assignee_id"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"International Business Machines Corporation","2":"7547","3":"org_ONzMjdbZXiKfw4L0cXl6"},{"1":"Samsung Electronics Co., Ltd.","2":"5835","3":"org_pCbqlmAg8wlWzoi18ITD"},{"1":"Canon Kabushiki Kaisha","2":"4099","3":"org_eAKK85fawH0NS7AdXOig"},{"1":"Sony Corporation","2":"3326","3":"org_g8U335TH48QmGJOIQnNl"},{"1":"Microsoft Corporation","2":"3165","3":"org_LKW5uc4C9BNTBapFdHzJ"},{"1":"Google Inc.","2":"2668","3":"org_LRPLF1XVb00MQdPndIbu"},{"1":"Kabushiki Kaisha Toshiba","2":"2656","3":"org_EccJQIigrq4WyGinD0b8"},{"1":"QUALCOMM Incorporated","2":"2597","3":"org_adUSPYdjFbyHvoVakUrc"},{"1":"LG Electronics Inc.","2":"2459","3":"org_dfvuIWENawcU6lTd1Z3w"},{"1":"Panasonic Corporation","2":"2218","3":"org_h5J6cVWyUahTuvNuksTb"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section><section id="challenge-3.2" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> Challenge 3.2</h1>
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-3_6d0e7cab25c47ed3fac28e1141d3472d">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># Add date to patent_asignee_tbl </span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>combi_data1 <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> combi_data, <span class="at">y =</span> patent_tbl, </span>
+<span id="cb62-3"><a href="#cb62-3"></a>                       <span class="at">by    =</span> <span class="st">"patent_id"</span>, </span>
+<span id="cb62-4"><a href="#cb62-4"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb62-5"><a href="#cb62-5"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb62-6"><a href="#cb62-6"></a></span>
+<span id="cb62-7"><a href="#cb62-7"></a><span class="co"># Companies with the most patents in April </span></span>
+<span id="cb62-8"><a href="#cb62-8"></a>patent_by_company_april_tbl <span class="ot">&lt;-</span>combi_data1[<span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">4</span> ][<span class="sc">!</span><span class="fu">is.na</span>(assignee_id), .(<span class="at">sum_patents =</span> .N), by <span class="ot">=</span> assignee_id]</span>
+<span id="cb62-9"><a href="#cb62-9"></a></span>
+<span id="cb62-10"><a href="#cb62-10"></a><span class="co"># re add the company names </span></span>
+<span id="cb62-11"><a href="#cb62-11"></a>patent_by_company_april_tbl <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> patent_by_company_april_tbl, <span class="at">y =</span> assignee_tbl, </span>
+<span id="cb62-12"><a href="#cb62-12"></a>                       <span class="at">by    =</span> <span class="st">"assignee_id"</span>, </span>
+<span id="cb62-13"><a href="#cb62-13"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb62-14"><a href="#cb62-14"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb62-15"><a href="#cb62-15"></a></span>
+<span id="cb62-16"><a href="#cb62-16"></a><span class="co"># rearrange</span></span>
+<span id="cb62-17"><a href="#cb62-17"></a>patent_by_company_april_tbl <span class="ot">&lt;-</span> patent_by_company_april_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(organization, sum_patents, assignee_id)</span>
+<span id="cb62-18"><a href="#cb62-18"></a></span>
+<span id="cb62-19"><a href="#cb62-19"></a><span class="co"># order</span></span>
+<span id="cb62-20"><a href="#cb62-20"></a>patent_by_company_april_tbl <span class="ot">&lt;-</span> patent_by_company_april_tbl[<span class="fu">order</span>(sum_patents, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)]</span>
+<span id="cb62-21"><a href="#cb62-21"></a></span>
+<span id="cb62-22"><a href="#cb62-22"></a><span class="co"># top 10 </span></span>
+<span id="cb62-23"><a href="#cb62-23"></a><span class="fu">head</span>(patent_by_company_april_tbl, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["organization"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sum_patents"],"name":[2],"type":["int"],"align":["right"]},{"label":["assignee_id"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"International Business Machines Corporation","2":"571","3":"org_ONzMjdbZXiKfw4L0cXl6"},{"1":"Samsung Electronics Co., Ltd.","2":"551","3":"org_pCbqlmAg8wlWzoi18ITD"},{"1":"Canon Kabushiki Kaisha","2":"394","3":"org_eAKK85fawH0NS7AdXOig"},{"1":"Sony Corporation","2":"353","3":"org_g8U335TH48QmGJOIQnNl"},{"1":"Microsoft Corporation","2":"331","3":"org_LKW5uc4C9BNTBapFdHzJ"},{"1":"Panasonic Corporation","2":"283","3":"org_h5J6cVWyUahTuvNuksTb"},{"1":"Google Inc.","2":"263","3":"org_LRPLF1XVb00MQdPndIbu"},{"1":"QUALCOMM Incorporated","2":"250","3":"org_adUSPYdjFbyHvoVakUrc"},{"1":"Apple Inc.","2":"235","3":"org_MO6EJRM1uhBUFxIjWimJ"},{"1":"Kabushiki Kaisha Toshiba","2":"227","3":"org_EccJQIigrq4WyGinD0b8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section><section id="challenge-3.3" class="level1" data-number="4"><h1 data-number="4">
+<span class="header-section-number">4</span> Challenge 3.3</h1>
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-4_e2a0b78d68fc410b86e4aca41fb429fb">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Top 10 companies with the most patents</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>top_10_tbl <span class="ot">&lt;-</span> <span class="fu">head</span>(patent_by_company_tbl, <span class="dv">10</span>)</span>
+<span id="cb63-3"><a href="#cb63-3"></a></span>
+<span id="cb63-4"><a href="#cb63-4"></a><span class="co"># Get patents of top 10 companies </span></span>
+<span id="cb63-5"><a href="#cb63-5"></a>top_10_patents_tbl <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> top_10_tbl, <span class="at">y =</span> combi_data, </span>
+<span id="cb63-6"><a href="#cb63-6"></a>                       <span class="at">by    =</span> <span class="st">"assignee_id"</span>, </span>
+<span id="cb63-7"><a href="#cb63-7"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb63-8"><a href="#cb63-8"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb63-9"><a href="#cb63-9"></a></span>
+<span id="cb63-10"><a href="#cb63-10"></a><span class="co"># rearrange</span></span>
+<span id="cb63-11"><a href="#cb63-11"></a>top_10_patents_tbl <span class="ot">&lt;-</span> top_10_patents_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(patent_id, assignee_id)</span>
+<span id="cb63-12"><a href="#cb63-12"></a></span>
+<span id="cb63-13"><a href="#cb63-13"></a><span class="co"># Add the uspc class to each patent_id </span></span>
+<span id="cb63-14"><a href="#cb63-14"></a>top_10_patents_tbl <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> top_10_patents_tbl, <span class="at">y =</span> uspc_tbl, </span>
+<span id="cb63-15"><a href="#cb63-15"></a>                       <span class="at">by    =</span> <span class="st">"patent_id"</span>, </span>
+<span id="cb63-16"><a href="#cb63-16"></a>                       <span class="at">all.x =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb63-17"><a href="#cb63-17"></a>                       <span class="at">all.y =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb63-18"><a href="#cb63-18"></a></span>
+<span id="cb63-19"><a href="#cb63-19"></a><span class="co"># most common mainclass_id</span></span>
+<span id="cb63-20"><a href="#cb63-20"></a>top_mainclass_tbl <span class="ot">&lt;-</span> top_10_patents_tbl[<span class="sc">!</span><span class="fu">is.na</span>(mainclass_id), .(<span class="at">occurances =</span> .N), by <span class="ot">=</span> mainclass_id][<span class="fu">order</span>(occurances, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)]</span>
+<span id="cb63-21"><a href="#cb63-21"></a></span>
+<span id="cb63-22"><a href="#cb63-22"></a><span class="co"># top 5 main classes:</span></span>
+<span id="cb63-23"><a href="#cb63-23"></a><span class="fu">head</span>(top_mainclass_tbl, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["mainclass_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["occurances"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"257","2":"7979"},{"1":"455","2":"6191"},{"1":"370","2":"5483"},{"1":"348","2":"4113"},{"1":"709","2":"4018"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
