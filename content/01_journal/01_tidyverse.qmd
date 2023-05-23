@@ -3,6 +3,8 @@ title: "Tidyverse"
 author: "Nis Köpke"
 ---
 
+<details>
+  <summary>Expand Tidyverse Preparation</summary>
 # Tidyverse Preparation
 (Code mainly from startupengineer templates)
 
@@ -205,6 +207,7 @@ bike_orderlines_wrangled_tbl %>%
   write_rds("./../../00_data/01_bike_sales/02_wrangled_data/bike_orderlines.rds")
 
 ```
+</details>
 
 # Tidyverse challenge
 ## Part 1 - Revenue by state

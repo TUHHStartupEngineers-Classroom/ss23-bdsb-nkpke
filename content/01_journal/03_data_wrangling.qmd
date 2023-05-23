@@ -3,6 +3,8 @@ title: "Data Wrangling"
 author: "Nis Köpke"
 ---
 
+<details>
+  <summary>Expand Data Wrangling Preparation</summary>
 # Data Wrangling Preparation
 (Code mainly from startupengineer templates)
 
@@ -288,6 +290,8 @@ upb_by_company_dt
 #
 #   arrange(desc(sum_current_upb))
 ```
+</details>
+
 # Challenge 3.1 
 
 ```{r}

@@ -1,13 +1,3 @@
----
-title: "Data Visualization"
-author: "Nis Köpke"
----
-<details>
-<summary>Expand Data Visualization Preparation</summary>
-# Data Visualization Preparation
-(Code mainly from startupengineer templates)
-
-```{r}
 # Data Visualisation
 
 # Business Case 1: Lollipop Chart: Top N Customers
@@ -16,7 +6,7 @@ author: "Nis Köpke"
 library(tidyverse)
 library(lubridate)
 
-bike_orderlines_tbl <- read_rds("./../../00_data/01_bike_sales/02_wrangled_data/bike_orderlines.rds")
+bike_orderlines_tbl <- read_rds("00_data/01_bike_sales/02_wrangled_data/bike_orderlines.rds")
 
 # 2.0 Data Visualisation ----
 n <- 10
@@ -164,68 +154,3 @@ pct_sales_by_customer_tbl <- bike_orderlines_tbl %>%
       plot.title = element_text(face = "bold"),
       plot.caption = element_text(face = "bold.italic")
     )
-```
-</details>
-
-# Challenge 4.1 
-
-```{r}
-# 1.0 Load Libraries ----
-library(tidyverse)
-library(ggthemes)
-
-# loading data
-covid_data_tbl <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv") %>% 
-  mutate(location = case_when(
-    location == "United Kingdom" ~ "UK",
-    location == "United States" ~ "USA",
-    location == "Democratic Republic of Congo" ~ "Democratic Republic of the Congo",
-    TRUE ~ location
-  )) %>%
-  distinct()
-
-# adding total cases of all countries together for each day
-covid_data_tbl <- covid_data_tbl %>%
-  filter(date < "2023-05-15") %>%
-  group_by(date) %>%
-  mutate(global_total_cases = sum(total_cases, na.rm = TRUE)) %>%
-  ungroup()
-
-# line plot of global total cases over time
-covid_data_tbl %>%
-  ggplot(aes(date, global_total_cases)) +
-  geom_line() +
-  labs(
-    title = "Global Total Cases over Time",
-    subtitle = "Source: Our World in Data",
-    x = "Date",
-    y = "Total Cases"
-  ) +
-  theme_grey()
-```
-
-# Challenge 4.2
-
-```{r}
-# Creating column with mortality rate (total deaths / population)
-covid_data_tbl <- covid_data_tbl %>%
-  mutate(mortality_rate = total_deaths / population)
-
-world <- map_data("world")
-
-# Visualising mortality rate on a map
-covid_data_tbl %>%
-  filter(date == "2023-05-01") %>%
-  ggplot(aes(mortality_rate)) +
-  geom_map(aes(fill = mortality_rate, map_id = location), map = world) +
-  expand_limits(x = world$long, y = world$lat) +
-  coord_map("moll") +
-  scale_fill_gradient2(low = "green", mid = "grey", high = "red", midpoint = 0.003) +
-  labs(
-    title = "Mortality Rate by Country",
-    subtitle = "Source: Our World in Data",
-    x = "",
-    y = ""
-  ) +
-  theme_map()
-```

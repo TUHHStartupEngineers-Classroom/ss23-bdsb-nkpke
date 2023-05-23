@@ -3,6 +3,8 @@ title: "Tidyverse"
 author: "Nis Köpke"
 ---
 
+<details>
+  <summary>Expand Data Acquisition Preparation</summary>
 # Data Acquisition Preparation
 (Code mainly from startupengineer templates)
 
@@ -548,6 +550,7 @@ imdb_tbl <- tibble(rank, title, year, people, rating, num_ratings)
   # 
   # saveRDS(bike_data_sizes_tbl, "bike_data_sizes_tbl.rds")
 ```
+</details>
 
 # Data Acquisition Challenge 1
 
