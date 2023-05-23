@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
-
+<meta name="generator" content="quarto-1.2.475">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Joschka Schwarz">
-
-<title>MyLabJournal - Data Acquisition</title>
+<meta name="author" content="Nis Köpke">
+<title>MyLabJournal - Tidyverse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +18,70 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -43,7 +102,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -61,17 +122,13 @@ ul.task-list li input[type="checkbox"] {
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -82,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -90,8 +147,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_tidyverse.html">
  <span class="dropdown-text">01 Tidyverse</span></a>
   </li>  
@@ -108,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">04 Data Visualization</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item">
     <a class="nav-link" href="../../content/02_notes/05_class_notes.html">
  <span class="menu-text">Class notes</span></a>
@@ -118,27 +175,33 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Links</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
+<div class="quarto-toggle-container">
                   <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li><a href="#data-acquisition-preparation" id="toc-data-acquisition-preparation" class="nav-link active" data-scroll-target="#data-acquisition-preparation"><span class="toc-section-number">1</span>  Data Acquisition Preparation</a></li>
+  <li>
+<a href="#data-acquisition-challenge-1" id="toc-data-acquisition-challenge-1" class="nav-link" data-scroll-target="#data-acquisition-challenge-1"><span class="toc-section-number">2</span>  Data Acquisition Challenge 1</a>
+  <ul class="collapse">
+<li><a href="#api-call-and-data-extraction" id="toc-api-call-and-data-extraction" class="nav-link" data-scroll-target="#api-call-and-data-extraction"><span class="toc-section-number">2.1</span>  API call and data extraction</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="toc-section-number">2.2</span>  Visualization</a></li>
+  </ul>
+</li>
+  <li><a href="#data-acquisition-challenge-2" id="toc-data-acquisition-challenge-2" class="nav-link" data-scroll-target="#data-acquisition-challenge-2"><span class="toc-section-number">3</span>  Data Acquisition Challenge 2</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Data Acquisition</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Tidyverse</h1>
 </div>
 
 
@@ -148,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Nis Köpke </p>
           </div>
   </div>
     
@@ -157,26 +220,1189 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><details><summary>
+Expand Data Acquisition Preparation
+</summary><section id="data-acquisition-preparation" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Data Acquisition Preparation</h1>
+<p>(Code mainly from startupengineer templates)</p>
+<p>Business code commented out because of website changes.</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-1_f69d8c3347bc29763a606c48663ee3e1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># WEBSCRAPING ----</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 1.0 LIBRARIES ----</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(tidyverse) <span class="co"># Main Package - Loads dplyr, purrr, etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4
+#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0
+#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+#&gt; ✔ purrr     1.0.1     
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()
+#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(rvest)     <span class="co"># HTML Hacking &amp; Web Scraping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'rvest'
+#&gt; 
+#&gt; The following object is masked from 'package:readr':
+#&gt; 
+#&gt;     guess_encoding</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(xopen)     <span class="co"># Quickly opening URLs</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(jsonlite)  <span class="co"># converts JSON files to R objects</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'jsonlite'
+#&gt; 
+#&gt; The following object is masked from 'package:purrr':
+#&gt; 
+#&gt;     flatten</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(glue)      <span class="co"># concatenate strings</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(stringi)   <span class="co"># character string/text processing</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">library</span>(httr)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># Import and list tables</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>con <span class="ot">&lt;-</span> RSQLite<span class="sc">::</span><span class="fu">dbConnect</span>(<span class="at">drv =</span> <span class="fu">SQLite</span>(), <span class="at">dbname =</span> <span class="st">"./../../00_data/02_chinook/Chinook_Sqlite.sqlite"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="fu">dbListTables</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;  [1] "Album"         "Artist"        "Customer"      "Employee"     
+#&gt;  [5] "Genre"         "Invoice"       "InvoiceLine"   "MediaType"    
+#&gt;  [9] "Playlist"      "PlaylistTrack" "Track"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Look at a table</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">tbl</span>(con, <span class="st">"Album"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["AlbumId"],"name":[1],"type":["int"],"align":["right"]},{"label":["Title"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ArtistId"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"For Those About To Rock We Salute You","3":"1"},{"1":"2","2":"Balls to the Wall","3":"2"},{"1":"3","2":"Restless and Wild","3":"2"},{"1":"4","2":"Let There Be Rock","3":"1"},{"1":"5","2":"Big Ones","3":"3"},{"1":"6","2":"Jagged Little Pill","3":"4"},{"1":"7","2":"Facelift","3":"5"},{"1":"8","2":"Warner 25 Anos","3":"6"},{"1":"9","2":"Plays Metallica By Four Cellos","3":"7"},{"1":"10","2":"Audioslave","3":"8"},{"1":"11","2":"Out Of Exile","3":"8"},{"1":"12","2":"BackBeat Soundtrack","3":"9"},{"1":"13","2":"The Best Of Billy Cobham","3":"10"},{"1":"14","2":"Alcohol Fueled Brewtality Live! [Disc 1]","3":"11"},{"1":"15","2":"Alcohol Fueled Brewtality Live! [Disc 2]","3":"11"},{"1":"16","2":"Black Sabbath","3":"12"},{"1":"17","2":"Black Sabbath Vol. 4 (Remaster)","3":"12"},{"1":"18","2":"Body Count","3":"13"},{"1":"19","2":"Chemical Wedding","3":"14"},{"1":"20","2":"The Best Of Buddy Guy - The Millenium Collection","3":"15"},{"1":"21","2":"Prenda Minha","3":"16"},{"1":"22","2":"Sozinho Remix Ao Vivo","3":"16"},{"1":"23","2":"Minha Historia","3":"17"},{"1":"24","2":"Afrociberdelia","3":"18"},{"1":"25","2":"Da Lama Ao Caos","3":"18"},{"1":"26","2":"Acústico MTV [Live]","3":"19"},{"1":"27","2":"Cidade Negra - Hits","3":"19"},{"1":"28","2":"Na Pista","3":"20"},{"1":"29","2":"Axé Bahia 2001","3":"21"},{"1":"30","2":"BBC Sessions [Disc 1] [Live]","3":"22"},{"1":"31","2":"Bongo Fury","3":"23"},{"1":"32","2":"Carnaval 2001","3":"21"},{"1":"33","2":"Chill: Brazil (Disc 1)","3":"24"},{"1":"34","2":"Chill: Brazil (Disc 2)","3":"6"},{"1":"35","2":"Garage Inc. (Disc 1)","3":"50"},{"1":"36","2":"Greatest Hits II","3":"51"},{"1":"37","2":"Greatest Kiss","3":"52"},{"1":"38","2":"Heart of the Night","3":"53"},{"1":"39","2":"International Superhits","3":"54"},{"1":"40","2":"Into The Light","3":"55"},{"1":"41","2":"Meus Momentos","3":"56"},{"1":"42","2":"Minha História","3":"57"},{"1":"43","2":"MK III The Final Concerts [Disc 1]","3":"58"},{"1":"44","2":"Physical Graffiti [Disc 1]","3":"22"},{"1":"45","2":"Sambas De Enredo 2001","3":"21"},{"1":"46","2":"Supernatural","3":"59"},{"1":"47","2":"The Best of Ed Motta","3":"37"},{"1":"48","2":"The Essential Miles Davis [Disc 1]","3":"68"},{"1":"49","2":"The Essential Miles Davis [Disc 2]","3":"68"},{"1":"50","2":"The Final Concerts (Disc 2)","3":"58"},{"1":"51","2":"Up An' Atom","3":"69"},{"1":"52","2":"Vinícius De Moraes - Sem Limite","3":"70"},{"1":"53","2":"Vozes do MPB","3":"21"},{"1":"54","2":"Chronicle, Vol. 1","3":"76"},{"1":"55","2":"Chronicle, Vol. 2","3":"76"},{"1":"56","2":"Cássia Eller - Coleção Sem Limite [Disc 2]","3":"77"},{"1":"57","2":"Cássia Eller - Sem Limite [Disc 1]","3":"77"},{"1":"58","2":"Come Taste The Band","3":"58"},{"1":"59","2":"Deep Purple In Rock","3":"58"},{"1":"60","2":"Fireball","3":"58"},{"1":"61","2":"Knocking at Your Back Door: The Best Of Deep Purple in the 80's","3":"58"},{"1":"62","2":"Machine Head","3":"58"},{"1":"63","2":"Purpendicular","3":"58"},{"1":"64","2":"Slaves And Masters","3":"58"},{"1":"65","2":"Stormbringer","3":"58"},{"1":"66","2":"The Battle Rages On","3":"58"},{"1":"67","2":"Vault: Def Leppard's Greatest Hits","3":"78"},{"1":"68","2":"Outbreak","3":"79"},{"1":"69","2":"Djavan Ao Vivo - Vol. 02","3":"80"},{"1":"70","2":"Djavan Ao Vivo - Vol. 1","3":"80"},{"1":"71","2":"Elis Regina-Minha História","3":"41"},{"1":"72","2":"The Cream Of Clapton","3":"81"},{"1":"73","2":"Unplugged","3":"81"},{"1":"74","2":"Album Of The Year","3":"82"},{"1":"75","2":"Angel Dust","3":"82"},{"1":"76","2":"King For A Day Fool For A Lifetime","3":"82"},{"1":"77","2":"The Real Thing","3":"82"},{"1":"78","2":"Deixa Entrar","3":"83"},{"1":"79","2":"In Your Honor [Disc 1]","3":"84"},{"1":"80","2":"In Your Honor [Disc 2]","3":"84"},{"1":"81","2":"One By One","3":"84"},{"1":"82","2":"The Colour And The Shape","3":"84"},{"1":"83","2":"My Way: The Best Of Frank Sinatra [Disc 1]","3":"85"},{"1":"84","2":"Roda De Funk","3":"86"},{"1":"85","2":"As Canções de Eu Tu Eles","3":"27"},{"1":"86","2":"Quanta Gente Veio Ver (Live)","3":"27"},{"1":"87","2":"Quanta Gente Veio ver--Bônus De Carnaval","3":"27"},{"1":"88","2":"Faceless","3":"87"},{"1":"89","2":"American Idiot","3":"54"},{"1":"90","2":"Appetite for Destruction","3":"88"},{"1":"91","2":"Use Your Illusion I","3":"88"},{"1":"92","2":"Use Your Illusion II","3":"88"},{"1":"93","2":"Blue Moods","3":"89"},{"1":"94","2":"A Matter of Life and Death","3":"90"},{"1":"95","2":"A Real Dead One","3":"90"},{"1":"96","2":"A Real Live One","3":"90"},{"1":"97","2":"Brave New World","3":"90"},{"1":"98","2":"Dance Of Death","3":"90"},{"1":"99","2":"Fear Of The Dark","3":"90"},{"1":"100","2":"Iron Maiden","3":"90"},{"1":"101","2":"Killers","3":"90"},{"1":"102","2":"Live After Death","3":"90"},{"1":"103","2":"Live At Donington 1992 (Disc 1)","3":"90"},{"1":"104","2":"Live At Donington 1992 (Disc 2)","3":"90"},{"1":"105","2":"No Prayer For The Dying","3":"90"},{"1":"106","2":"Piece Of Mind","3":"90"},{"1":"107","2":"Powerslave","3":"90"},{"1":"108","2":"Rock In Rio [CD1]","3":"90"},{"1":"109","2":"Rock In Rio [CD2]","3":"90"},{"1":"110","2":"Seventh Son of a Seventh Son","3":"90"},{"1":"111","2":"Somewhere in Time","3":"90"},{"1":"112","2":"The Number of The Beast","3":"90"},{"1":"113","2":"The X Factor","3":"90"},{"1":"114","2":"Virtual XI","3":"90"},{"1":"115","2":"Sex Machine","3":"91"},{"1":"116","2":"Emergency On Planet Earth","3":"92"},{"1":"117","2":"Synkronized","3":"92"},{"1":"118","2":"The Return Of The Space Cowboy","3":"92"},{"1":"119","2":"Get Born","3":"93"},{"1":"120","2":"Are You Experienced?","3":"94"},{"1":"121","2":"Surfing with the Alien (Remastered)","3":"95"},{"1":"122","2":"Jorge Ben Jor 25 Anos","3":"46"},{"1":"123","2":"Jota Quest-1995","3":"96"},{"1":"124","2":"Cafezinho","3":"97"},{"1":"125","2":"Living After Midnight","3":"98"},{"1":"126","2":"Unplugged [Live]","3":"52"},{"1":"127","2":"BBC Sessions [Disc 2] [Live]","3":"22"},{"1":"128","2":"Coda","3":"22"},{"1":"129","2":"Houses Of The Holy","3":"22"},{"1":"130","2":"In Through The Out Door","3":"22"},{"1":"131","2":"IV","3":"22"},{"1":"132","2":"Led Zeppelin I","3":"22"},{"1":"133","2":"Led Zeppelin II","3":"22"},{"1":"134","2":"Led Zeppelin III","3":"22"},{"1":"135","2":"Physical Graffiti [Disc 2]","3":"22"},{"1":"136","2":"Presence","3":"22"},{"1":"137","2":"The Song Remains The Same (Disc 1)","3":"22"},{"1":"138","2":"The Song Remains The Same (Disc 2)","3":"22"},{"1":"139","2":"A TempestadeTempestade Ou O Livro Dos Dias","3":"99"},{"1":"140","2":"Mais Do Mesmo","3":"99"},{"1":"141","2":"Greatest Hits","3":"100"},{"1":"142","2":"Lulu Santos - RCA 100 Anos De Música - Álbum 01","3":"101"},{"1":"143","2":"Lulu Santos - RCA 100 Anos De Música - Álbum 02","3":"101"},{"1":"144","2":"Misplaced Childhood","3":"102"},{"1":"145","2":"Barulhinho Bom","3":"103"},{"1":"146","2":"Seek And Shall Find: More Of The Best (1963-1981)","3":"104"},{"1":"147","2":"The Best Of Men At Work","3":"105"},{"1":"148","2":"Black Album","3":"50"},{"1":"149","2":"Garage Inc. (Disc 2)","3":"50"},{"1":"150","2":"Kill 'Em All","3":"50"},{"1":"151","2":"Load","3":"50"},{"1":"152","2":"Master Of Puppets","3":"50"},{"1":"153","2":"ReLoad","3":"50"},{"1":"154","2":"Ride The Lightning","3":"50"},{"1":"155","2":"St. Anger","3":"50"},{"1":"156","2":"...And Justice For All","3":"50"},{"1":"157","2":"Miles Ahead","3":"68"},{"1":"158","2":"Milton Nascimento Ao Vivo","3":"42"},{"1":"159","2":"Minas","3":"42"},{"1":"160","2":"Ace Of Spades","3":"106"},{"1":"161","2":"Demorou...","3":"108"},{"1":"162","2":"Motley Crue Greatest Hits","3":"109"},{"1":"163","2":"From The Muddy Banks Of The Wishkah [Live]","3":"110"},{"1":"164","2":"Nevermind","3":"110"},{"1":"165","2":"Compositores","3":"111"},{"1":"166","2":"Olodum","3":"112"},{"1":"167","2":"Acústico MTV","3":"113"},{"1":"168","2":"Arquivo II","3":"113"},{"1":"169","2":"Arquivo Os Paralamas Do Sucesso","3":"113"},{"1":"170","2":"Bark at the Moon (Remastered)","3":"114"},{"1":"171","2":"Blizzard of Ozz","3":"114"},{"1":"172","2":"Diary of a Madman (Remastered)","3":"114"},{"1":"173","2":"No More Tears (Remastered)","3":"114"},{"1":"174","2":"Tribute","3":"114"},{"1":"175","2":"Walking Into Clarksdale","3":"115"},{"1":"176","2":"Original Soundtracks 1","3":"116"},{"1":"177","2":"The Beast Live","3":"117"},{"1":"178","2":"Live On Two Legs [Live]","3":"118"},{"1":"179","2":"Pearl Jam","3":"118"},{"1":"180","2":"Riot Act","3":"118"},{"1":"181","2":"Ten","3":"118"},{"1":"182","2":"Vs.","3":"118"},{"1":"183","2":"Dark Side Of The Moon","3":"120"},{"1":"184","2":"Os Cães Ladram Mas A Caravana Não Pára","3":"121"},{"1":"185","2":"Greatest Hits I","3":"51"},{"1":"186","2":"News Of The World","3":"51"},{"1":"187","2":"Out Of Time","3":"122"},{"1":"188","2":"Green","3":"124"},{"1":"189","2":"New Adventures In Hi-Fi","3":"124"},{"1":"190","2":"The Best Of R.E.M.: The IRS Years","3":"124"},{"1":"191","2":"Cesta Básica","3":"125"},{"1":"192","2":"Raul Seixas","3":"126"},{"1":"193","2":"Blood Sugar Sex Magik","3":"127"},{"1":"194","2":"By The Way","3":"127"},{"1":"195","2":"Californication","3":"127"},{"1":"196","2":"Retrospective I (1974-1980)","3":"128"},{"1":"197","2":"Santana - As Years Go By","3":"59"},{"1":"198","2":"Santana Live","3":"59"},{"1":"199","2":"Maquinarama","3":"130"},{"1":"200","2":"O Samba Poconé","3":"130"},{"1":"201","2":"Judas 0: B-Sides and Rarities","3":"131"},{"1":"202","2":"Rotten Apples: Greatest Hits","3":"131"},{"1":"203","2":"A-Sides","3":"132"},{"1":"204","2":"Morning Dance","3":"53"},{"1":"205","2":"In Step","3":"133"},{"1":"206","2":"Core","3":"134"},{"1":"207","2":"Mezmerize","3":"135"},{"1":"208","2":"[1997] Black Light Syndrome","3":"136"},{"1":"209","2":"Live [Disc 1]","3":"137"},{"1":"210","2":"Live [Disc 2]","3":"137"},{"1":"211","2":"The Singles","3":"138"},{"1":"212","2":"Beyond Good And Evil","3":"139"},{"1":"213","2":"Pure Cult: The Best Of The Cult (For Rockers, Ravers, Lovers & Sinners) [UK]","3":"139"},{"1":"214","2":"The Doors","3":"140"},{"1":"215","2":"The Police Greatest Hits","3":"141"},{"1":"216","2":"Hot Rocks, 1964-1971 (Disc 1)","3":"142"},{"1":"217","2":"No Security","3":"142"},{"1":"218","2":"Voodoo Lounge","3":"142"},{"1":"219","2":"Tangents","3":"143"},{"1":"220","2":"Transmission","3":"143"},{"1":"221","2":"My Generation - The Very Best Of The Who","3":"144"},{"1":"222","2":"Serie Sem Limite (Disc 1)","3":"145"},{"1":"223","2":"Serie Sem Limite (Disc 2)","3":"145"},{"1":"224","2":"Acústico","3":"146"},{"1":"225","2":"Volume Dois","3":"146"},{"1":"226","2":"Battlestar Galactica: The Story So Far","3":"147"},{"1":"227","2":"Battlestar Galactica, Season 3","3":"147"},{"1":"228","2":"Heroes, Season 1","3":"148"},{"1":"229","2":"Lost, Season 3","3":"149"},{"1":"230","2":"Lost, Season 1","3":"149"},{"1":"231","2":"Lost, Season 2","3":"149"},{"1":"232","2":"Achtung Baby","3":"150"},{"1":"233","2":"All That You Can't Leave Behind","3":"150"},{"1":"234","2":"B-Sides 1980-1990","3":"150"},{"1":"235","2":"How To Dismantle An Atomic Bomb","3":"150"},{"1":"236","2":"Pop","3":"150"},{"1":"237","2":"Rattle And Hum","3":"150"},{"1":"238","2":"The Best Of 1980-1990","3":"150"},{"1":"239","2":"War","3":"150"},{"1":"240","2":"Zooropa","3":"150"},{"1":"241","2":"UB40 The Best Of - Volume Two [UK]","3":"151"},{"1":"242","2":"Diver Down","3":"152"},{"1":"243","2":"The Best Of Van Halen, Vol. I","3":"152"},{"1":"244","2":"Van Halen","3":"152"},{"1":"245","2":"Van Halen III","3":"152"},{"1":"246","2":"Contraband","3":"153"},{"1":"247","2":"Vinicius De Moraes","3":"72"},{"1":"248","2":"Ao Vivo [IMPORT]","3":"155"},{"1":"249","2":"The Office, Season 1","3":"156"},{"1":"250","2":"The Office, Season 2","3":"156"},{"1":"251","2":"The Office, Season 3","3":"156"},{"1":"252","2":"Un-Led-Ed","3":"157"},{"1":"253","2":"Battlestar Galactica (Classic), Season 1","3":"158"},{"1":"254","2":"Aquaman","3":"159"},{"1":"255","2":"Instant Karma: The Amnesty International Campaign to Save Darfur","3":"150"},{"1":"256","2":"Speak of the Devil","3":"114"},{"1":"257","2":"20th Century Masters - The Millennium Collection: The Best of Scorpions","3":"179"},{"1":"258","2":"House of Pain","3":"180"},{"1":"259","2":"Radio Brasil (O Som da Jovem Vanguarda) - Seleccao de Henrique Amaro","3":"36"},{"1":"260","2":"Cake: B-Sides and Rarities","3":"196"},{"1":"261","2":"LOST, Season 4","3":"149"},{"1":"262","2":"Quiet Songs","3":"197"},{"1":"263","2":"Muso Ko","3":"198"},{"1":"264","2":"Realize","3":"199"},{"1":"265","2":"Every Kind of Light","3":"200"},{"1":"266","2":"Duos II","3":"201"},{"1":"267","2":"Worlds","3":"202"},{"1":"268","2":"The Best of Beethoven","3":"203"},{"1":"269","2":"Temple of the Dog","3":"204"},{"1":"270","2":"Carry On","3":"205"},{"1":"271","2":"Revelations","3":"8"},{"1":"272","2":"Adorate Deum: Gregorian Chant from the Proper of the Mass","3":"206"},{"1":"273","2":"Allegri: Miserere","3":"207"},{"1":"274","2":"Pachelbel: Canon & Gigue","3":"208"},{"1":"275","2":"Vivaldi: The Four Seasons","3":"209"},{"1":"276","2":"Bach: Violin Concertos","3":"210"},{"1":"277","2":"Bach: Goldberg Variations","3":"211"},{"1":"278","2":"Bach: The Cello Suites","3":"212"},{"1":"279","2":"Handel: The Messiah (Highlights)","3":"213"},{"1":"280","2":"The World of Classical Favourites","3":"214"},{"1":"281","2":"Sir Neville Marriner: A Celebration","3":"215"},{"1":"282","2":"Mozart: Wind Concertos","3":"216"},{"1":"283","2":"Haydn: Symphonies 99 - 104","3":"217"},{"1":"284","2":"Beethoven: Symhonies Nos. 5 & 6","3":"218"},{"1":"285","2":"A Soprano Inspired","3":"219"},{"1":"286","2":"Great Opera Choruses","3":"220"},{"1":"287","2":"Wagner: Favourite Overtures","3":"221"},{"1":"288","2":"Fauré: Requiem, Ravel: Pavane & Others","3":"222"},{"1":"289","2":"Tchaikovsky: The Nutcracker","3":"223"},{"1":"290","2":"The Last Night of the Proms","3":"224"},{"1":"291","2":"Puccini: Madama Butterfly - Highlights","3":"225"},{"1":"292","2":"Holst: The Planets, Op. 32 & Vaughan Williams: Fantasies","3":"226"},{"1":"293","2":"Pavarotti's Opera Made Easy","3":"227"},{"1":"294","2":"Great Performances - Barber's Adagio and Other Romantic Favorites for Strings","3":"228"},{"1":"295","2":"Carmina Burana","3":"229"},{"1":"296","2":"A Copland Celebration, Vol. I","3":"230"},{"1":"297","2":"Bach: Toccata & Fugue in D Minor","3":"231"},{"1":"298","2":"Prokofiev: Symphony No.1","3":"232"},{"1":"299","2":"Scheherazade","3":"233"},{"1":"300","2":"Bach: The Brandenburg Concertos","3":"234"},{"1":"301","2":"Chopin: Piano Concertos Nos. 1 & 2","3":"235"},{"1":"302","2":"Mascagni: Cavalleria Rusticana","3":"236"},{"1":"303","2":"Sibelius: Finlandia","3":"237"},{"1":"304","2":"Beethoven Piano Sonatas: Moonlight & Pastorale","3":"238"},{"1":"305","2":"Great Recordings of the Century - Mahler: Das Lied von der Erde","3":"240"},{"1":"306","2":"Elgar: Cello Concerto & Vaughan Williams: Fantasias","3":"241"},{"1":"307","2":"Adams, John: The Chairman Dances","3":"242"},{"1":"308","2":"Tchaikovsky: 1812 Festival Overture, Op.49, Capriccio Italien & Beethoven: Wellington's Victory","3":"243"},{"1":"309","2":"Palestrina: Missa Papae Marcelli & Allegri: Miserere","3":"244"},{"1":"310","2":"Prokofiev: Romeo & Juliet","3":"245"},{"1":"311","2":"Strauss: Waltzes","3":"226"},{"1":"312","2":"Berlioz: Symphonie Fantastique","3":"245"},{"1":"313","2":"Bizet: Carmen Highlights","3":"246"},{"1":"314","2":"English Renaissance","3":"247"},{"1":"315","2":"Handel: Music for the Royal Fireworks (Original Version 1749)","3":"208"},{"1":"316","2":"Grieg: Peer Gynt Suites & Sibelius: Pelléas et Mélisande","3":"248"},{"1":"317","2":"Mozart Gala: Famous Arias","3":"249"},{"1":"318","2":"SCRIABIN: Vers la flamme","3":"250"},{"1":"319","2":"Armada: Music from the Courts of England and Spain","3":"251"},{"1":"320","2":"Mozart: Symphonies Nos. 40 & 41","3":"248"},{"1":"321","2":"Back to Black","3":"252"},{"1":"322","2":"Frank","3":"252"},{"1":"323","2":"Carried to Dust (Bonus Track Version)","3":"253"},{"1":"324","2":"Beethoven: Symphony No. 6 'Pastoral' Etc.","3":"254"},{"1":"325","2":"Bartok: Violin & Viola Concertos","3":"255"},{"1":"326","2":"Mendelssohn: A Midsummer Night's Dream","3":"256"},{"1":"327","2":"Bach: Orchestral Suites Nos. 1 - 4","3":"257"},{"1":"328","2":"Charpentier: Divertissements, Airs & Concerts","3":"258"},{"1":"329","2":"South American Getaway","3":"259"},{"1":"330","2":"Górecki: Symphony No. 3","3":"260"},{"1":"331","2":"Purcell: The Fairy Queen","3":"261"},{"1":"332","2":"The Ultimate Relexation Album","3":"262"},{"1":"333","2":"Purcell: Music for the Queen Mary","3":"263"},{"1":"334","2":"Weill: The Seven Deadly Sins","3":"264"},{"1":"335","2":"J.S. Bach: Chaconne, Suite in E Minor, Partita in E Major & Prelude, Fugue and Allegro","3":"265"},{"1":"336","2":"Prokofiev: Symphony No.5 & Stravinksy: Le Sacre Du Printemps","3":"248"},{"1":"337","2":"Szymanowski: Piano Works, Vol. 1","3":"266"},{"1":"338","2":"Nielsen: The Six Symphonies","3":"267"},{"1":"339","2":"Great Recordings of the Century: Paganini's 24 Caprices","3":"268"},{"1":"340","2":"Liszt - 12 Études D'Execution Transcendante","3":"269"},{"1":"341","2":"Great Recordings of the Century - Shubert: Schwanengesang, 4 Lieder","3":"270"},{"1":"342","2":"Locatelli: Concertos for Violin, Strings and Continuo, Vol. 3","3":"271"},{"1":"343","2":"Respighi:Pines of Rome","3":"226"},{"1":"344","2":"Schubert: The Late String Quartets & String Quintet (3 CD's)","3":"272"},{"1":"345","2":"Monteverdi: L'Orfeo","3":"273"},{"1":"346","2":"Mozart: Chamber Music","3":"274"},{"1":"347","2":"Koyaanisqatsi (Soundtrack from the Motion Picture)","3":"275"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Save data to memory</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>album_tbl <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"Album"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Close database connection</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">dbDisconnect</span>(con)</span>
+<span id="cb10-6"><a href="#cb10-6"></a>con</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; &lt;SQLiteConnection&gt;
+#&gt;   DISCONNECTED</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># glue string interpolation example</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>name <span class="ot">&lt;-</span> <span class="st">"Fred"</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">glue</span>(<span class="st">'My name is {name}.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; My name is Fred.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># API GET example</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>resp <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"https://swapi.dev/api/people/1/"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># Wrapped into a function</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>sw_api <span class="ot">&lt;-</span> <span class="cf">function</span>(path) {</span>
+<span id="cb14-6"><a href="#cb14-6"></a>  url <span class="ot">&lt;-</span> <span class="fu">modify_url</span>(<span class="at">url =</span> <span class="st">"https://swapi.dev"</span>, <span class="at">path =</span> <span class="fu">glue</span>(<span class="st">"/api{path}"</span>))</span>
+<span id="cb14-7"><a href="#cb14-7"></a>  resp <span class="ot">&lt;-</span> <span class="fu">GET</span>(url)</span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">stop_for_status</span>(resp) <span class="co"># automatically throws an error if a request did not succeed</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>}</span>
+<span id="cb14-10"><a href="#cb14-10"></a></span>
+<span id="cb14-11"><a href="#cb14-11"></a><span class="co"># API GET function example</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>resp <span class="ot">&lt;-</span> <span class="fu">sw_api</span>(<span class="st">"/people/1"</span>)</span>
+<span id="cb14-13"><a href="#cb14-13"></a>resp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Response [https://swapi.dev/api/people/1]
+#&gt;   Date: 2023-05-22 21:13
+#&gt;   Status: 200
+#&gt;   Content-Type: application/json
+#&gt;   Size: 647 B</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># convert API response body</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>resp_extracted <span class="ot">&lt;-</span> <span class="fu">rawToChar</span>(resp<span class="sc">$</span>content)  <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
+<span id="cb16-3"><a href="#cb16-3"></a>resp_extracted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; $name
+#&gt; [1] "Luke Skywalker"
+#&gt; 
+#&gt; $height
+#&gt; [1] "172"
+#&gt; 
+#&gt; $mass
+#&gt; [1] "77"
+#&gt; 
+#&gt; $hair_color
+#&gt; [1] "blond"
+#&gt; 
+#&gt; $skin_color
+#&gt; [1] "fair"
+#&gt; 
+#&gt; $eye_color
+#&gt; [1] "blue"
+#&gt; 
+#&gt; $birth_year
+#&gt; [1] "19BBY"
+#&gt; 
+#&gt; $gender
+#&gt; [1] "male"
+#&gt; 
+#&gt; $homeworld
+#&gt; [1] "https://swapi.dev/api/planets/1/"
+#&gt; 
+#&gt; $films
+#&gt; [1] "https://swapi.dev/api/films/1/" "https://swapi.dev/api/films/2/"
+#&gt; [3] "https://swapi.dev/api/films/3/" "https://swapi.dev/api/films/6/"
+#&gt; 
+#&gt; $species
+#&gt; list()
+#&gt; 
+#&gt; $vehicles
+#&gt; [1] "https://swapi.dev/api/vehicles/14/" "https://swapi.dev/api/vehicles/30/"
+#&gt; 
+#&gt; $starships
+#&gt; [1] "https://swapi.dev/api/starships/12/" "https://swapi.dev/api/starships/22/"
+#&gt; 
+#&gt; $created
+#&gt; [1] "2014-12-09T13:50:51.644000Z"
+#&gt; 
+#&gt; $edited
+#&gt; [1] "2014-12-20T21:17:56.891000Z"
+#&gt; 
+#&gt; $url
+#&gt; [1] "https://swapi.dev/api/people/1/"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Test list</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">strings=</span> <span class="fu">c</span>(<span class="st">"string1"</span>, <span class="st">"string2"</span>), </span>
+<span id="cb18-3"><a href="#cb18-3"></a>                  <span class="at">numbers =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), </span>
+<span id="cb18-4"><a href="#cb18-4"></a>                  <span class="cn">TRUE</span>, </span>
+<span id="cb18-5"><a href="#cb18-5"></a>                  <span class="fl">100.23</span>, </span>
+<span id="cb18-6"><a href="#cb18-6"></a>                  <span class="fu">tibble</span>(</span>
+<span id="cb18-7"><a href="#cb18-7"></a>                    <span class="at">A =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), </span>
+<span id="cb18-8"><a href="#cb18-8"></a>                    <span class="at">B =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a>                  )</span>
+<span id="cb18-10"><a href="#cb18-10"></a>)</span>
+<span id="cb18-11"><a href="#cb18-11"></a></span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="co"># access list</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a>resp <span class="sc">%&gt;%</span> </span>
+<span id="cb18-14"><a href="#cb18-14"></a>  .<span class="sc">$</span>content <span class="sc">%&gt;%</span> </span>
+<span id="cb18-15"><a href="#cb18-15"></a>  <span class="fu">rawToChar</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-16"><a href="#cb18-16"></a>  <span class="fu">fromJSON</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; $name
+#&gt; [1] "Luke Skywalker"
+#&gt; 
+#&gt; $height
+#&gt; [1] "172"
+#&gt; 
+#&gt; $mass
+#&gt; [1] "77"
+#&gt; 
+#&gt; $hair_color
+#&gt; [1] "blond"
+#&gt; 
+#&gt; $skin_color
+#&gt; [1] "fair"
+#&gt; 
+#&gt; $eye_color
+#&gt; [1] "blue"
+#&gt; 
+#&gt; $birth_year
+#&gt; [1] "19BBY"
+#&gt; 
+#&gt; $gender
+#&gt; [1] "male"
+#&gt; 
+#&gt; $homeworld
+#&gt; [1] "https://swapi.dev/api/planets/1/"
+#&gt; 
+#&gt; $films
+#&gt; [1] "https://swapi.dev/api/films/1/" "https://swapi.dev/api/films/2/"
+#&gt; [3] "https://swapi.dev/api/films/3/" "https://swapi.dev/api/films/6/"
+#&gt; 
+#&gt; $species
+#&gt; list()
+#&gt; 
+#&gt; $vehicles
+#&gt; [1] "https://swapi.dev/api/vehicles/14/" "https://swapi.dev/api/vehicles/30/"
+#&gt; 
+#&gt; $starships
+#&gt; [1] "https://swapi.dev/api/starships/12/" "https://swapi.dev/api/starships/22/"
+#&gt; 
+#&gt; $created
+#&gt; [1] "2014-12-09T13:50:51.644000Z"
+#&gt; 
+#&gt; $edited
+#&gt; [1] "2014-12-20T21:17:56.891000Z"
+#&gt; 
+#&gt; $url
+#&gt; [1] "https://swapi.dev/api/people/1/"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># directly parse body</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co"># content(resp, as = "text")</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co"># content(resp, as = "parsed")</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">content</span>(resp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; $name
+#&gt; [1] "Luke Skywalker"
+#&gt; 
+#&gt; $height
+#&gt; [1] "172"
+#&gt; 
+#&gt; $mass
+#&gt; [1] "77"
+#&gt; 
+#&gt; $hair_color
+#&gt; [1] "blond"
+#&gt; 
+#&gt; $skin_color
+#&gt; [1] "fair"
+#&gt; 
+#&gt; $eye_color
+#&gt; [1] "blue"
+#&gt; 
+#&gt; $birth_year
+#&gt; [1] "19BBY"
+#&gt; 
+#&gt; $gender
+#&gt; [1] "male"
+#&gt; 
+#&gt; $homeworld
+#&gt; [1] "https://swapi.dev/api/planets/1/"
+#&gt; 
+#&gt; $films
+#&gt; $films[[1]]
+#&gt; [1] "https://swapi.dev/api/films/1/"
+#&gt; 
+#&gt; $films[[2]]
+#&gt; [1] "https://swapi.dev/api/films/2/"
+#&gt; 
+#&gt; $films[[3]]
+#&gt; [1] "https://swapi.dev/api/films/3/"
+#&gt; 
+#&gt; $films[[4]]
+#&gt; [1] "https://swapi.dev/api/films/6/"
+#&gt; 
+#&gt; 
+#&gt; $species
+#&gt; list()
+#&gt; 
+#&gt; $vehicles
+#&gt; $vehicles[[1]]
+#&gt; [1] "https://swapi.dev/api/vehicles/14/"
+#&gt; 
+#&gt; $vehicles[[2]]
+#&gt; [1] "https://swapi.dev/api/vehicles/30/"
+#&gt; 
+#&gt; 
+#&gt; $starships
+#&gt; $starships[[1]]
+#&gt; [1] "https://swapi.dev/api/starships/12/"
+#&gt; 
+#&gt; $starships[[2]]
+#&gt; [1] "https://swapi.dev/api/starships/22/"
+#&gt; 
+#&gt; 
+#&gt; $created
+#&gt; [1] "2014-12-09T13:50:51.644000Z"
+#&gt; 
+#&gt; $edited
+#&gt; [1] "2014-12-20T21:17:56.891000Z"
+#&gt; 
+#&gt; $url
+#&gt; [1] "https://swapi.dev/api/people/1/"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># call to alpha vantage api</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>resp <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&amp;symbol=WDI.DE'</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>resp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Response [https://www.alphavantage.co/query?function=GLOBAL_QUOTE&amp;symbol=WDI.DE]
+#&gt;   Date: 2023-05-22 21:13
+#&gt;   Status: 200
+#&gt;   Content-Type: application/json
+#&gt;   Size: 189 B
+#&gt; {
+#&gt;     "Error Message": "the parameter apikey is invalid or missing. Please clai...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># test the renviron file</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>userid <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">'userid'</span>)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>pwd <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">'pwd'</span>)</span>
+<span id="cb24-4"><a href="#cb24-4"></a>key <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">'key'</span>)</span>
+<span id="cb24-5"><a href="#cb24-5"></a></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="co"># web scraping example</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="co"># get the URL for the wikipedia page with all S&amp;P 500 symbols</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="co"># use that URL to scrape the S&amp;P 500 table using rvest</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb24-11"><a href="#cb24-11"></a>sp_500 <span class="ot">&lt;-</span> url <span class="sc">%&gt;%</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  <span class="co"># read the HTML from the webpage</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a>  <span class="co"># Get the nodes with the id</span></span>
+<span id="cb24-15"><a href="#cb24-15"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">"#constituents"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>  <span class="co"># html_nodes(xpath = "//*[@id='constituents']"") %&gt;% </span></span>
+<span id="cb24-17"><a href="#cb24-17"></a>  <span class="co"># Extract the table and turn the list into a tibble</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a>  <span class="fu">html_table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-19"><a href="#cb24-19"></a>  .[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb24-20"><a href="#cb24-20"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb24-21"><a href="#cb24-21"></a></span>
+<span id="cb24-22"><a href="#cb24-22"></a><span class="co"># web scraping example 2</span></span>
+<span id="cb24-23"><a href="#cb24-23"></a>url  <span class="ot">&lt;-</span> <span class="st">"https://www.imdb.com/chart/top/?ref_=nv_mv_250"</span></span>
+<span id="cb24-24"><a href="#cb24-24"></a>html <span class="ot">&lt;-</span> url <span class="sc">%&gt;%</span> </span>
+<span id="cb24-25"><a href="#cb24-25"></a>  read_html</span>
+<span id="cb24-26"><a href="#cb24-26"></a></span>
+<span id="cb24-27"><a href="#cb24-27"></a><span class="co"># get the ranks</span></span>
+<span id="cb24-28"><a href="#cb24-28"></a>rank <span class="ot">&lt;-</span>  html <span class="sc">%&gt;%</span> </span>
+<span id="cb24-29"><a href="#cb24-29"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".titleColumn"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-30"><a href="#cb24-30"></a>  <span class="fu">html_text</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-31"><a href="#cb24-31"></a>  <span class="co"># Extrag all digits between " " and ".\n" The "\" have to be escaped</span></span>
+<span id="cb24-32"><a href="#cb24-32"></a>  <span class="co"># You can use Look ahead "&lt;=" and Look behind "?=" for this</span></span>
+<span id="cb24-33"><a href="#cb24-33"></a>  stringr<span class="sc">::</span><span class="fu">str_extract</span>(<span class="st">"(?&lt;= )[0-9]*(?=</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">n)"</span>)<span class="sc">%&gt;%</span> </span>
+<span id="cb24-34"><a href="#cb24-34"></a>  <span class="co"># Make all values numeric</span></span>
+<span id="cb24-35"><a href="#cb24-35"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb24-36"><a href="#cb24-36"></a></span>
+<span id="cb24-37"><a href="#cb24-37"></a><span class="co"># get the titles</span></span>
+<span id="cb24-38"><a href="#cb24-38"></a>title <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb24-39"><a href="#cb24-39"></a>  <span class="fu">html_nodes</span>(<span class="st">".titleColumn &gt; a"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-40"><a href="#cb24-40"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb24-41"><a href="#cb24-41"></a></span>
+<span id="cb24-42"><a href="#cb24-42"></a><span class="co"># get the year</span></span>
+<span id="cb24-43"><a href="#cb24-43"></a>year <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb24-44"><a href="#cb24-44"></a>  <span class="fu">html_nodes</span>(<span class="st">".titleColumn .secondaryInfo"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-45"><a href="#cb24-45"></a>  <span class="fu">html_text</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-46"><a href="#cb24-46"></a>  <span class="co"># Extract numbers</span></span>
+<span id="cb24-47"><a href="#cb24-47"></a>  stringr<span class="sc">::</span><span class="fu">str_extract</span>(<span class="at">pattern =</span> <span class="st">"[0-9]+"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-48"><a href="#cb24-48"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb24-49"><a href="#cb24-49"></a></span>
+<span id="cb24-50"><a href="#cb24-50"></a><span class="co"># get the people</span></span>
+<span id="cb24-51"><a href="#cb24-51"></a>people <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb24-52"><a href="#cb24-52"></a>  <span class="fu">html_nodes</span>(<span class="st">".titleColumn &gt; a"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-53"><a href="#cb24-53"></a>  <span class="fu">html_attr</span>(<span class="st">"title"</span>)</span>
+<span id="cb24-54"><a href="#cb24-54"></a></span>
+<span id="cb24-55"><a href="#cb24-55"></a><span class="co"># get the ratings</span></span>
+<span id="cb24-56"><a href="#cb24-56"></a>rating <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb24-57"><a href="#cb24-57"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".imdbRating &gt; strong"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-58"><a href="#cb24-58"></a>  <span class="fu">html_text</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb24-59"><a href="#cb24-59"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb24-60"><a href="#cb24-60"></a></span>
+<span id="cb24-61"><a href="#cb24-61"></a><span class="co"># get the number of ratings</span></span>
+<span id="cb24-62"><a href="#cb24-62"></a>num_ratings <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> </span>
+<span id="cb24-63"><a href="#cb24-63"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".imdbRating &gt; strong"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-64"><a href="#cb24-64"></a>  <span class="fu">html_attr</span>(<span class="st">'title'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-65"><a href="#cb24-65"></a>  <span class="co"># Extract the numbers and remove the comma to make it numeric values</span></span>
+<span id="cb24-66"><a href="#cb24-66"></a>  stringr<span class="sc">::</span><span class="fu">str_extract</span>(<span class="st">"(?&lt;=based on ).*(?=\ user ratings)"</span> ) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-67"><a href="#cb24-67"></a>  stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(<span class="at">pattern =</span> <span class="st">","</span>, <span class="at">replacement =</span> <span class="st">""</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-68"><a href="#cb24-68"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb24-69"><a href="#cb24-69"></a></span>
+<span id="cb24-70"><a href="#cb24-70"></a><span class="co"># merge everything</span></span>
+<span id="cb24-71"><a href="#cb24-71"></a>imdb_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(rank, title, year, people, rating, num_ratings)</span>
+<span id="cb24-72"><a href="#cb24-72"></a></span>
+<span id="cb24-73"><a href="#cb24-73"></a><span class="co"># # read bike data from json file</span></span>
+<span id="cb24-74"><a href="#cb24-74"></a><span class="co"># bike_data_lst &lt;- fromJSON("bike_data.json")</span></span>
+<span id="cb24-75"><a href="#cb24-75"></a><span class="co"># # Open the data by clicking on it in the environment or by running View()</span></span>
+<span id="cb24-76"><a href="#cb24-76"></a><span class="co"># View(bike_data_lst)</span></span>
+<span id="cb24-77"><a href="#cb24-77"></a><span class="co"># </span></span>
+<span id="cb24-78"><a href="#cb24-78"></a><span class="co"># # color path</span></span>
+<span id="cb24-79"><a href="#cb24-79"></a><span class="co"># # productDetail --&gt; variationAttributes --&gt; values --&gt; [[1]] --&gt; displayValue</span></span>
+<span id="cb24-80"><a href="#cb24-80"></a><span class="co"># bike_data_lst[["productDetail"]][["variationAttributes"]][["values"]][[1]][["displayValue"]]</span></span>
+<span id="cb24-81"><a href="#cb24-81"></a><span class="co"># </span></span>
+<span id="cb24-82"><a href="#cb24-82"></a><span class="co"># # color extraction using pluck</span></span>
+<span id="cb24-83"><a href="#cb24-83"></a><span class="co"># bike_data_lst %&gt;%</span></span>
+<span id="cb24-84"><a href="#cb24-84"></a><span class="co">#   purrr::pluck("productDetail", "variationAttributes", "values", 1, "displayValue")</span></span>
+<span id="cb24-85"><a href="#cb24-85"></a></span>
+<span id="cb24-86"><a href="#cb24-86"></a><span class="co"># Scraping example</span></span>
+<span id="cb24-87"><a href="#cb24-87"></a>  <span class="co"># # 1.1 collect product families ----</span></span>
+<span id="cb24-88"><a href="#cb24-88"></a>  <span class="co"># </span></span>
+<span id="cb24-89"><a href="#cb24-89"></a>  <span class="co"># url_home          &lt;- "https://www.canyon.com/en-de"</span></span>
+<span id="cb24-90"><a href="#cb24-90"></a>  <span class="co"># xopen(url_home) # Open links directly from RStudio to inspect them</span></span>
+<span id="cb24-91"><a href="#cb24-91"></a>  <span class="co"># </span></span>
+<span id="cb24-92"><a href="#cb24-92"></a>  <span class="co"># # Read in the HTML for the entire webpage</span></span>
+<span id="cb24-93"><a href="#cb24-93"></a>  <span class="co"># html_home         &lt;- read_html(url_home)</span></span>
+<span id="cb24-94"><a href="#cb24-94"></a>  <span class="co"># </span></span>
+<span id="cb24-95"><a href="#cb24-95"></a>  <span class="co"># # Web scrape the ids for the families</span></span>
+<span id="cb24-96"><a href="#cb24-96"></a>  <span class="co"># bike_family_tbl &lt;- html_home %&gt;%</span></span>
+<span id="cb24-97"><a href="#cb24-97"></a>  <span class="co">#   </span></span>
+<span id="cb24-98"><a href="#cb24-98"></a>  <span class="co">#   # Get the nodes for the families ...</span></span>
+<span id="cb24-99"><a href="#cb24-99"></a>  <span class="co">#   html_nodes(css = ".js-navigationDrawer__list--secondary") %&gt;%</span></span>
+<span id="cb24-100"><a href="#cb24-100"></a>  <span class="co">#   # ...and extract the information of the id attribute</span></span>
+<span id="cb24-101"><a href="#cb24-101"></a>  <span class="co">#   html_attr('id') %&gt;%</span></span>
+<span id="cb24-102"><a href="#cb24-102"></a>  <span class="co">#   </span></span>
+<span id="cb24-103"><a href="#cb24-103"></a>  <span class="co">#   # Remove the product families Gear and Outlet and Woman </span></span>
+<span id="cb24-104"><a href="#cb24-104"></a>  <span class="co">#   # (because the female bikes are also listed with the others)</span></span>
+<span id="cb24-105"><a href="#cb24-105"></a>  <span class="co">#   discard(.p = ~stringr::str_detect(.x,"WMN|WOMEN|GEAR|OUTLET")) %&gt;%</span></span>
+<span id="cb24-106"><a href="#cb24-106"></a>  <span class="co">#   </span></span>
+<span id="cb24-107"><a href="#cb24-107"></a>  <span class="co">#   # Convert vector to tibble</span></span>
+<span id="cb24-108"><a href="#cb24-108"></a>  <span class="co">#   enframe(name = "position", value = "family_class") %&gt;%</span></span>
+<span id="cb24-109"><a href="#cb24-109"></a>  <span class="co">#   </span></span>
+<span id="cb24-110"><a href="#cb24-110"></a>  <span class="co">#   # Add a hashtag so we can get nodes of the categories by id (#)</span></span>
+<span id="cb24-111"><a href="#cb24-111"></a>  <span class="co">#   mutate(</span></span>
+<span id="cb24-112"><a href="#cb24-112"></a>  <span class="co">#     family_id = str_glue("#{family_class}")</span></span>
+<span id="cb24-113"><a href="#cb24-113"></a>  <span class="co">#   )</span></span>
+<span id="cb24-114"><a href="#cb24-114"></a>  <span class="co"># </span></span>
+<span id="cb24-115"><a href="#cb24-115"></a>  <span class="co"># bike_family_tbl</span></span>
+<span id="cb24-116"><a href="#cb24-116"></a>  <span class="co"># </span></span>
+<span id="cb24-117"><a href="#cb24-117"></a>  <span class="co"># # 1.2 COLLECT PRODUCT CATEGORIES ----</span></span>
+<span id="cb24-118"><a href="#cb24-118"></a>  <span class="co"># </span></span>
+<span id="cb24-119"><a href="#cb24-119"></a>  <span class="co"># # Combine all Ids to one string so that we will get all nodes at once</span></span>
+<span id="cb24-120"><a href="#cb24-120"></a>  <span class="co"># # (seperated by the OR operator ",")</span></span>
+<span id="cb24-121"><a href="#cb24-121"></a>  <span class="co"># family_id_css &lt;- bike_family_tbl %&gt;%</span></span>
+<span id="cb24-122"><a href="#cb24-122"></a>  <span class="co">#   pull(family_id) %&gt;%</span></span>
+<span id="cb24-123"><a href="#cb24-123"></a>  <span class="co">#   stringr::str_c(collapse = ", ")</span></span>
+<span id="cb24-124"><a href="#cb24-124"></a>  <span class="co"># family_id_css</span></span>
+<span id="cb24-125"><a href="#cb24-125"></a>  <span class="co"># ## "#js-navigationList-ROAD, #js-navigationList-MOUNTAIN, #js-navigationList-EBIKES, #js-navigationList-HYBRID-CITY, #js-navigationList-YOUNGHEROES"</span></span>
+<span id="cb24-126"><a href="#cb24-126"></a>  <span class="co"># </span></span>
+<span id="cb24-127"><a href="#cb24-127"></a>  <span class="co"># # Extract the urls from the href attribute</span></span>
+<span id="cb24-128"><a href="#cb24-128"></a>  <span class="co"># bike_category_tbl &lt;- html_home %&gt;%</span></span>
+<span id="cb24-129"><a href="#cb24-129"></a>  <span class="co">#   </span></span>
+<span id="cb24-130"><a href="#cb24-130"></a>  <span class="co">#   # Select nodes by the ids</span></span>
+<span id="cb24-131"><a href="#cb24-131"></a>  <span class="co">#   html_nodes(css = family_id_css) %&gt;%</span></span>
+<span id="cb24-132"><a href="#cb24-132"></a>  <span class="co">#   </span></span>
+<span id="cb24-133"><a href="#cb24-133"></a>  <span class="co">#   # Going further down the tree and select nodes by class</span></span>
+<span id="cb24-134"><a href="#cb24-134"></a>  <span class="co">#   # Selecting two classes makes it specific enough</span></span>
+<span id="cb24-135"><a href="#cb24-135"></a>  <span class="co">#   html_nodes(css = ".navigationListSecondary__listItem .js-ridestyles") %&gt;%</span></span>
+<span id="cb24-136"><a href="#cb24-136"></a>  <span class="co">#   html_attr('href') %&gt;%</span></span>
+<span id="cb24-137"><a href="#cb24-137"></a>  <span class="co">#   </span></span>
+<span id="cb24-138"><a href="#cb24-138"></a>  <span class="co">#   # Convert vector to tibble</span></span>
+<span id="cb24-139"><a href="#cb24-139"></a>  <span class="co">#   enframe(name = "position", value = "subdirectory") %&gt;%</span></span>
+<span id="cb24-140"><a href="#cb24-140"></a>  <span class="co">#   </span></span>
+<span id="cb24-141"><a href="#cb24-141"></a>  <span class="co">#   # Add the domain, because we will get only the subdirectories</span></span>
+<span id="cb24-142"><a href="#cb24-142"></a>  <span class="co">#   mutate(</span></span>
+<span id="cb24-143"><a href="#cb24-143"></a>  <span class="co">#     url = glue("https://www.canyon.com{subdirectory}")</span></span>
+<span id="cb24-144"><a href="#cb24-144"></a>  <span class="co">#   ) %&gt;%</span></span>
+<span id="cb24-145"><a href="#cb24-145"></a>  <span class="co">#   </span></span>
+<span id="cb24-146"><a href="#cb24-146"></a>  <span class="co">#   # Some categories are listed multiple times.</span></span>
+<span id="cb24-147"><a href="#cb24-147"></a>  <span class="co">#   # We only need unique values</span></span>
+<span id="cb24-148"><a href="#cb24-148"></a>  <span class="co">#   distinct(url)</span></span>
+<span id="cb24-149"><a href="#cb24-149"></a>  <span class="co"># </span></span>
+<span id="cb24-150"><a href="#cb24-150"></a>  <span class="co"># bike_category_tbl</span></span>
+<span id="cb24-151"><a href="#cb24-151"></a>  <span class="co"># </span></span>
+<span id="cb24-152"><a href="#cb24-152"></a>  <span class="co"># # 2.0 COLLECT BIKE DATA ----</span></span>
+<span id="cb24-153"><a href="#cb24-153"></a>  <span class="co"># </span></span>
+<span id="cb24-154"><a href="#cb24-154"></a>  <span class="co"># # 2.1 Get URL for each bike of the Product categories</span></span>
+<span id="cb24-155"><a href="#cb24-155"></a>  <span class="co"># </span></span>
+<span id="cb24-156"><a href="#cb24-156"></a>  <span class="co"># # select first bike category url</span></span>
+<span id="cb24-157"><a href="#cb24-157"></a>  <span class="co"># bike_category_url &lt;- bike_category_tbl$url[1]</span></span>
+<span id="cb24-158"><a href="#cb24-158"></a>  <span class="co"># </span></span>
+<span id="cb24-159"><a href="#cb24-159"></a>  <span class="co"># # Alternatives for selecting values</span></span>
+<span id="cb24-160"><a href="#cb24-160"></a>  <span class="co"># # bike_category_url &lt;- bike_category_tbl %$% url %&gt;% .[1]</span></span>
+<span id="cb24-161"><a href="#cb24-161"></a>  <span class="co"># # bike_category_url &lt;- bike_category_tbl %&gt;% pull(url) %&gt;% .[1]</span></span>
+<span id="cb24-162"><a href="#cb24-162"></a>  <span class="co"># # bike_category_url &lt;- deframe(bike_category_tbl[1,])</span></span>
+<span id="cb24-163"><a href="#cb24-163"></a>  <span class="co"># # bike_category_url &lt;- bike_category_tbl %&gt;% first %&gt;% first</span></span>
+<span id="cb24-164"><a href="#cb24-164"></a>  <span class="co"># </span></span>
+<span id="cb24-165"><a href="#cb24-165"></a>  <span class="co"># xopen(bike_category_url)</span></span>
+<span id="cb24-166"><a href="#cb24-166"></a>  <span class="co"># </span></span>
+<span id="cb24-167"><a href="#cb24-167"></a>  <span class="co"># # Get the URLs for the bikes of the first category</span></span>
+<span id="cb24-168"><a href="#cb24-168"></a>  <span class="co"># html_bike_category  &lt;- read_html(bike_category_url)</span></span>
+<span id="cb24-169"><a href="#cb24-169"></a>  <span class="co"># bike_url_tbl        &lt;- html_bike_category %&gt;%</span></span>
+<span id="cb24-170"><a href="#cb24-170"></a>  <span class="co">#   </span></span>
+<span id="cb24-171"><a href="#cb24-171"></a>  <span class="co">#   # Get the 'a' nodes, which are hierarchally underneath </span></span>
+<span id="cb24-172"><a href="#cb24-172"></a>  <span class="co">#   # the class productTile__contentWrapper</span></span>
+<span id="cb24-173"><a href="#cb24-173"></a>  <span class="co">#   html_nodes(css = ".productTile__contentWrapper &gt; a") %&gt;%</span></span>
+<span id="cb24-174"><a href="#cb24-174"></a>  <span class="co">#   html_attr("href") %&gt;%</span></span>
+<span id="cb24-175"><a href="#cb24-175"></a>  <span class="co">#   </span></span>
+<span id="cb24-176"><a href="#cb24-176"></a>  <span class="co">#   # Remove the query parameters of the URL (everything after the '?')</span></span>
+<span id="cb24-177"><a href="#cb24-177"></a>  <span class="co">#   str_remove(pattern = "\\?.*") %&gt;%</span></span>
+<span id="cb24-178"><a href="#cb24-178"></a>  <span class="co">#   </span></span>
+<span id="cb24-179"><a href="#cb24-179"></a>  <span class="co">#   # Convert vector to tibble</span></span>
+<span id="cb24-180"><a href="#cb24-180"></a>  <span class="co">#   enframe(name = "position", value = "url")</span></span>
+<span id="cb24-181"><a href="#cb24-181"></a>  <span class="co"># </span></span>
+<span id="cb24-182"><a href="#cb24-182"></a>  <span class="co"># # 2.1.2 Extract the descriptions (since we have retrieved the data already)</span></span>
+<span id="cb24-183"><a href="#cb24-183"></a>  <span class="co"># bike_desc_tbl &lt;- html_bike_category %&gt;%</span></span>
+<span id="cb24-184"><a href="#cb24-184"></a>  <span class="co">#   </span></span>
+<span id="cb24-185"><a href="#cb24-185"></a>  <span class="co">#   # Get the nodes in the meta tag where the attribute itemprop equals description</span></span>
+<span id="cb24-186"><a href="#cb24-186"></a>  <span class="co">#   html_nodes('.productTile__productSummaryLeft &gt; meta[itemprop="description"]') %&gt;%</span></span>
+<span id="cb24-187"><a href="#cb24-187"></a>  <span class="co">#   </span></span>
+<span id="cb24-188"><a href="#cb24-188"></a>  <span class="co">#   # Extract the content of the attribute content</span></span>
+<span id="cb24-189"><a href="#cb24-189"></a>  <span class="co">#   html_attr("content") %&gt;%</span></span>
+<span id="cb24-190"><a href="#cb24-190"></a>  <span class="co">#   </span></span>
+<span id="cb24-191"><a href="#cb24-191"></a>  <span class="co">#   # Convert vector to tibble</span></span>
+<span id="cb24-192"><a href="#cb24-192"></a>  <span class="co">#   enframe(name = "position", value = "description")</span></span>
+<span id="cb24-193"><a href="#cb24-193"></a>  <span class="co"># </span></span>
+<span id="cb24-194"><a href="#cb24-194"></a>  <span class="co"># # 2.1.3 Get even more data from JSON files</span></span>
+<span id="cb24-195"><a href="#cb24-195"></a>  <span class="co"># bike_json_tbl  &lt;- html_bike_category %&gt;%</span></span>
+<span id="cb24-196"><a href="#cb24-196"></a>  <span class="co">#   </span></span>
+<span id="cb24-197"><a href="#cb24-197"></a>  <span class="co">#   html_nodes(css = '.productGrid__listItem.xlt-producttile &gt; div') %&gt;%</span></span>
+<span id="cb24-198"><a href="#cb24-198"></a>  <span class="co">#   html_attr("data-gtm-impression") %&gt;%</span></span>
+<span id="cb24-199"><a href="#cb24-199"></a>  <span class="co">#   </span></span>
+<span id="cb24-200"><a href="#cb24-200"></a>  <span class="co">#   # Convert the JSON format to dataframe</span></span>
+<span id="cb24-201"><a href="#cb24-201"></a>  <span class="co">#   # map runs that function on each element of the list</span></span>
+<span id="cb24-202"><a href="#cb24-202"></a>  <span class="co">#   map(fromJSON) %&gt;% # need JSON </span><span class="al">###</span><span class="co"> need lists</span></span>
+<span id="cb24-203"><a href="#cb24-203"></a>  <span class="co">#   </span></span>
+<span id="cb24-204"><a href="#cb24-204"></a>  <span class="co">#   # Extract relevant information of the nested list</span></span>
+<span id="cb24-205"><a href="#cb24-205"></a>  <span class="co">#   map(purrr::pluck, 2, "impressions") %&gt;% # Need purrr and expl above</span></span>
+<span id="cb24-206"><a href="#cb24-206"></a>  <span class="co">#   </span></span>
+<span id="cb24-207"><a href="#cb24-207"></a>  <span class="co">#   # Set "not defined" and emtpy fields to NA (will be easier to work with)</span></span>
+<span id="cb24-208"><a href="#cb24-208"></a>  <span class="co">#   map(na_if, "not defined") %&gt;%</span></span>
+<span id="cb24-209"><a href="#cb24-209"></a>  <span class="co">#   map(na_if, "") %&gt;%</span></span>
+<span id="cb24-210"><a href="#cb24-210"></a>  <span class="co">#   </span></span>
+<span id="cb24-211"><a href="#cb24-211"></a>  <span class="co">#   # The class of dimension56 and price varies between numeric and char.</span></span>
+<span id="cb24-212"><a href="#cb24-212"></a>  <span class="co">#   # This converts this column in each list to numeric</span></span>
+<span id="cb24-213"><a href="#cb24-213"></a>  <span class="co">#   # across allows to perform the same operation on multiple columns</span></span>
+<span id="cb24-214"><a href="#cb24-214"></a>  <span class="co">#   map(~mutate(., across(c("dimension56","price"), as.numeric))) %&gt;%</span></span>
+<span id="cb24-215"><a href="#cb24-215"></a>  <span class="co">#   </span></span>
+<span id="cb24-216"><a href="#cb24-216"></a>  <span class="co">#   # Stack all lists together</span></span>
+<span id="cb24-217"><a href="#cb24-217"></a>  <span class="co">#   bind_rows() %&gt;%</span></span>
+<span id="cb24-218"><a href="#cb24-218"></a>  <span class="co">#   # Convert to tibble so that we have the same data format</span></span>
+<span id="cb24-219"><a href="#cb24-219"></a>  <span class="co">#   as_tibble() %&gt;%</span></span>
+<span id="cb24-220"><a href="#cb24-220"></a>  <span class="co">#   </span></span>
+<span id="cb24-221"><a href="#cb24-221"></a>  <span class="co">#   # Add consecutive numbers so that we can bind all data together</span></span>
+<span id="cb24-222"><a href="#cb24-222"></a>  <span class="co">#   # You could have also just use bind_cols()</span></span>
+<span id="cb24-223"><a href="#cb24-223"></a>  <span class="co">#   rowid_to_column(var='position') %&gt;%</span></span>
+<span id="cb24-224"><a href="#cb24-224"></a>  <span class="co">#   left_join(bike_desc_tbl) %&gt;%</span></span>
+<span id="cb24-225"><a href="#cb24-225"></a>  <span class="co">#   left_join(bike_url_tbl)</span></span>
+<span id="cb24-226"><a href="#cb24-226"></a>  <span class="co"># </span></span>
+<span id="cb24-227"><a href="#cb24-227"></a>  <span class="co"># # 2.2 Wrap it into a function ----</span></span>
+<span id="cb24-228"><a href="#cb24-228"></a>  <span class="co"># get_bike_data &lt;- function(url) {</span></span>
+<span id="cb24-229"><a href="#cb24-229"></a>  <span class="co">#   </span></span>
+<span id="cb24-230"><a href="#cb24-230"></a>  <span class="co">#   html_bike_category &lt;- read_html(url)</span></span>
+<span id="cb24-231"><a href="#cb24-231"></a>  <span class="co">#   </span></span>
+<span id="cb24-232"><a href="#cb24-232"></a>  <span class="co">#   # Get the URLs</span></span>
+<span id="cb24-233"><a href="#cb24-233"></a>  <span class="co">#   bike_url_tbl  &lt;- html_bike_category %&gt;%</span></span>
+<span id="cb24-234"><a href="#cb24-234"></a>  <span class="co">#     html_nodes(css = ".productTile__contentWrapper &gt; a") %&gt;%</span></span>
+<span id="cb24-235"><a href="#cb24-235"></a>  <span class="co">#     html_attr("href") %&gt;%</span></span>
+<span id="cb24-236"><a href="#cb24-236"></a>  <span class="co">#     str_remove(pattern = "\\?.*") %&gt;%</span></span>
+<span id="cb24-237"><a href="#cb24-237"></a>  <span class="co">#     enframe(name = "position", value = "url")</span></span>
+<span id="cb24-238"><a href="#cb24-238"></a>  <span class="co">#   </span></span>
+<span id="cb24-239"><a href="#cb24-239"></a>  <span class="co">#   # Get the descriptions</span></span>
+<span id="cb24-240"><a href="#cb24-240"></a>  <span class="co">#   bike_desc_tbl &lt;- html_bike_category %&gt;%</span></span>
+<span id="cb24-241"><a href="#cb24-241"></a>  <span class="co">#     html_nodes(css = '.productTile__productSummaryLeft &gt; </span></span>
+<span id="cb24-242"><a href="#cb24-242"></a>  <span class="co">#                       meta[itemprop="description"]') %&gt;%</span></span>
+<span id="cb24-243"><a href="#cb24-243"></a>  <span class="co">#     html_attr("content") %&gt;%</span></span>
+<span id="cb24-244"><a href="#cb24-244"></a>  <span class="co">#     enframe(name = "position", value = "description")</span></span>
+<span id="cb24-245"><a href="#cb24-245"></a>  <span class="co">#   </span></span>
+<span id="cb24-246"><a href="#cb24-246"></a>  <span class="co">#   # Get JSON data</span></span>
+<span id="cb24-247"><a href="#cb24-247"></a>  <span class="co">#   bike_json_tbl &lt;- html_bike_category %&gt;%</span></span>
+<span id="cb24-248"><a href="#cb24-248"></a>  <span class="co">#     html_nodes(css = '.productGrid__listItem.xlt-producttile &gt; div') %&gt;%</span></span>
+<span id="cb24-249"><a href="#cb24-249"></a>  <span class="co">#     html_attr("data-gtm-impression") %&gt;%</span></span>
+<span id="cb24-250"><a href="#cb24-250"></a>  <span class="co">#     map(fromJSON) %&gt;% # need JSON </span><span class="al">###</span><span class="co"> need lists</span></span>
+<span id="cb24-251"><a href="#cb24-251"></a>  <span class="co">#     map(purrr::pluck, 2, "impressions") %&gt;% </span></span>
+<span id="cb24-252"><a href="#cb24-252"></a>  <span class="co">#     map(na_if, "not defined") %&gt;%</span></span>
+<span id="cb24-253"><a href="#cb24-253"></a>  <span class="co">#     map(na_if, "") %&gt;%</span></span>
+<span id="cb24-254"><a href="#cb24-254"></a>  <span class="co">#     map(~mutate(., across(c("dimension56","price"), as.numeric))) %&gt;%</span></span>
+<span id="cb24-255"><a href="#cb24-255"></a>  <span class="co">#     bind_rows() %&gt;%</span></span>
+<span id="cb24-256"><a href="#cb24-256"></a>  <span class="co">#     as_tibble() %&gt;%</span></span>
+<span id="cb24-257"><a href="#cb24-257"></a>  <span class="co">#     rowid_to_column(var='position') %&gt;%</span></span>
+<span id="cb24-258"><a href="#cb24-258"></a>  <span class="co">#     left_join(bike_desc_tbl) %&gt;%</span></span>
+<span id="cb24-259"><a href="#cb24-259"></a>  <span class="co">#     left_join(bike_url_tbl)</span></span>
+<span id="cb24-260"><a href="#cb24-260"></a>  <span class="co"># }</span></span>
+<span id="cb24-261"><a href="#cb24-261"></a>  <span class="co"># </span></span>
+<span id="cb24-262"><a href="#cb24-262"></a>  <span class="co"># # Run the function with the first url to check if it is working</span></span>
+<span id="cb24-263"><a href="#cb24-263"></a>  <span class="co"># bike_category_url &lt;- bike_category_tbl$url[1]</span></span>
+<span id="cb24-264"><a href="#cb24-264"></a>  <span class="co"># bike_data_tbl     &lt;- get_bike_data(url = bike_category_url)</span></span>
+<span id="cb24-265"><a href="#cb24-265"></a>  <span class="co"># </span></span>
+<span id="cb24-266"><a href="#cb24-266"></a>  <span class="co"># bike_data_tbl</span></span>
+<span id="cb24-267"><a href="#cb24-267"></a>  <span class="co"># </span></span>
+<span id="cb24-268"><a href="#cb24-268"></a>  <span class="co"># # 2.3.1a Map the function against all urls</span></span>
+<span id="cb24-269"><a href="#cb24-269"></a>  <span class="co"># </span></span>
+<span id="cb24-270"><a href="#cb24-270"></a>  <span class="co"># # Extract the urls as a character vector</span></span>
+<span id="cb24-271"><a href="#cb24-271"></a>  <span class="co"># bike_category_url_vec &lt;- bike_category_tbl %&gt;% </span></span>
+<span id="cb24-272"><a href="#cb24-272"></a>  <span class="co">#   pull(url)</span></span>
+<span id="cb24-273"><a href="#cb24-273"></a>  <span class="co"># </span></span>
+<span id="cb24-274"><a href="#cb24-274"></a>  <span class="co"># # Run the function with every url as an argument</span></span>
+<span id="cb24-275"><a href="#cb24-275"></a>  <span class="co"># bike_data_lst &lt;- map(bike_category_url_vec, get_bike_data)</span></span>
+<span id="cb24-276"><a href="#cb24-276"></a>  <span class="co"># </span></span>
+<span id="cb24-277"><a href="#cb24-277"></a>  <span class="co"># # Merge the list into a tibble</span></span>
+<span id="cb24-278"><a href="#cb24-278"></a>  <span class="co"># bike_data_tbl &lt;- bind_rows(bike_data_lst)</span></span>
+<span id="cb24-279"><a href="#cb24-279"></a>  <span class="co"># saveRDS(bike_data_tbl, "bike_data_tbl.rds")</span></span>
+<span id="cb24-280"><a href="#cb24-280"></a>  <span class="co"># </span></span>
+<span id="cb24-281"><a href="#cb24-281"></a>  <span class="co"># # 2.3.1b Alternative with a for loop</span></span>
+<span id="cb24-282"><a href="#cb24-282"></a>  <span class="co"># </span></span>
+<span id="cb24-283"><a href="#cb24-283"></a>  <span class="co"># # Create an empty tibble, that we can populate</span></span>
+<span id="cb24-284"><a href="#cb24-284"></a>  <span class="co"># bike_data_tbl &lt;- tibble()</span></span>
+<span id="cb24-285"><a href="#cb24-285"></a>  <span class="co"># </span></span>
+<span id="cb24-286"><a href="#cb24-286"></a>  <span class="co"># # Loop through all urls</span></span>
+<span id="cb24-287"><a href="#cb24-287"></a>  <span class="co"># for (i in seq_along(bike_category_tbl$url)) {</span></span>
+<span id="cb24-288"><a href="#cb24-288"></a>  <span class="co">#   </span></span>
+<span id="cb24-289"><a href="#cb24-289"></a>  <span class="co">#   bike_category_url &lt;- bike_category_tbl$url[i]</span></span>
+<span id="cb24-290"><a href="#cb24-290"></a>  <span class="co">#   bike_data_tbl     &lt;- bind_rows(bike_data_tbl, get_bike_data(bike_category_url))</span></span>
+<span id="cb24-291"><a href="#cb24-291"></a>  <span class="co">#   </span></span>
+<span id="cb24-292"><a href="#cb24-292"></a>  <span class="co">#   # Wait between each request to reduce the load on the server </span></span>
+<span id="cb24-293"><a href="#cb24-293"></a>  <span class="co">#   # Otherwise we could get blocked</span></span>
+<span id="cb24-294"><a href="#cb24-294"></a>  <span class="co">#   Sys.sleep(5)</span></span>
+<span id="cb24-295"><a href="#cb24-295"></a>  <span class="co">#   </span></span>
+<span id="cb24-296"><a href="#cb24-296"></a>  <span class="co">#   # print the progress</span></span>
+<span id="cb24-297"><a href="#cb24-297"></a>  <span class="co">#   print(i)</span></span>
+<span id="cb24-298"><a href="#cb24-298"></a>  <span class="co">#   </span></span>
+<span id="cb24-299"><a href="#cb24-299"></a>  <span class="co"># }</span></span>
+<span id="cb24-300"><a href="#cb24-300"></a>  <span class="co"># </span></span>
+<span id="cb24-301"><a href="#cb24-301"></a>  <span class="co"># # Check for duplicates</span></span>
+<span id="cb24-302"><a href="#cb24-302"></a>  <span class="co"># bike_data_tbl %&gt;%</span></span>
+<span id="cb24-303"><a href="#cb24-303"></a>  <span class="co">#   group_by(id) %&gt;%</span></span>
+<span id="cb24-304"><a href="#cb24-304"></a>  <span class="co">#   filter(n()&gt;1) %&gt;%</span></span>
+<span id="cb24-305"><a href="#cb24-305"></a>  <span class="co">#   arrange(id) %&gt;% </span></span>
+<span id="cb24-306"><a href="#cb24-306"></a>  <span class="co">#   View()</span></span>
+<span id="cb24-307"><a href="#cb24-307"></a>  <span class="co"># </span></span>
+<span id="cb24-308"><a href="#cb24-308"></a>  <span class="co"># # Filter non Canyon bikes (based on id length) and add an empty column for the colors</span></span>
+<span id="cb24-309"><a href="#cb24-309"></a>  <span class="co"># bike_data_cleaned_tbl &lt;- bike_data_tbl %&gt;%</span></span>
+<span id="cb24-310"><a href="#cb24-310"></a>  <span class="co">#   </span></span>
+<span id="cb24-311"><a href="#cb24-311"></a>  <span class="co">#   # Filter for bikes. Only unique ones</span></span>
+<span id="cb24-312"><a href="#cb24-312"></a>  <span class="co">#   filter(nchar(.$id) == 4) %&gt;%</span></span>
+<span id="cb24-313"><a href="#cb24-313"></a>  <span class="co">#   filter(!(name %&gt;% str_detect("Frameset"))) %&gt;%</span></span>
+<span id="cb24-314"><a href="#cb24-314"></a>  <span class="co">#   distinct(id, .keep_all = T) %&gt;%</span></span>
+<span id="cb24-315"><a href="#cb24-315"></a>  <span class="co">#   </span></span>
+<span id="cb24-316"><a href="#cb24-316"></a>  <span class="co">#   # Split categories (Speedmax had to be treated individually)</span></span>
+<span id="cb24-317"><a href="#cb24-317"></a>  <span class="co">#   mutate(category = replace(category, </span></span>
+<span id="cb24-318"><a href="#cb24-318"></a>  <span class="co">#                             name == "Speedmax CF SLX 8.0 SL", "Road/Triathlon Bike/Speedmax")) %&gt;%</span></span>
+<span id="cb24-319"><a href="#cb24-319"></a>  <span class="co">#   separate(col = category, into = c("category_1",</span></span>
+<span id="cb24-320"><a href="#cb24-320"></a>  <span class="co">#                                     "category_2",</span></span>
+<span id="cb24-321"><a href="#cb24-321"></a>  <span class="co">#                                     "category_3"),</span></span>
+<span id="cb24-322"><a href="#cb24-322"></a>  <span class="co">#            sep = "(?&lt;!\\s)/(?!\\s)") %&gt;%</span></span>
+<span id="cb24-323"><a href="#cb24-323"></a>  <span class="co">#   </span></span>
+<span id="cb24-324"><a href="#cb24-324"></a>  <span class="co">#   # Renaming</span></span>
+<span id="cb24-325"><a href="#cb24-325"></a>  <span class="co">#   rename("year"       = "dimension50") %&gt;%</span></span>
+<span id="cb24-326"><a href="#cb24-326"></a>  <span class="co">#   rename("model"      = "name") %&gt;%</span></span>
+<span id="cb24-327"><a href="#cb24-327"></a>  <span class="co">#   rename("gender"     = "dimension63") %&gt;%</span></span>
+<span id="cb24-328"><a href="#cb24-328"></a>  <span class="co">#   rename("price_euro" = "metric4") %&gt;%</span></span>
+<span id="cb24-329"><a href="#cb24-329"></a>  <span class="co">#   </span></span>
+<span id="cb24-330"><a href="#cb24-330"></a>  <span class="co">#   # Fix years manually (have checked the website)</span></span>
+<span id="cb24-331"><a href="#cb24-331"></a>  <span class="co">#   mutate(year = replace_na(year, 2021)) %&gt;%</span></span>
+<span id="cb24-332"><a href="#cb24-332"></a>  <span class="co">#   </span></span>
+<span id="cb24-333"><a href="#cb24-333"></a>  <span class="co">#   # Add frame material</span></span>
+<span id="cb24-334"><a href="#cb24-334"></a>  <span class="co">#   mutate(frame_material = case_when(</span></span>
+<span id="cb24-335"><a href="#cb24-335"></a>  <span class="co">#     model %&gt;% str_detect(" CF ") ~ "carbon",</span></span>
+<span id="cb24-336"><a href="#cb24-336"></a>  <span class="co">#     model %&gt;% str_detect(" CFR ") ~ "carbon",</span></span>
+<span id="cb24-337"><a href="#cb24-337"></a>  <span class="co">#     TRUE ~ "aluminium"</span></span>
+<span id="cb24-338"><a href="#cb24-338"></a>  <span class="co">#   )</span></span>
+<span id="cb24-339"><a href="#cb24-339"></a>  <span class="co">#   ) %&gt;%</span></span>
+<span id="cb24-340"><a href="#cb24-340"></a>  <span class="co">#   </span></span>
+<span id="cb24-341"><a href="#cb24-341"></a>  <span class="co">#   # Select and order columns</span></span>
+<span id="cb24-342"><a href="#cb24-342"></a>  <span class="co">#   select(-c(position, brand, variant, starts_with("dim"), </span></span>
+<span id="cb24-343"><a href="#cb24-343"></a>  <span class="co">#             quantity, feedProductId, price, metric5)) %&gt;%</span></span>
+<span id="cb24-344"><a href="#cb24-344"></a>  <span class="co">#   select(id, model, year, frame_material, price_euro, everything())</span></span>
+<span id="cb24-345"><a href="#cb24-345"></a>  <span class="co"># </span></span>
+<span id="cb24-346"><a href="#cb24-346"></a>  <span class="co"># saveRDS(bike_data_cleaned_tbl, "bike_data_cleaned_tbl.rds")</span></span>
+<span id="cb24-347"><a href="#cb24-347"></a>  <span class="co"># </span></span>
+<span id="cb24-348"><a href="#cb24-348"></a>  <span class="co"># # 3.1a Get all color variations for each bike</span></span>
+<span id="cb24-349"><a href="#cb24-349"></a>  <span class="co"># </span></span>
+<span id="cb24-350"><a href="#cb24-350"></a>  <span class="co"># # Extract all bike urls</span></span>
+<span id="cb24-351"><a href="#cb24-351"></a>  <span class="co"># bike_url_vec &lt;- bike_data_cleaned_tbl %&gt;% </span></span>
+<span id="cb24-352"><a href="#cb24-352"></a>  <span class="co">#   pull(url)</span></span>
+<span id="cb24-353"><a href="#cb24-353"></a>  <span class="co"># </span></span>
+<span id="cb24-354"><a href="#cb24-354"></a>  <span class="co"># # Create function to get the variations</span></span>
+<span id="cb24-355"><a href="#cb24-355"></a>  <span class="co"># get_colors &lt;- function(url) {</span></span>
+<span id="cb24-356"><a href="#cb24-356"></a>  <span class="co">#   </span></span>
+<span id="cb24-357"><a href="#cb24-357"></a>  <span class="co">#   url %&gt;%</span></span>
+<span id="cb24-358"><a href="#cb24-358"></a>  <span class="co">#     </span></span>
+<span id="cb24-359"><a href="#cb24-359"></a>  <span class="co">#     read_html() %&gt;%</span></span>
+<span id="cb24-360"><a href="#cb24-360"></a>  <span class="co">#     </span></span>
+<span id="cb24-361"><a href="#cb24-361"></a>  <span class="co">#     # Get all 'script nodes' and convert to char</span></span>
+<span id="cb24-362"><a href="#cb24-362"></a>  <span class="co">#     html_nodes(css = "script") %&gt;%</span></span>
+<span id="cb24-363"><a href="#cb24-363"></a>  <span class="co">#     as.character() %&gt;%</span></span>
+<span id="cb24-364"><a href="#cb24-364"></a>  <span class="co">#     </span></span>
+<span id="cb24-365"><a href="#cb24-365"></a>  <span class="co">#     # Select the node, that contains 'window.deptsfra'</span></span>
+<span id="cb24-366"><a href="#cb24-366"></a>  <span class="co">#     str_subset(pattern = "window.deptsfra") %&gt;%</span></span>
+<span id="cb24-367"><a href="#cb24-367"></a>  <span class="co">#     </span></span>
+<span id="cb24-368"><a href="#cb24-368"></a>  <span class="co">#     # remove the chars that do not belong to the json</span></span>
+<span id="cb24-369"><a href="#cb24-369"></a>  <span class="co">#     # 1. replace at the beginning everything until the first "{" with ""</span></span>
+<span id="cb24-370"><a href="#cb24-370"></a>  <span class="co">#     str_replace("^[^\\{]+", "") %&gt;%</span></span>
+<span id="cb24-371"><a href="#cb24-371"></a>  <span class="co">#     # 2. replace at the end everything after the last "}" with ""</span></span>
+<span id="cb24-372"><a href="#cb24-372"></a>  <span class="co">#     str_replace("[^\\}]+$", "") %&gt;%</span></span>
+<span id="cb24-373"><a href="#cb24-373"></a>  <span class="co">#     </span></span>
+<span id="cb24-374"><a href="#cb24-374"></a>  <span class="co">#     # Convert from json to an r object and pick the relevant values</span></span>
+<span id="cb24-375"><a href="#cb24-375"></a>  <span class="co">#     fromJSON() %&gt;%</span></span>
+<span id="cb24-376"><a href="#cb24-376"></a>  <span class="co">#     purrr::pluck("productDetail", "variationAttributes", "values", 1, "value")</span></span>
+<span id="cb24-377"><a href="#cb24-377"></a>  <span class="co"># }</span></span>
+<span id="cb24-378"><a href="#cb24-378"></a>  <span class="co"># </span></span>
+<span id="cb24-379"><a href="#cb24-379"></a>  <span class="co"># # Run the function over all urls and add result to bike_data_cleaned_tbl</span></span>
+<span id="cb24-380"><a href="#cb24-380"></a>  <span class="co"># # This will take a long time (~ 20-30 minutes) because we have to iterate over many bikes</span></span>
+<span id="cb24-381"><a href="#cb24-381"></a>  <span class="co"># bike_data_colors_tbl &lt;- bike_data_cleaned_tbl %&gt;% </span></span>
+<span id="cb24-382"><a href="#cb24-382"></a>  <span class="co">#   mutate(colors = map(bike_url_vec, get_colors))</span></span>
+<span id="cb24-383"><a href="#cb24-383"></a>  <span class="co"># </span></span>
+<span id="cb24-384"><a href="#cb24-384"></a>  <span class="co"># saveRDS(bike_data_colors_tbl, "bike_data_colors_tbl.rds")</span></span>
+<span id="cb24-385"><a href="#cb24-385"></a>  <span class="co"># </span></span>
+<span id="cb24-386"><a href="#cb24-386"></a>  <span class="co"># library(furrr)     # Parallel Processing using purrr (iteration)</span></span>
+<span id="cb24-387"><a href="#cb24-387"></a>  <span class="co"># plan("multiprocess")</span></span>
+<span id="cb24-388"><a href="#cb24-388"></a>  <span class="co"># bike_data_colors_tbl &lt;- bike_data_cleaned_tbl %&gt;% </span></span>
+<span id="cb24-389"><a href="#cb24-389"></a>  <span class="co">#   mutate(colors = future_map(bike_url_vec, get_colors))</span></span>
+<span id="cb24-390"><a href="#cb24-390"></a>  <span class="co"># </span></span>
+<span id="cb24-391"><a href="#cb24-391"></a>  <span class="co"># # 3.2 Create the urls for each variation</span></span>
+<span id="cb24-392"><a href="#cb24-392"></a>  <span class="co"># </span></span>
+<span id="cb24-393"><a href="#cb24-393"></a>  <span class="co"># bike_data_colors_tbl &lt;- bike_data_colors_tbl %&gt;%</span></span>
+<span id="cb24-394"><a href="#cb24-394"></a>  <span class="co">#   </span></span>
+<span id="cb24-395"><a href="#cb24-395"></a>  <span class="co">#   # Create entry for each color variation</span></span>
+<span id="cb24-396"><a href="#cb24-396"></a>  <span class="co">#   unnest(colors) %&gt;%</span></span>
+<span id="cb24-397"><a href="#cb24-397"></a>  <span class="co">#   </span></span>
+<span id="cb24-398"><a href="#cb24-398"></a>  <span class="co">#   # Merge url and query parameters for the colors</span></span>
+<span id="cb24-399"><a href="#cb24-399"></a>  <span class="co">#   mutate(url_color = glue("{url}?dwvar_{id}_pv_rahmenfarbe={colors}")) %&gt;%</span></span>
+<span id="cb24-400"><a href="#cb24-400"></a>  <span class="co">#   select(-url) %&gt;%</span></span>
+<span id="cb24-401"><a href="#cb24-401"></a>  <span class="co">#   </span></span>
+<span id="cb24-402"><a href="#cb24-402"></a>  <span class="co">#   # Use stringi to replace the last dash with the HTLM format of a dash (%2F)</span></span>
+<span id="cb24-403"><a href="#cb24-403"></a>  <span class="co">#   # Only if there is a dash in the color column</span></span>
+<span id="cb24-404"><a href="#cb24-404"></a>  <span class="co">#   mutate(url_color = ifelse(str_detect(colors, pattern = "/"),</span></span>
+<span id="cb24-405"><a href="#cb24-405"></a>  <span class="co">#                             </span></span>
+<span id="cb24-406"><a href="#cb24-406"></a>  <span class="co">#                             # if TRUE --&gt; replace      </span></span>
+<span id="cb24-407"><a href="#cb24-407"></a>  <span class="co">#                             stringi::stri_replace_last_fixed(url_color, "/", "%2F"),</span></span>
+<span id="cb24-408"><a href="#cb24-408"></a>  <span class="co">#                             </span></span>
+<span id="cb24-409"><a href="#cb24-409"></a>  <span class="co">#                             # ELSE --&gt; take the original url</span></span>
+<span id="cb24-410"><a href="#cb24-410"></a>  <span class="co">#                             url_color))</span></span>
+<span id="cb24-411"><a href="#cb24-411"></a>  <span class="co"># </span></span>
+<span id="cb24-412"><a href="#cb24-412"></a>  <span class="co"># bike_data_colors_tbl %&gt;% glimpse()</span></span>
+<span id="cb24-413"><a href="#cb24-413"></a>  <span class="co"># </span></span>
+<span id="cb24-414"><a href="#cb24-414"></a>  <span class="co"># # Create function</span></span>
+<span id="cb24-415"><a href="#cb24-415"></a>  <span class="co"># get_sizes &lt;- function(url) {</span></span>
+<span id="cb24-416"><a href="#cb24-416"></a>  <span class="co">#   </span></span>
+<span id="cb24-417"><a href="#cb24-417"></a>  <span class="co">#   json &lt;- url %&gt;%</span></span>
+<span id="cb24-418"><a href="#cb24-418"></a>  <span class="co">#     </span></span>
+<span id="cb24-419"><a href="#cb24-419"></a>  <span class="co">#     read_html() %&gt;%</span></span>
+<span id="cb24-420"><a href="#cb24-420"></a>  <span class="co">#     </span></span>
+<span id="cb24-421"><a href="#cb24-421"></a>  <span class="co">#     # Get all 'script nodes' and convert to char</span></span>
+<span id="cb24-422"><a href="#cb24-422"></a>  <span class="co">#     html_nodes(css = "script") %&gt;%</span></span>
+<span id="cb24-423"><a href="#cb24-423"></a>  <span class="co">#     as.character() %&gt;%</span></span>
+<span id="cb24-424"><a href="#cb24-424"></a>  <span class="co">#     </span></span>
+<span id="cb24-425"><a href="#cb24-425"></a>  <span class="co">#     # Select the node, that contains 'window.deptsfra'</span></span>
+<span id="cb24-426"><a href="#cb24-426"></a>  <span class="co">#     str_subset(pattern = "window.deptsfra") %&gt;%</span></span>
+<span id="cb24-427"><a href="#cb24-427"></a>  <span class="co">#     </span></span>
+<span id="cb24-428"><a href="#cb24-428"></a>  <span class="co">#     # remove the chars that do not belong to the json</span></span>
+<span id="cb24-429"><a href="#cb24-429"></a>  <span class="co">#     # 1. replace at the beginning everything until the first "{" with ""</span></span>
+<span id="cb24-430"><a href="#cb24-430"></a>  <span class="co">#     str_replace("^[^\\{]+", "") %&gt;%</span></span>
+<span id="cb24-431"><a href="#cb24-431"></a>  <span class="co">#     # 2. replace at the end everything after the last "}" with ""</span></span>
+<span id="cb24-432"><a href="#cb24-432"></a>  <span class="co">#     str_replace("[^\\}]+$", "") %&gt;%</span></span>
+<span id="cb24-433"><a href="#cb24-433"></a>  <span class="co">#     </span></span>
+<span id="cb24-434"><a href="#cb24-434"></a>  <span class="co">#     # Convert from json to an r object and pick the relevant values</span></span>
+<span id="cb24-435"><a href="#cb24-435"></a>  <span class="co">#     fromJSON(flatten = T) %&gt;%</span></span>
+<span id="cb24-436"><a href="#cb24-436"></a>  <span class="co">#     purrr::pluck("productDetail", "variationAttributes", "values", 2) %&gt;%</span></span>
+<span id="cb24-437"><a href="#cb24-437"></a>  <span class="co">#     </span></span>
+<span id="cb24-438"><a href="#cb24-438"></a>  <span class="co">#     # select(id, value, available, availability)# %&gt;%</span></span>
+<span id="cb24-439"><a href="#cb24-439"></a>  <span class="co">#     select(id, value, availability.onlyXLeftNumber) %&gt;%</span></span>
+<span id="cb24-440"><a href="#cb24-440"></a>  <span class="co">#     </span></span>
+<span id="cb24-441"><a href="#cb24-441"></a>  <span class="co">#     # Rename</span></span>
+<span id="cb24-442"><a href="#cb24-442"></a>  <span class="co">#     rename(id_size = id) %&gt;%</span></span>
+<span id="cb24-443"><a href="#cb24-443"></a>  <span class="co">#     rename(size = value) %&gt;%</span></span>
+<span id="cb24-444"><a href="#cb24-444"></a>  <span class="co">#     rename(stock_availability = availability.onlyXLeftNumber) %&gt;%</span></span>
+<span id="cb24-445"><a href="#cb24-445"></a>  <span class="co">#     </span></span>
+<span id="cb24-446"><a href="#cb24-446"></a>  <span class="co">#     # Conver to tibble</span></span>
+<span id="cb24-447"><a href="#cb24-447"></a>  <span class="co">#     as_tibble()</span></span>
+<span id="cb24-448"><a href="#cb24-448"></a>  <span class="co">#   </span></span>
+<span id="cb24-449"><a href="#cb24-449"></a>  <span class="co"># }</span></span>
+<span id="cb24-450"><a href="#cb24-450"></a>  <span class="co"># </span></span>
+<span id="cb24-451"><a href="#cb24-451"></a>  <span class="co"># # Pull url vector</span></span>
+<span id="cb24-452"><a href="#cb24-452"></a>  <span class="co"># bike_url_color_vec &lt;- bike_data_colors_tbl %&gt;% </span></span>
+<span id="cb24-453"><a href="#cb24-453"></a>  <span class="co">#   pull(url_color)</span></span>
+<span id="cb24-454"><a href="#cb24-454"></a>  <span class="co"># </span></span>
+<span id="cb24-455"><a href="#cb24-455"></a>  <span class="co"># # Map</span></span>
+<span id="cb24-456"><a href="#cb24-456"></a>  <span class="co"># bike_data_sizes_tbl &lt;- bike_data_colors_tbl %&gt;% </span></span>
+<span id="cb24-457"><a href="#cb24-457"></a>  <span class="co">#   mutate(size = future_map(bike_url_color_vec, get_sizes))</span></span>
+<span id="cb24-458"><a href="#cb24-458"></a>  <span class="co"># </span></span>
+<span id="cb24-459"><a href="#cb24-459"></a>  <span class="co"># # Unnest</span></span>
+<span id="cb24-460"><a href="#cb24-460"></a>  <span class="co"># bike_data_sizes_tbl &lt;- bike_data_sizes_tbl %&gt;% </span></span>
+<span id="cb24-461"><a href="#cb24-461"></a>  <span class="co">#   unnest(size)</span></span>
+<span id="cb24-462"><a href="#cb24-462"></a>  <span class="co"># </span></span>
+<span id="cb24-463"><a href="#cb24-463"></a>  <span class="co"># saveRDS(bike_data_sizes_tbl, "bike_data_sizes_tbl.rds")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></details><section id="data-acquisition-challenge-1" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> Data Acquisition Challenge 1</h1>
+<p>Data is requested from openweathermap, some data is extracted and the result is visualized.</p>
+<section id="api-call-and-data-extraction" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="api-call-and-data-extraction">
+<span class="header-section-number">2.1</span> API call and data extraction</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_0900e0d98110dcae52996381cf7b67f3">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Challenge 2.1 ----</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="co"># 1.0 LIBRARIES ----</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="fu">library</span>(tidyverse) <span class="co"># Main Package - Loads dplyr, purrr, etc.</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="fu">library</span>(rvest)     <span class="co"># HTML Hacking &amp; Web Scraping</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="fu">library</span>(xopen)     <span class="co"># Quickly opening URLs</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="fu">library</span>(jsonlite)  <span class="co"># converts JSON files to R objects</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="fu">library</span>(glue)      <span class="co"># concatenate strings</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="fu">library</span>(stringi)   <span class="co"># character string/text processing</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="fu">library</span>(httr)</span>
+<span id="cb25-13"><a href="#cb25-13"></a></span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="co"># Get api key from renviron file </span></span>
+<span id="cb25-15"><a href="#cb25-15"></a>apikey <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">'key'</span>)</span>
+<span id="cb25-16"><a href="#cb25-16"></a></span>
+<span id="cb25-17"><a href="#cb25-17"></a><span class="co"># store openweathermap city id for hamburg to variable</span></span>
+<span id="cb25-18"><a href="#cb25-18"></a>city_id <span class="ot">&lt;-</span> <span class="dv">2911298</span></span>
+<span id="cb25-19"><a href="#cb25-19"></a></span>
+<span id="cb25-20"><a href="#cb25-20"></a><span class="co"># Call to openweathermao api </span></span>
+<span id="cb25-21"><a href="#cb25-21"></a>weather <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="fu">glue</span>(<span class="st">"http://api.openweathermap.org/data/2.5/forecast?id={city_id}&amp;APPID={apikey}"</span>))</span>
+<span id="cb25-22"><a href="#cb25-22"></a></span>
+<span id="cb25-23"><a href="#cb25-23"></a><span class="co"># convert API response body</span></span>
+<span id="cb25-24"><a href="#cb25-24"></a>weather_extracted <span class="ot">&lt;-</span> <span class="fu">rawToChar</span>(weather<span class="sc">$</span>content)  <span class="sc">%&gt;%</span> <span class="fu">fromJSON</span>()</span>
+<span id="cb25-25"><a href="#cb25-25"></a>weather_extracted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; $cod
+#&gt; [1] "200"
+#&gt; 
+#&gt; $message
+#&gt; [1] 0
+#&gt; 
+#&gt; $cnt
+#&gt; [1] 40
+#&gt; 
+#&gt; $list
+#&gt;            dt main.temp main.feels_like main.temp_min main.temp_max
+#&gt; 1  1684800000    288.18          288.30        285.82        288.18
+#&gt; 2  1684810800    287.53          287.61        286.62        287.53
+#&gt; 3  1684821600    287.54          287.57        287.54        287.54
+#&gt; 4  1684832400    285.91          285.70        285.91        285.91
+#&gt; 5  1684843200    287.90          287.13        287.90        287.90
+#&gt; 6  1684854000    287.22          286.12        287.22        287.22
+#&gt; 7  1684864800    283.66          282.57        283.66        283.66
+#&gt; 8  1684875600    280.76          278.25        280.76        280.76
+#&gt; 9  1684886400    280.60          278.29        280.60        280.60
+#&gt; 10 1684897200    281.38          278.62        281.38        281.38
+#&gt; 11 1684908000    283.49          282.93        283.49        283.49
+#&gt; 12 1684918800    285.25          284.60        285.25        285.25
+#&gt; 13 1684929600    286.49          285.84        286.49        286.49
+#&gt; 14 1684940400    289.92          289.11        289.92        289.92
+#&gt; 15 1684951200    286.59          286.21        286.59        286.59
+#&gt; 16 1684962000    282.83          281.71        282.83        282.83
+#&gt; 17 1684972800    281.13          279.86        281.13        281.13
+#&gt; 18 1684983600    280.24          278.84        280.24        280.24
+#&gt; 19 1684994400    283.32          282.43        283.32        283.32
+#&gt; 20 1685005200    288.61          287.41        288.61        288.61
+#&gt; 21 1685016000    291.25          290.16        291.25        291.25
+#&gt; 22 1685026800    290.74          289.76        290.74        290.74
+#&gt; 23 1685037600    286.36          285.43        286.36        286.36
+#&gt; 24 1685048400    280.44          278.14        280.44        280.44
+#&gt; 25 1685059200    278.44          276.20        278.44        278.44
+#&gt; 26 1685070000    278.01          275.73        278.01        278.01
+#&gt; 27 1685080800    283.15          280.80        283.15        283.15
+#&gt; 28 1685091600    287.04          285.79        287.04        287.04
+#&gt; 29 1685102400    289.72          288.61        289.72        289.72
+#&gt; 30 1685113200    289.73          288.72        289.73        289.73
+#&gt; 31 1685124000    285.84          284.97        285.84        285.84
+#&gt; 32 1685134800    280.22          278.52        280.22        280.22
+#&gt; 33 1685145600    278.66          277.13        278.66        278.66
+#&gt; 34 1685156400    277.72          276.67        277.72        277.72
+#&gt; 35 1685167200    282.84          282.84        282.84        282.84
+#&gt; 36 1685178000    288.46          287.35        288.46        288.46
+#&gt; 37 1685188800    291.31          290.25        291.31        291.31
+#&gt; 38 1685199600    291.56          290.58        291.56        291.56
+#&gt; 39 1685210400    288.30          287.70        288.30        288.30
+#&gt; 40 1685221200    282.78          282.22        282.78        282.78
+#&gt;    main.pressure main.sea_level main.grnd_level main.humidity main.temp_kf
+#&gt; 1           1013           1013            1009            98         2.36
+#&gt; 2           1012           1012            1008            99         0.91
+#&gt; 3           1012           1012            1009            97         0.00
+#&gt; 4           1014           1014            1012            94         0.00
+#&gt; 5           1016           1016            1014            65         0.00
+#&gt; 6           1017           1017            1015            55         0.00
+#&gt; 7           1019           1019            1016            69         0.00
+#&gt; 8           1019           1019            1017            80         0.00
+#&gt; 9           1019           1019            1016            89         0.00
+#&gt; 10          1017           1017            1015            90         0.00
+#&gt; 11          1018           1018            1016            90         0.00
+#&gt; 12          1019           1019            1017            80         0.00
+#&gt; 13          1020           1020            1018            75         0.00
+#&gt; 14          1020           1020            1018            56         0.00
+#&gt; 15          1021           1021            1018            85         0.00
+#&gt; 16          1023           1023            1020            98         0.00
+#&gt; 17          1023           1023            1020            98         0.00
+#&gt; 18          1024           1024            1021            98         0.00
+#&gt; 19          1025           1025            1022            78         0.00
+#&gt; 20          1026           1026            1023            46         0.00
+#&gt; 21          1025           1025            1023            40         0.00
+#&gt; 22          1026           1026            1023            46         0.00
+#&gt; 23          1027           1027            1024            65         0.00
+#&gt; 24          1028           1028            1026            87         0.00
+#&gt; 25          1029           1029            1026            95         0.00
+#&gt; 26          1029           1029            1026            92         0.00
+#&gt; 27          1030           1030            1028            67         0.00
+#&gt; 28          1030           1030            1028            50         0.00
+#&gt; 29          1030           1030            1027            45         0.00
+#&gt; 30          1029           1029            1027            49         0.00
+#&gt; 31          1030           1030            1027            69         0.00
+#&gt; 32          1031           1031            1028            93         0.00
+#&gt; 33          1031           1031            1028            97         0.00
+#&gt; 34          1030           1030            1028            96         0.00
+#&gt; 35          1030           1030            1027            73         0.00
+#&gt; 36          1029           1029            1026            50         0.00
+#&gt; 37          1027           1027            1025            41         0.00
+#&gt; 38          1025           1025            1023            43         0.00
+#&gt; 39          1025           1025            1022            70         0.00
+#&gt; 40          1024           1024            1022            93         0.00
+#&gt;                               weather all wind.speed wind.deg wind.gust
+#&gt; 1          500, Rain, light rain, 10n  36       0.98      138      1.49
+#&gt; 2          500, Rain, light rain, 10n  63       2.23      317      5.85
+#&gt; 3   804, Clouds, overcast clouds, 04d  91       3.92      318      7.55
+#&gt; 4   804, Clouds, overcast clouds, 04d 100       5.64      320     10.39
+#&gt; 5   804, Clouds, overcast clouds, 04d 100       6.37      316      8.90
+#&gt; 6   804, Clouds, overcast clouds, 04d 100       6.78      314      9.52
+#&gt; 7   804, Clouds, overcast clouds, 04d  95       5.33      302      9.79
+#&gt; 8     803, Clouds, broken clouds, 04n  63       3.94      287     10.72
+#&gt; 9          500, Rain, light rain, 10n  68       3.51      262      9.92
+#&gt; 10         500, Rain, light rain, 10n  99       4.77      269     10.80
+#&gt; 11         500, Rain, light rain, 10d 100       4.05      300      7.60
+#&gt; 12         500, Rain, light rain, 10d  99       2.53      323      3.65
+#&gt; 13         500, Rain, light rain, 10d  99       2.62      301      3.11
+#&gt; 14    803, Clouds, broken clouds, 04d  63       1.43      330      1.98
+#&gt; 15         500, Rain, light rain, 10d  69       2.33      274      4.30
+#&gt; 16         500, Rain, light rain, 10n  45       2.33      293      5.53
+#&gt; 17 802, Clouds, scattered clouds, 03n  29       2.15      287      4.45
+#&gt; 18       801, Clouds, few clouds, 02n  21       2.12      309      5.21
+#&gt; 19 802, Clouds, scattered clouds, 03d  35       2.94      316      5.71
+#&gt; 20         800, Clear, clear sky, 01d   4       3.71      324      4.98
+#&gt; 21         800, Clear, clear sky, 01d   6       4.30      328      5.14
+#&gt; 22         800, Clear, clear sky, 01d   5       5.09      331      6.11
+#&gt; 23         800, Clear, clear sky, 01d   7       4.36      323      7.63
+#&gt; 24 802, Clouds, scattered clouds, 03n  50       3.43      312     10.11
+#&gt; 25 802, Clouds, scattered clouds, 03n  27       2.74      300     11.16
+#&gt; 26         800, Clear, clear sky, 01n   0       2.68      297     10.59
+#&gt; 27         800, Clear, clear sky, 01d   2       4.85      332      9.21
+#&gt; 28    803, Clouds, broken clouds, 04d  59       4.20      333      5.99
+#&gt; 29 802, Clouds, scattered clouds, 03d  36       4.28      328      5.92
+#&gt; 30         800, Clear, clear sky, 01d   8       5.04      324      6.00
+#&gt; 31         800, Clear, clear sky, 01d  10       4.26      315      6.76
+#&gt; 32         800, Clear, clear sky, 01n   0       2.48      313      7.47
+#&gt; 33         800, Clear, clear sky, 01n  10       1.98      332      3.86
+#&gt; 34       801, Clouds, few clouds, 02n  12       1.45      339      1.46
+#&gt; 35         800, Clear, clear sky, 01d   6       0.99      335      1.34
+#&gt; 36         800, Clear, clear sky, 01d   1       1.23      344      1.44
+#&gt; 37         800, Clear, clear sky, 01d   3       1.36       33      1.71
+#&gt; 38         800, Clear, clear sky, 01d   4       2.16       22      2.04
+#&gt; 39         800, Clear, clear sky, 01d   4       2.42       15      4.89
+#&gt; 40         800, Clear, clear sky, 01n   5       1.65       58      1.66
+#&gt;    visibility  pop   3h pod              dt_txt
+#&gt; 1       10000 1.00 0.65   n 2023-05-23 00:00:00
+#&gt; 2        8607 0.36 0.20   n 2023-05-23 03:00:00
+#&gt; 3       10000 0.04   NA   d 2023-05-23 06:00:00
+#&gt; 4       10000 0.00   NA   d 2023-05-23 09:00:00
+#&gt; 5       10000 0.00   NA   d 2023-05-23 12:00:00
+#&gt; 6       10000 0.00   NA   d 2023-05-23 15:00:00
+#&gt; 7       10000 0.00   NA   d 2023-05-23 18:00:00
+#&gt; 8       10000 0.00   NA   n 2023-05-23 21:00:00
+#&gt; 9       10000 0.20 0.18   n 2023-05-24 00:00:00
+#&gt; 10      10000 0.40 0.27   n 2023-05-24 03:00:00
+#&gt; 11      10000 0.42 0.23   d 2023-05-24 06:00:00
+#&gt; 12      10000 0.46 0.41   d 2023-05-24 09:00:00
+#&gt; 13      10000 0.52 0.21   d 2023-05-24 12:00:00
+#&gt; 14      10000 0.24   NA   d 2023-05-24 15:00:00
+#&gt; 15      10000 0.20 0.13   d 2023-05-24 18:00:00
+#&gt; 16      10000 0.20 0.10   n 2023-05-24 21:00:00
+#&gt; 17      10000 0.00   NA   n 2023-05-25 00:00:00
+#&gt; 18      10000 0.00   NA   n 2023-05-25 03:00:00
+#&gt; 19      10000 0.00   NA   d 2023-05-25 06:00:00
+#&gt; 20      10000 0.00   NA   d 2023-05-25 09:00:00
+#&gt; 21      10000 0.00   NA   d 2023-05-25 12:00:00
+#&gt; 22      10000 0.00   NA   d 2023-05-25 15:00:00
+#&gt; 23      10000 0.00   NA   d 2023-05-25 18:00:00
+#&gt; 24      10000 0.00   NA   n 2023-05-25 21:00:00
+#&gt; 25      10000 0.00   NA   n 2023-05-26 00:00:00
+#&gt; 26      10000 0.00   NA   n 2023-05-26 03:00:00
+#&gt; 27      10000 0.00   NA   d 2023-05-26 06:00:00
+#&gt; 28      10000 0.00   NA   d 2023-05-26 09:00:00
+#&gt; 29      10000 0.00   NA   d 2023-05-26 12:00:00
+#&gt; 30      10000 0.00   NA   d 2023-05-26 15:00:00
+#&gt; 31      10000 0.00   NA   d 2023-05-26 18:00:00
+#&gt; 32      10000 0.00   NA   n 2023-05-26 21:00:00
+#&gt; 33      10000 0.00   NA   n 2023-05-27 00:00:00
+#&gt; 34      10000 0.00   NA   n 2023-05-27 03:00:00
+#&gt; 35      10000 0.00   NA   d 2023-05-27 06:00:00
+#&gt; 36      10000 0.00   NA   d 2023-05-27 09:00:00
+#&gt; 37      10000 0.00   NA   d 2023-05-27 12:00:00
+#&gt; 38      10000 0.00   NA   d 2023-05-27 15:00:00
+#&gt; 39      10000 0.00   NA   d 2023-05-27 18:00:00
+#&gt; 40      10000 0.00   NA   n 2023-05-27 21:00:00
+#&gt; 
+#&gt; $city
+#&gt; $city$id
+#&gt; [1] 2911298
+#&gt; 
+#&gt; $city$name
+#&gt; [1] "Hamburg"
+#&gt; 
+#&gt; $city$coord
+#&gt; $city$coord$lat
+#&gt; [1] 53.55
+#&gt; 
+#&gt; $city$coord$lon
+#&gt; [1] 10
+#&gt; 
+#&gt; 
+#&gt; $city$country
+#&gt; [1] "DE"
+#&gt; 
+#&gt; $city$population
+#&gt; [1] 0
+#&gt; 
+#&gt; $city$timezone
+#&gt; [1] 7200
+#&gt; 
+#&gt; $city$sunrise
+#&gt; [1] 1684724969
+#&gt; 
+#&gt; $city$sunset
+#&gt; [1] 1684783445</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># extract wind speed data from response</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>windspeed <span class="ot">&lt;-</span> weather_extracted<span class="sc">$</span>list<span class="sc">$</span>wind<span class="sc">$</span>speed</span>
+<span id="cb27-3"><a href="#cb27-3"></a>windspeed  <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;  num [1:40] 0.98 2.23 3.92 5.64 6.37 6.78 5.33 3.94 3.51 4.77 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># extract city name from response</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>city_name <span class="ot">&lt;-</span> weather_extracted<span class="sc">$</span>city<span class="sc">$</span>name</span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># hour list</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>hours <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120-1</span>,<span class="dv">3</span>)</span>
+<span id="cb29-6"><a href="#cb29-6"></a></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="co"># combine hour list and windspeed data</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a>windspeed_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(hours, windspeed)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>windspeed_tbl <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Rows: 40
+#&gt; Columns: 2
+#&gt; $ hours     &lt;dbl&gt; 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, …
+#&gt; $ windspeed &lt;dbl&gt; 0.98, 2.23, 3.92, 5.64, 6.37, 6.78, 5.33, 3.94, 3.51, 4.77, …</code></pre>
 </div>
 </div>
+</section><section id="visualization" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="visualization">
+<span class="header-section-number">2.2</span> Visualization</h2>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_a5c66840f44c551fa5eb39c7622c943d">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># plot results</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>windspeed_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  </span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="co"># Set up x, y, fill</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hours, <span class="at">y =</span> windspeed)) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>  </span>
+<span id="cb31-7"><a href="#cb31-7"></a>  <span class="co"># Geometries</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="co"># Run up to here to get a stacked bar plot</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a>  </span>
+<span id="cb31-10"><a href="#cb31-10"></a>  <span class="co"># Formatting</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, </span>
+<span id="cb31-12"><a href="#cb31-12"></a>                                                    <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
+<span id="cb31-13"><a href="#cb31-13"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb31-14"><a href="#cb31-14"></a>                                                    <span class="at">suffix =</span> <span class="st">"m/s"</span>)) <span class="sc">+</span></span>
+<span id="cb31-15"><a href="#cb31-15"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-16"><a href="#cb31-16"></a>    <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">"Wind speed in {city_name}"</span>),</span>
+<span id="cb31-17"><a href="#cb31-17"></a>    <span class="at">subtitle =</span> <span class="st">"Forecast for the next 5 days in 3 hour intervals"</span>,</span>
+<span id="cb31-18"><a href="#cb31-18"></a>    <span class="at">x =</span> <span class="st">"Nr. of hours into the future"</span>, </span>
+<span id="cb31-19"><a href="#cb31-19"></a>    <span class="at">y =</span> <span class="st">"Wind speed in m/s"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="02_data_acquisition_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_data_acquisition_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="data-acquisition-challenge-2" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> Data Acquisition Challenge 2</h1>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_9c48c233b994f9a9778508434986254a">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Challenge 2.2 ----</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="co"># 1.0 LIBRARIES ----</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="fu">library</span>(tidyverse) <span class="co"># Main Package - Loads dplyr, purrr, etc.</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="fu">library</span>(rvest)     <span class="co"># HTML Hacking &amp; Web Scraping</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="fu">library</span>(xopen)     <span class="co"># Quickly opening URLs</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="fu">library</span>(jsonlite)  <span class="co"># converts JSON files to R objects</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="fu">library</span>(glue)      <span class="co"># concatenate strings</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="fu">library</span>(stringi)   <span class="co"># character string/text processing</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="fu">library</span>(httr)</span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb32-14"><a href="#cb32-14"></a></span>
+<span id="cb32-15"><a href="#cb32-15"></a><span class="co"># URL of shop</span></span>
+<span id="cb32-16"><a href="#cb32-16"></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://www.rosebikes.com"</span></span>
+<span id="cb32-17"><a href="#cb32-17"></a></span>
+<span id="cb32-18"><a href="#cb32-18"></a><span class="co"># Collecting info about bikes of MTB category</span></span>
+<span id="cb32-19"><a href="#cb32-19"></a>mtb_url <span class="ot">=</span> <span class="fu">glue</span>(<span class="st">"{base_url}/bikes/mtb"</span>)</span>
+<span id="cb32-20"><a href="#cb32-20"></a></span>
+<span id="cb32-21"><a href="#cb32-21"></a><span class="co"># Open mtb url</span></span>
+<span id="cb32-22"><a href="#cb32-22"></a><span class="co"># xopen(mtb_url)</span></span>
+<span id="cb32-23"><a href="#cb32-23"></a></span>
+<span id="cb32-24"><a href="#cb32-24"></a><span class="co"># create table and extract href for model from html</span></span>
+<span id="cb32-25"><a href="#cb32-25"></a>mtb_tbl <span class="ot">&lt;-</span>  <span class="fu">read_html</span>(mtb_url) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-26"><a href="#cb32-26"></a>  <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".catalog-category-bikes__picture-wrapper"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-27"><a href="#cb32-27"></a>  <span class="fu">map</span>(xml_attrs) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-28"><a href="#cb32-28"></a>  <span class="fu">map</span>(<span class="st">"href"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-29"><a href="#cb32-29"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-30"><a href="#cb32-30"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-31"><a href="#cb32-31"></a>  <span class="fu">rename</span>(<span class="st">"modelurl"</span> <span class="ot">=</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb32-32"><a href="#cb32-32"></a>  <span class="co"># Add the domain, because we will get only the subdirectories</span></span>
+<span id="cb32-33"><a href="#cb32-33"></a>  <span class="fu">mutate</span>(<span class="at">modelurl =</span> <span class="fu">glue</span>(<span class="st">"{base_url}{modelurl}"</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb32-34"><a href="#cb32-34"></a>  </span>
+<span id="cb32-35"><a href="#cb32-35"></a>  <span class="co"># Some categories are listed multiple times.</span></span>
+<span id="cb32-36"><a href="#cb32-36"></a>  <span class="co"># We only need unique values</span></span>
+<span id="cb32-37"><a href="#cb32-37"></a>  <span class="fu">distinct</span>(modelurl)</span>
+<span id="cb32-38"><a href="#cb32-38"></a></span>
+<span id="cb32-39"><a href="#cb32-39"></a><span class="co"># extract href for bikes of html for every url in mtb_tbl</span></span>
+<span id="cb32-40"><a href="#cb32-40"></a>bike_tbl <span class="ot">&lt;-</span> mtb_tbl<span class="sc">$</span>modelurl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-41"><a href="#cb32-41"></a>  <span class="fu">map</span>(read_html) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-42"><a href="#cb32-42"></a>  <span class="fu">map</span>(html_nodes, <span class="at">css =</span> <span class="st">".catalog-category-model__picture-link"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-43"><a href="#cb32-43"></a>  <span class="fu">map</span>(xml_attrs) </span>
+<span id="cb32-44"><a href="#cb32-44"></a></span>
+<span id="cb32-45"><a href="#cb32-45"></a><span class="co"># flatten nested lists</span></span>
+<span id="cb32-46"><a href="#cb32-46"></a>bike_tbl <span class="ot">&lt;-</span> <span class="fu">unlist</span>(bike_tbl, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb32-47"><a href="#cb32-47"></a></span>
+<span id="cb32-48"><a href="#cb32-48"></a><span class="co"># extract href from all bikes</span></span>
+<span id="cb32-49"><a href="#cb32-49"></a>bike_tbl <span class="ot">&lt;-</span> bike_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-50"><a href="#cb32-50"></a>  <span class="fu">map</span>(<span class="st">"href"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-51"><a href="#cb32-51"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-52"><a href="#cb32-52"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-53"><a href="#cb32-53"></a>  <span class="fu">rename</span>(<span class="st">"bikeurl"</span> <span class="ot">=</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb32-54"><a href="#cb32-54"></a>  <span class="fu">mutate</span>(<span class="at">bikeurl =</span> <span class="fu">glue</span>(<span class="st">"{base_url}{bikeurl}"</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb32-55"><a href="#cb32-55"></a> </span>
+<span id="cb32-56"><a href="#cb32-56"></a>  <span class="co"># Some categories are listed multiple times.</span></span>
+<span id="cb32-57"><a href="#cb32-57"></a>  <span class="co"># We only need unique values</span></span>
+<span id="cb32-58"><a href="#cb32-58"></a>  <span class="fu">distinct</span>(bikeurl)</span>
+<span id="cb32-59"><a href="#cb32-59"></a></span>
+<span id="cb32-60"><a href="#cb32-60"></a></span>
+<span id="cb32-61"><a href="#cb32-61"></a><span class="co"># removing entries that give errors</span></span>
+<span id="cb32-62"><a href="#cb32-62"></a>bike_tbl <span class="ot">&lt;-</span> bike_tbl[<span class="sc">-</span><span class="dv">8</span>,]</span>
+<span id="cb32-63"><a href="#cb32-63"></a>bike_tbl <span class="ot">&lt;-</span> bike_tbl[<span class="sc">-</span><span class="dv">52</span>,]</span>
+<span id="cb32-64"><a href="#cb32-64"></a></span>
+<span id="cb32-65"><a href="#cb32-65"></a><span class="co"># save first entries of bike_tbl to variable for testing</span></span>
+<span id="cb32-66"><a href="#cb32-66"></a><span class="co"># bike_tbl &lt;- bike_tbl[1:4,]  %&gt;%   as_tibble()</span></span>
+<span id="cb32-67"><a href="#cb32-67"></a></span>
+<span id="cb32-68"><a href="#cb32-68"></a>price_tbl <span class="ot">&lt;-</span> bike_tbl<span class="sc">$</span>bikeurl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-69"><a href="#cb32-69"></a>  <span class="fu">map</span>(read_html) <span class="sc">%&gt;%</span></span>
+<span id="cb32-70"><a href="#cb32-70"></a>  <span class="fu">map</span>(html_nodes, <span class="at">css =</span> <span class="st">".detail-price__wrapper &gt; span"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-71"><a href="#cb32-71"></a>  <span class="fu">map</span>(xml_attrs)</span>
+<span id="cb32-72"><a href="#cb32-72"></a></span>
+<span id="cb32-73"><a href="#cb32-73"></a><span class="co"># flatten nested lists</span></span>
+<span id="cb32-74"><a href="#cb32-74"></a>price_tbl <span class="ot">&lt;-</span> <span class="fu">unlist</span>(price_tbl, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb32-75"><a href="#cb32-75"></a></span>
+<span id="cb32-76"><a href="#cb32-76"></a><span class="co"># extract price from all entries</span></span>
+<span id="cb32-77"><a href="#cb32-77"></a>price_tbl <span class="ot">&lt;-</span> price_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-78"><a href="#cb32-78"></a>  <span class="fu">map</span>(<span class="st">"data-test"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-79"><a href="#cb32-79"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-80"><a href="#cb32-80"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-81"><a href="#cb32-81"></a>  <span class="fu">rename</span>(<span class="st">"price"</span> <span class="ot">=</span> value)</span>
+<span id="cb32-82"><a href="#cb32-82"></a></span>
+<span id="cb32-83"><a href="#cb32-83"></a><span class="co"># remove dollar signs from price </span></span>
+<span id="cb32-84"><a href="#cb32-84"></a>price_tbl<span class="sc">$</span>price <span class="ot">&lt;-</span> price_tbl<span class="sc">$</span>price <span class="sc">%&gt;%</span> </span>
+<span id="cb32-85"><a href="#cb32-85"></a>  <span class="fu">str_remove_all</span>(<span class="st">"€"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-86"><a href="#cb32-86"></a>  <span class="fu">str_remove_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">."</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-87"><a href="#cb32-87"></a>  <span class="fu">as.numeric</span>()<span class="sc">/</span><span class="dv">100</span></span>
+<span id="cb32-88"><a href="#cb32-88"></a></span>
+<span id="cb32-89"><a href="#cb32-89"></a>name_tbl <span class="ot">&lt;-</span> bike_tbl<span class="sc">$</span>bikeurl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-90"><a href="#cb32-90"></a>  <span class="fu">map</span>(read_html) <span class="sc">%&gt;%</span></span>
+<span id="cb32-91"><a href="#cb32-91"></a>  <span class="fu">map</span>(html_nodes, <span class="st">".basic-headline__title"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-92"><a href="#cb32-92"></a>  <span class="fu">map</span>(xml_find_all, <span class="st">".//text()"</span>)</span>
+<span id="cb32-93"><a href="#cb32-93"></a></span>
+<span id="cb32-94"><a href="#cb32-94"></a><span class="co"># for loop through name_tbl to get only the text </span></span>
+<span id="cb32-95"><a href="#cb32-95"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(name_tbl)) {</span>
+<span id="cb32-96"><a href="#cb32-96"></a>  name_tbl[[i]] <span class="ot">&lt;-</span> <span class="fu">as_list</span>(name_tbl[[i]])[[<span class="dv">1</span>]]</span>
+<span id="cb32-97"><a href="#cb32-97"></a>}</span>
+<span id="cb32-98"><a href="#cb32-98"></a></span>
+<span id="cb32-99"><a href="#cb32-99"></a>name_tbl <span class="ot">&lt;-</span> name_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb32-100"><a href="#cb32-100"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-101"><a href="#cb32-101"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-102"><a href="#cb32-102"></a>  <span class="fu">rename</span>(<span class="st">"name"</span> <span class="ot">=</span> value)</span>
+<span id="cb32-103"><a href="#cb32-103"></a></span>
+<span id="cb32-104"><a href="#cb32-104"></a><span class="co"># combine rows from name_tbl and price_tbl</span></span>
+<span id="cb32-105"><a href="#cb32-105"></a>combi_tbl <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(name_tbl, price_tbl)</span>
+<span id="cb32-106"><a href="#cb32-106"></a></span>
+<span id="cb32-107"><a href="#cb32-107"></a><span class="co"># preview first 10 rows</span></span>
+<span id="cb32-108"><a href="#cb32-108"></a>combi_tbl <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["price"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"COUNT SOLO 1","2":"749"},{"1":"COUNT SOLO 1","2":"749"},{"1":"COUNT SOLO 2","2":"849"},{"1":"COUNT SOLO 2","2":"849"},{"1":"COUNT SOLO 3","2":"949"},{"1":"COUNT SOLO 3","2":"949"},{"1":"PSYCHO PATH 1","2":"1499"},{"1":"PSYCHO PATH 2","2":"1799"},{"1":"PSYCHO PATH 2","2":"1799"},{"1":"THRILL HILL 4","2":"5499"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Note the duplicates in the names are due to different color options which are not yet included.</p>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -425,7 +1651,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<script>var lightboxQuarto = GLightbox({"loop":true,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom"});</script>
 
 
 </body></html>
